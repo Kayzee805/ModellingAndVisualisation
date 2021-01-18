@@ -1,4 +1,6 @@
 import numpy as np
+import time
+import random
 data= [1,2,3,4,5,6,7]
 data = np.asarray(data)
 def variance(data):
@@ -29,10 +31,11 @@ print(np.mean(ran))
 # print(resample)
 # print(np.var(test))
 
-test = np.linspace(1,3,21)
-test1 = np.linspace(1,3,21)
-test2 = np.linspace(1,3,21)
 
+test=[0.00222,0.021111,0.124125,0.1251251]
+dummy = [float('%.3f'%elem) for elem in test]
+
+print(dummy)
 '''
 Glauber
     Plot of average abs mag against T

@@ -72,7 +72,7 @@ class Lattice(object):
         energy = 0.0
         for i in range(self.lx):
             for j in range(self.ly):
-                #lecture
+               # lecture
                 iup=i+1
                 if(i==self.lx-1):iup=0
                 jup=j+1
@@ -80,9 +80,9 @@ class Lattice(object):
                 energy+= -self.J*self.spin[i,j]*(self.spin[iup,j]+self.spin[i,jup])
 
                 #mine
-                # top = self.spin[i,(j-1)%self.ly]
+                # bottom = self.spin[i,(j+1)%self.ly]
                 # right = self.spin[(i+1)%self.lx,j]
-                # energy+= -self.J*self.spin[i,j]*(top+right)
+                # energy+= -self.J*self.spin[i,j]*(bottom+right)
         
         #can prob reduce computation by multiplying by -self.J once at the end?
         return energy

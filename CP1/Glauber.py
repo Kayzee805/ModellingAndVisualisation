@@ -1,6 +1,7 @@
 
 from Lattice import Lattice
 import numpy as np
+import random
 class Glauber(Lattice):
     #using Algorithm as object so I dont have to initialise spin array
     #can use Algorithm for both glauber and kawasaki classes 
@@ -23,8 +24,8 @@ class Glauber(Lattice):
                 if(energyDiff>0):
                     #energy>0 therefore need to check the probability to see if accepted
                     probability = self.calculateProbability(energyDiff)
-                    randomNumber = np.random.rand(1)
-                    if(probability>randomNumber[0]):
+                    randomNumber = random.random()
+                    if(probability>randomNumber):
                         self.spin[iTrial,jTrial] = spin_new
                 else:
                     #energy<=0 therefore is accepted
