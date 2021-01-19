@@ -54,15 +54,14 @@ class Kawasaki(Lattice):
                 energyOneBefore = self.deltaEKawasaki(self.spin,iOne,jOne)
                 energyTwoBefore = self.deltaEKawasaki(self.spin,iTwo,jTwo)
                 energyBefore = energyOneBefore+energyTwoBefore  #+correction?
+                
                 self.flip(iOne,jOne,iTwo,jTwo)
 
                 energyOneAfter = self.deltaEKawasaki(self.spin,iOne,jOne)
                 energyTwoAfter = self.deltaEKawasaki(self.spin,iTwo,jTwo)
                 energyAfter = energyOneAfter+energyTwoAfter
 
-
                 energyDiff = energyAfter-energyBefore 
-  
                 #no need to check for <= 0 because its already flipped
                 if(energyDiff>0):
                     #need to do probability check

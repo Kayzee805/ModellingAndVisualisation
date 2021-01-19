@@ -1,7 +1,7 @@
 import numpy as np
 import math
 import random
-from astropy.stats import jackknife_resampling
+from astropy.stats import jackknife_resampling, bootstrap
 class Lattice(object):
   #  random.seed(10)
 
@@ -101,9 +101,8 @@ class Lattice(object):
             result += (newC[i]-c)**2
 
         return np.sqrt(result)
-    def bootstrap(self):
-        print("bootstrap")
-
+    def bootstrap(self,energy,c):
+        return bootstrap(energy,len(energy),bootfunc=np.mean)
 
     
 

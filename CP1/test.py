@@ -1,7 +1,8 @@
 import numpy as np
 import time
 import random
-data= [1,2,3,4,5,6,7]
+from astropy.stats import bootstrap
+data= [1,2,3,4,5,6,7,1,25,12,5,1,2,5]
 data = np.asarray(data)
 def variance(data):
     mean = np.mean(data)
@@ -10,12 +11,29 @@ def variance(data):
     v = sq - meansq
     return v#
 
-print(f"Manual = {variance(data)}")
-print(f"np = {np.var(data)}")
 
-test = np.zeros(5)
-ran=[0,1,2,3,4,5]
-print(np.mean(ran))
+
+def bootstrap2(data):
+    newC = np.zeros(len(data))
+    for i in range(len(data)):
+        newC[i] = np.var(np.random.choice(data,len(data)))
+    
+    lhs = np.mean(np.square(newC))
+    rhs = np.square(np.mean(newC))
+
+    sigma = np.sqrt(lhs-rhs)
+    return sigma
+
+error = bootstrap2(data)
+print(f"Error manual = {error}\n\n")
+
+
+
+
+def bootstrapAstropy(data):
+    return bootstrap(data,len(data),bootfunc=np.mean)
+error2 = bootstrapAstropy(data)
+print(f"Error auto = {error2}")
 
 # fileNames = np.loadtxt('plotNames.dat',dtype='str')
 # for x in fileNames:
@@ -32,10 +50,10 @@ print(np.mean(ran))
 # print(np.var(test))
 
 
-test=[0.00222,0.021111,0.124125,0.1251251]
-dummy = [float('%.3f'%elem) for elem in test]
+# test=[0.00222,0.021111,0.124125,0.1251251]
+# dummy = [float('%.3f'%elem) for elem in test]
 
-print(dummy)
+# print(dummy)
 '''
 Glauber
     Plot of average abs mag against T

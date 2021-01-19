@@ -20,7 +20,7 @@ def generateGlauberData(n,T,nSteps):
     susceptibility=np.zeros(TemperatureValues)
     specificHeat = np.zeros(TemperatureValues)
     averageEnergy =np.zeros(TemperatureValues)
-  
+    bootstrapError = np.zero(TemperatureValues)
     specificHeatError = np.zeros(TemperatureValues)
     glauber = Glauber(n,0)
 
@@ -54,11 +54,11 @@ def generateGlauberData(n,T,nSteps):
 
     #now save each of the arrays as a text file
     #with temp as the initial column
-    np.savetxt('data/Glauber_AverageMagnetisation.dat',(tempList,averageMagnetisation))
-    np.savetxt('data/Glauber_AverageTotalEnergy.dat',(tempList,averageEnergy))
-    np.savetxt('data/Glauber_SpecificHeat.dat',(tempList,specificHeat))
-    np.savetxt('data/Glauber_Susceptibility.dat',(tempList,susceptibility))
-    np.savetxt('data/Glauber_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
+    # np.savetxt('data/Glauber_AverageMagnetisation.dat',(tempList,averageMagnetisation))
+    # np.savetxt('data/Glauber_AverageTotalEnergy.dat',(tempList,averageEnergy))
+    # np.savetxt('data/Glauber_SpecificHeat.dat',(tempList,specificHeat))
+    # np.savetxt('data/Glauber_Susceptibility.dat',(tempList,susceptibility))
+    # np.savetxt('data/Glauber_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
 
     print(f"Finished generating data")
 
@@ -297,7 +297,7 @@ if __name__ == "__main__":
     else:
         print("Just going to plot")
     #plotGraphs2()
-    plotGraphs()
+    #plotGraphs()
     t2=time.time()
     print(f"Time taken for everything= {t2-t1}")
 
