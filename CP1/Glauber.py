@@ -12,8 +12,8 @@ class Glauber(Lattice):
     def update(self):
         for i in range(self.lx):
             for j in range(self.ly):
-                iTrial = np.random.randint(0,self.lx)
-                jTrial = np.random.randint(0,self.ly)
+                iTrial = random.randint(0,self.lx-1)
+                jTrial = random.randint(0,self.ly-1)
                 spin_new = -self.spin[iTrial,jTrial]
 
                 #not doing the new spin thing here because 

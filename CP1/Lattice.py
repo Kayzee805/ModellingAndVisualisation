@@ -3,8 +3,6 @@ import math
 import random
 from astropy.stats import jackknife_resampling, bootstrap
 class Lattice(object):
-  #  random.seed(10)
-
     def __init__(self,n,T):
         self.n = n      #lattice dimension. e.g. 50= 50x50
         self.lx = n
@@ -26,6 +24,7 @@ class Lattice(object):
 
     def setTemperature(self,newTemp):
         self.T = newTemp
+        
     def deltaE(self,spin,i,j):
         #this only works for a squre lattice
         #as I use slef.n for both lx and ly
@@ -37,6 +36,7 @@ class Lattice(object):
         right = spin[(i+1)%self.lx ,j]
         e = 2*self.J*si*(top+bottom+left+right)
         return e
+        
     def deltaEKawasaki(self,spin,i,j):
         #this only works for a squre lattice
         #as I use slef.n for both lx and ly
@@ -61,7 +61,11 @@ class Lattice(object):
         return (1/(self.lx*self.ly*self.kb*self.T))*MagnetisationVariance
 
     def calculateHeatCapacity(self,EnergyVariance):
-        return (1/(self.lx*self.ly*self.kb*self.T*self.T))*EnergyVariance
+        
+        x= (1/(self.lx*self.ly*self.kb*self.T*self.T))*EnergyVariance
+       # print(f"Temperature {self.T}  and c = {x}")
+        return x
+
 
     def totalEnergy(self):
         '''
@@ -83,27 +87,39 @@ class Lattice(object):
                 # bottom = self.spin[i,(j+1)%self.ly]
                 # right = self.spin[(i+1)%self.lx,j]
                 # energy+= -self.J*self.spin[i,j]*(bottom+right)
-        
         #can prob reduce computation by multiplying by -self.J once at the end?
         return energy
 
-
-    def jacknife(self,energy,c):
-        #c here is the original heatcapacity?
-        #print("TESTINGG")
-        resamples = jackknife_resampling(np.asarray(energy))
-        newC = np.zeros(len(resamples))
-        for i in range(len(resamples)):
+    def jacknife(self,energy):
+        length = len(energy)
+        newC = np.zeros(length)
+        resamples = np.empty([length,length-1])
+        for i in range(length):
+            resamples[i]=np.delete(energy,i)
             newC[i] = self.calculateHeatCapacity(np.var(resamples[i]))
+        result = 0.0
+        meanNewC = np.mean(newC)
+        for i in newC:
+            result+= (i-meanNewC)**2
 
-        result = 0
-        for i in range(len(energy)):
-            result += (newC[i]-c)**2
-
+        print(f"Error = {np.sqrt(result)} at temp = {self.T}")
         return np.sqrt(result)
-    def bootstrap(self,energy,c):
-        return bootstrap(energy,len(energy),bootfunc=np.mean)
 
-    
 
+
+
+    # def jacknife(self,energy,c):
+    #     #c here is the original heatcapacity?
+    #     #print("TESTINGG")
+    #     resamples = jackknife_resampling(np.asarray(energy))
+    #     newC = np.zeros(len(resamples))
+    #     for i in range(len(resamples)):
+    #         newC[i] = self.calculateHeatCapacity(np.var(resamples[i]))
+
+    #     result = 0
+    #     for i in range(len(energy)):
+    #         result += (newC[i]-c)**2
+
+    #     print(np.sqrt(result))
+    #     return np.sqrt(result)
 

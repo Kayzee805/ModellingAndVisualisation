@@ -2,58 +2,18 @@ import numpy as np
 import time
 import random
 from astropy.stats import bootstrap
-data= [1,2,3,4,5,6,7,1,25,12,5,1,2,5]
-data = np.asarray(data)
-def variance(data):
-    mean = np.mean(data)
-    sq = np.mean(data**2)
-    meansq = mean ** 2
-    v = sq - meansq
-    return v#
+random.seed(10)
+np.random.seed(10)
 
 
+test = np.ones((50,50))
+mid = int(50/2)
+for i in range(mid,50):
+    for j in range(0,50):
+        test[i][j]=-1
 
-def bootstrap2(data):
-    newC = np.zeros(len(data))
-    for i in range(len(data)):
-        newC[i] = np.var(np.random.choice(data,len(data)))
-    
-    lhs = np.mean(np.square(newC))
-    rhs = np.square(np.mean(newC))
+print(np.sum(test))
 
-    sigma = np.sqrt(lhs-rhs)
-    return sigma
-
-error = bootstrap2(data)
-print(f"Error manual = {error}\n\n")
-
-
-
-
-def bootstrapAstropy(data):
-    return bootstrap(data,len(data),bootfunc=np.mean)
-error2 = bootstrapAstropy(data)
-print(f"Error auto = {error2}")
-
-# fileNames = np.loadtxt('plotNames.dat',dtype='str')
-# for x in fileNames:
-# #     print((x))
-
-# np.savetxt('data/test.dat',ran)
-
-
-
-# test = [1,2,3,4,5,6,1]
-# from astropy.stats import jackknife_resampling
-# resample = jackknife_resampling(np.asarray(test))
-# print(resample)
-# print(np.var(test))
-
-
-# test=[0.00222,0.021111,0.124125,0.1251251]
-# dummy = [float('%.3f'%elem) for elem in test]
-
-# print(dummy)
 '''
 Glauber
     Plot of average abs mag against T

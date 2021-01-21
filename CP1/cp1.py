@@ -12,6 +12,8 @@ from Glauber import Glauber
 from Kawasaki import Kawasaki
 import time
 
+#plt.rcParams['figure.figsize'] = (9, 9)
+
 def generateGlauberData(n,T,nSteps):
     TemperatureValues = 21
     #not sure how many values of T I need
@@ -20,9 +22,8 @@ def generateGlauberData(n,T,nSteps):
     susceptibility=np.zeros(TemperatureValues)
     specificHeat = np.zeros(TemperatureValues)
     averageEnergy =np.zeros(TemperatureValues)
-    bootstrapError = np.zero(TemperatureValues)
     specificHeatError = np.zeros(TemperatureValues)
-    glauber = Glauber(n,0)
+    glauber = Glauber(n,T)
 
     #setting spin/lattice to all up spins
     glauber.allOnes()
@@ -49,7 +50,7 @@ def generateGlauberData(n,T,nSteps):
         averageEnergy[t] = np.mean(energy)
         susceptibility[t] = glauber.calculuateSusceptibility(np.var(magnetisation))
         specificHeat[t] = glauber.calculateHeatCapacity(np.var(energy))
-        specificHeatError[t] = glauber.jacknife(energy,specificHeat[t])
+        specificHeatError[t] = glauber.jacknife(energy)
         print(f"t ={t+1}  Time taken ={time.time()-start}   Specific heat = {specificHeat[t]}")
 
     #now save each of the arrays as a text file
@@ -59,6 +60,8 @@ def generateGlauberData(n,T,nSteps):
     # np.savetxt('data/Glauber_SpecificHeat.dat',(tempList,specificHeat))
     # np.savetxt('data/Glauber_Susceptibility.dat',(tempList,susceptibility))
     # np.savetxt('data/Glauber_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
+    np.savetxt('data/glauberData.dat',(tempList,averageMagnetisation,averageEnergy,specificHeat,specificHeatError,susceptibility))
+
 
     print(f"Finished generating data")
 
@@ -75,7 +78,7 @@ def generateKawasakiData(n,T,nSteps):
     specificHeat = np.zeros(TemperatureValues)
     averageEnergy =np.zeros(TemperatureValues)
     specificHeatError = np.zeros(TemperatureValues)
-    kawasaki = Kawasaki(n,0)
+    kawasaki = Kawasaki(n,1)
     kawasaki.halfHalf()
     print(f"Magnetisation = {kawasaki.totalMagnetisation()}")
     for t in range(TemperatureValues):
@@ -85,21 +88,26 @@ def generateKawasakiData(n,T,nSteps):
         for n in range(nSteps):
 
             kawasaki.update()
+            if(n==101 or n==200):
+                print(f"Total energy at equilibriatio= {kawasaki.totalEnergy()}")
             if(n%500==0):
                 print(n)
-            if(n%10==0 and n>=100):
+            if(n%10==0 and n>=250):
                 energy.append(kawasaki.totalEnergy())
 
-        print(f"Time taken for T={t+1}  is {time.time()-start}s   {nSteps}")
         averageEnergy[t] = np.mean(energy)
+        vara = np.var(energy)
+   # print(vara)
         specificHeat[t] = kawasaki.calculateHeatCapacity(np.var(energy))
-        specificHeatError[t] = kawasaki.jacknife(energy,specificHeat[t])
-        print(f"Specific heat at T={tempList[t]} = {specificHeat[t]}")
-    np.savetxt('data/Kawasaki_AverageTotalEnergy.dat',(tempList,averageEnergy))
+       # manual =vara*(1/2500*tempList[t]**2) 
+        specificHeatError[t] = kawasaki.jacknife(energy)
+        print(f"Time taken for T={t+1}  is {time.time()-start}s   {nSteps}")
+        print(f"Specific heat at T={tempList[t]} = {specificHeat[t]} magnetisation={kawasaki.totalMagnetisation()}")
+    # np.savetxt('data/Kawasaki_AverageTotalEnergy.dat',(tempList,averageEnergy))
     
-    np.savetxt('data/Kawasaki_SpecificHeat.dat',(tempList,specificHeat))
-    np.savetxt('data/Kawasaki_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
-
+    # np.savetxt('data/Kawasaki_SpecificHeat.dat',(tempList,specificHeat))
+    # np.savetxt('data/Kawasaki_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
+    np.savetxt('data/kawasakiData.dat',(tempList,averageEnergy,specificHeat,specificHeatError))
     plt.plot(tempList,averageEnergy)
     plt.xlabel("Temp")
     plt.ylabel("Energy")
@@ -116,7 +124,8 @@ def generateKawasakiData(n,T,nSteps):
 
 
 def plotGraphs():
-    array = np.loadtxt("data/allData.dat")  
+    print("TESTING")
+    array = np.loadtxt("data/glauberData.dat")  
     array = np.transpose(array)
     temp = array[:,0]
     gMagnetisation = array[:,1]
@@ -124,9 +133,11 @@ def plotGraphs():
     gHeatCapacity = array[:,3]
     gHeatError = array[:,4]
     gSusceptibility = array[:,5]
-    kEnergy = array[:,6]
-    kHeatCapacity = array[:,7]
-    kHeatError = array[:,8]
+    array2= np.loadtxt("data/kawasakiData.dat")
+    array2 = np.transpose(array2)
+    kEnergy = array2[:,1]
+    kHeatCapacity = array2[:,2]
+    kHeatError = array2[:,3]
 
     #Temperature and Glauber Magnetisation
     plt.plot(temp,gMagnetisation)
@@ -297,9 +308,11 @@ if __name__ == "__main__":
     else:
         print("Just going to plot")
     #plotGraphs2()
-    #plotGraphs()
+    plotGraphs()
     t2=time.time()
     print(f"Time taken for everything= {t2-t1}")
 
     
 
+# Time taken for T=1  is 14.966191530227661s   400
+# Specific heat at T=1.0 = 0.07939555555555561
