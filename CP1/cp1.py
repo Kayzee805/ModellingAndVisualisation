@@ -1,6 +1,3 @@
-import matplotlib
-matplotlib.use('TKAgg')
-
 import sys
 import math
 import random
@@ -11,133 +8,168 @@ from Lattice import Lattice
 from Glauber import Glauber
 from Kawasaki import Kawasaki
 import time
-
+import matplotlib
+matplotlib.use('TKAgg')
 #plt.rcParams['figure.figsize'] = (9, 9)
 
-def generateGlauberData(n,T,nSteps):
+def generateGlauberData(systemSize,Temperature,nSteps):
+    '''
+    Runs the simulation for glauber dynamic rule 
+    then saves the generated data in a file called
+    'glauberData.dat' in a folder called data
+    Parameters:
+    -----------
+    systemSize :  Integer
+                  Size of the system
+    T:  Float
+        Temperature of the system, here we generate data so T is max temp
+        it will start from T=1 to T=T
+    
+    nSteps: Integer
+            Sweep size per temperature
+    '''
     TemperatureValues = 21
-    #not sure how many values of T I need
-    tempList = np.linspace(1,T,TemperatureValues)
+    #Creating arrays to store data. Multiple arrays instead of 1 big array
+
+    tempList = np.linspace(1,Temperature,TemperatureValues)
     averageMagnetisation =np.zeros(TemperatureValues)
     susceptibility=np.zeros(TemperatureValues)
     specificHeat = np.zeros(TemperatureValues)
     averageEnergy =np.zeros(TemperatureValues)
     specificHeatError = np.zeros(TemperatureValues)
-    glauber = Glauber(n,T)
+    
+    #create a glauber object, which contains the spin lattice 2d array
+    glauber = Glauber(systemSize,1)
 
     #setting spin/lattice to all up spins
     glauber.allOnes()
+
+    #looping over all temperatures
     for t in range(TemperatureValues):
+        #change the temperature of the glauber object
         glauber.setTemperature(tempList[t])
+
+        #reset arrays to empty arrays
         magnetisation = []
         energy = []
         start = time.time()
+        
+        #loop for the sweep
         for n in range(nSteps):
-            #now need to flip?
+            
+            #for each sweep, update the lattice
             glauber.update()
             if(n%500==0):
                 print(n)
-            if(n%10==0):
-                if(n>=100):
-                #    print("hello")
-                    #this is the wait for equilibration?
-                    energy.append(glauber.totalEnergy())
-                    #magetisation needs to be the abs value
-                    magnetisation.append(glauber.totalMagnetisation())
-        #use np.var for varaince
-       # print(f"size = {len(magnetisation)}")
+
+            #only taking in every 10th measurement after the equilibration wait of 100
+            if(n%10==0 and n>=100):
+                
+                #append the measurements to their respective arrays
+                energy.append(glauber.totalEnergy())
+                magnetisation.append(glauber.totalMagnetisation())
+
+        #for each temperature after the sweeps, do the calculations and index it to the right array
         averageMagnetisation[t] = np.mean(magnetisation)
         averageEnergy[t] = np.mean(energy)
-        susceptibility[t] = glauber.calculuateSusceptibility(np.var(magnetisation))
-        specificHeat[t] = glauber.calculateHeatCapacity(np.var(energy))
+        susceptibility[t] = glauber.calculuateSusceptibility(glauber.calculateVariance(magnetisation))
+        specificHeat[t] = glauber.calculateHeatCapacity(glauber.calculateVariance(energy))
+        
+        #call jacknife method to calculate the error 
         specificHeatError[t] = glauber.jacknife(energy)
-        print(f"t ={t+1}  Time taken ={time.time()-start}   Specific heat = {specificHeat[t]}")
-
-    #now save each of the arrays as a text file
-    #with temp as the initial column
-    # np.savetxt('data/Glauber_AverageMagnetisation.dat',(tempList,averageMagnetisation))
-    # np.savetxt('data/Glauber_AverageTotalEnergy.dat',(tempList,averageEnergy))
-    # np.savetxt('data/Glauber_SpecificHeat.dat',(tempList,specificHeat))
-    # np.savetxt('data/Glauber_Susceptibility.dat',(tempList,susceptibility))
-    # np.savetxt('data/Glauber_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
-    np.savetxt('data/glauberData.dat',(tempList,averageMagnetisation,averageEnergy,specificHeat,specificHeatError,susceptibility))
+        print(f"t ={tempList[t]}  Time taken ={time.time()-start}   Specific heat = {specificHeat[t]}")
 
 
+    #after simulation done for all arrays, save it in a big array to write it to a file
+    combinedArray = np.array((tempList,averageMagnetisation,averageEnergy,specificHeat,specificHeatError,susceptibility))
+    #write a transposed array to make it easier to read.
+    np.savetxt('data/glauberData.dat',np.transpose(combinedArray),fmt='%.7f')
     print(f"Finished generating data")
 
-    plt.plot(tempList,specificHeat)
-    plt.xlabel("Temp")
-    plt.ylabel("Specific heat")
-    plt.title("Temp vs C")
-    plt.show()
+def generateKawasakiData(systemSize,Temperature,nSteps):
+    '''
+    Runs the simulation for kawasaki dynamic rule 
+    then saves the generated data in a file called
+    'kawasakiData.dat' in a folder called data
+    Parameters:
+    -----------
+    systemSize :  Integer
+                  Size of the system
+    Temperature:  Float
+        Temperature of the system, here we generate data so T is max temp
+        it will start from T=1 to T=T
+    
+    nSteps: Integer
+            Sweep size per temperature
+    '''
 
-def generateKawasakiData(n,T,nSteps):
     TemperatureValues = 21
-    #not sure how many values of T I need
-    tempList = np.linspace(1,T,TemperatureValues)
+    #Creating arrays to store data. Multiple arrays instead of 1 big array
+
+    tempList = np.linspace(1,Temperature,TemperatureValues)
     specificHeat = np.zeros(TemperatureValues)
     averageEnergy =np.zeros(TemperatureValues)
     specificHeatError = np.zeros(TemperatureValues)
-    kawasaki = Kawasaki(n,1)
-    kawasaki.halfHalf()
-    print(f"Magnetisation = {kawasaki.totalMagnetisation()}")
-    for t in range(TemperatureValues):
-        kawasaki.setTemperature(tempList[t])
-        energy=[]
-        start = time.time()
-        for n in range(nSteps):
 
+    #create a Kawasaki object, which contains the spin lattice 2d array
+    kawasaki = Kawasaki(systemSize,Temperature)
+    #initialise the kawasaki spins to half up and half downs so magnetisation=0
+    kawasaki.halfHalf()
+
+    print(f"Magnetisation = {kawasaki.totalMagnetisation()}")
+
+    #looping over all temperatures
+    for t in range(TemperatureValues):
+        #change the temperature of the kawasaki object
+
+        kawasaki.setTemperature(tempList[t])
+
+        #reset the energy array for each emperature
+        energy=[]
+        #loop for nSteps sweeps
+        start =time.time()
+        for n in range(nSteps):
+            #for each sweep, update the spin lattice
             kawasaki.update()
-            if(n==101 or n==200):
-                print(f"Total energy at equilibriatio= {kawasaki.totalEnergy()}")
             if(n%500==0):
                 print(n)
-            if(n%10==0 and n>=250):
+            #take every 10th measurement after the equilibriation wait 
+            if(n%10==0 and n>100):
+                #add each measurement to the energy array
                 energy.append(kawasaki.totalEnergy())
+         
 
+        #For each temperature calculate the speacific heat and average energy
         averageEnergy[t] = np.mean(energy)
-        vara = np.var(energy)
-   # print(vara)
-        specificHeat[t] = kawasaki.calculateHeatCapacity(np.var(energy))
-       # manual =vara*(1/2500*tempList[t]**2) 
+        specificHeat[t] = kawasaki.calculateHeatCapacity(kawasaki.calculateVariance(energy))
+        #call jacknife method to calculate the error 
         specificHeatError[t] = kawasaki.jacknife(energy)
-        print(f"Time taken for T={t+1}  is {time.time()-start}s   {nSteps}")
-        print(f"Specific heat at T={tempList[t]} = {specificHeat[t]} magnetisation={kawasaki.totalMagnetisation()}")
-    # np.savetxt('data/Kawasaki_AverageTotalEnergy.dat',(tempList,averageEnergy))
+        print(f"Time taken for T={tempList[t]}  is {time.time()-start}s   specificHeat = {specificHeat[t]}  error={specificHeatError[t]}")
     
-    # np.savetxt('data/Kawasaki_SpecificHeat.dat',(tempList,specificHeat))
-    # np.savetxt('data/Kawasaki_SpecificHeatWithError.dat',(tempList,specificHeat,specificHeatError))
-    np.savetxt('data/kawasakiData.dat',(tempList,averageEnergy,specificHeat,specificHeatError))
-    plt.plot(tempList,averageEnergy)
-    plt.xlabel("Temp")
-    plt.ylabel("Energy")
-    plt.title("Temp vs C")
-    plt.show()
+    #after simulation done for all arrays, save it in a big array to write it to a file
+    combinedArray = np.array((tempList,averageEnergy,specificHeat,specificHeatError))
 
-    plt.plot(tempList,specificHeat)
-    plt.errorbar(tempList,specificHeat,linewidth=0.9,yerr=specificHeatError)
-    plt.xlabel("Temp")
-    plt.ylabel("Specific heat")
-    plt.title("Temp vs C")
-    plt.show()
-
-
+    #write a transposed array to make it easier to read
+    np.savetxt('data/kawasakiData.dat',np.transpose((combinedArray)),fmt='%.7f')
 
 def plotGraphs():
+    '''
+    Plots all the necessary plots then save the figures in a folder
+    called figures
+    '''
     print("TESTING")
-    array = np.loadtxt("data/glauberData.dat")  
-    array = np.transpose(array)
-    temp = array[:,0]
-    gMagnetisation = array[:,1]
-    gEnergy = array[:,2]
-    gHeatCapacity = array[:,3]
-    gHeatError = array[:,4]
-    gSusceptibility = array[:,5]
-    array2= np.loadtxt("data/kawasakiData.dat")
-    array2 = np.transpose(array2)
-    kEnergy = array2[:,1]
-    kHeatCapacity = array2[:,2]
-    kHeatError = array2[:,3]
+    glauberData = np.loadtxt("data/glauberData.dat")  
+    temp = glauberData[:,0] 
+    gMagnetisation = glauberData[:,1]
+    gEnergy = glauberData[:,2]
+    gHeatCapacity = glauberData[:,3]
+    gHeatError = glauberData[:,4]
+    gSusceptibility = glauberData[:,5]
+
+    kawasakiData= np.loadtxt("data/kawasakiData.dat")
+    kEnergy = kawasakiData[:,1]
+    kHeatCapacity = kawasakiData[:,2]
+    kHeatError = kawasakiData[:,3]
 
     #Temperature and Glauber Magnetisation
     plt.plot(temp,gMagnetisation)
@@ -198,50 +230,23 @@ def plotGraphs():
 
     print("Done plotting")
 
-def plotGraphs2():
-    fileNames = np.loadtxt('data/plotNames.dat',dtype='str')
-    #I can use this method if all files have the same amount of columns
-    #cannot use this for the error ones :( )#
-    '''
-    0 Temperature
-    1 GlauberMagnetisation
-    2 GlauberEnergy
-    3 Glauber HeatCapacity
-    4 Galuber Heatcap Error
-    5 Glauber Susceptibility
-    6 Kawasaki energy
-    7 kawasaki heatCapacity
-    8 Kawasaki heat cap error
-    '''
-    array = np.zeros((7))
-    for name in fileNames:
-        fileName = name[0]
-        xLabel = name[1]
-        yLabel = name[2]
-        array = np.loadtxt("data/"+fileName)
-        #print(array.shape)
-        array=np.transpose(array)
-        #print(array.shape)
-        xVals = array[:,0]
-        yVals = array[:,1]
-        plt.cla()
-        plt.plot(xVals,yVals)
-        plt.xlabel(xLabel)
-        plt.ylabel(yLabel)
-        title = xLabel+" against "+yLabel
-        plt.title(title)
-        plt.scatter(xVals,yVals,s=8)
-        plt.savefig("figures/"+fileName[:len(fileName)-4]+"_Figure.png")
-        plt.show()
-      #  print(fileName,xVals[0],yVals[0],len(xVals),len(yVals))
-
-
 
 
 def animate(n,T,nSteps):
-    
+    '''
+    Parameters:
+    -----------
+    systemSize: Integer
+                dimensions of the system.
+    Temperature: float
+                 Temperature of the system
+    nSteps: Integer
+            Number of sweeps for the animation
+    '''
+
+    #takes in user input on which dynamic rule to animate
     while True:
-        method = input("0 for Glauber and 1 for kawasaki")
+        method = input("0 for Glauber animation\n 1 for kawasaki animation")
         try:
             method = int(method)
         except ValueError:
@@ -250,37 +255,41 @@ def animate(n,T,nSteps):
         if method==0 or method==1:
             break
         else:
-            print("Please enter 0 for Glauber and 1 for Kawasaki")
+            print("Please enter 0 for Glauber and 1 for Kawasaki or Ctrl+c to exit")
 
 
+    #initialising which lattice sub class to use according to user input
     if(method==0):
-        #loop and update glauber
         d = Glauber(n,T)
     else:
-        #loop and update kawasadki
         d = Kawasaki(n,T)
 
-    #now do the updating and animating here
+    #initalise the lattice with random spins
+    d.randomInit()
+    #Running the animation for nSteps sweeps
     for n in range(nSteps):
+        #updating the lattice for each sweep
         d.update()
+
         if(n%10==0): 
-#       update measurements
+        #update measurements every 10th sweep
             energy = d.totalEnergy()
+            #print the total magnetisation and the energy of the system at nth sweep
             print(f"Iteration = {n}  Energy = {energy} Magnetisation = {d.totalMagnetisation()}")
+            
+            #writing the files and using the code provided in the pseudocode
             f=open('spins.dat','w')
             for i in range(lx):
                 for j in range(ly):
                     f.write('%d %d %lf\n'%(i,j,d.spin[i,j]))
-                #  print('%d %d %lf\n'%(i,j,spin[i,j]))
+            
 
         f.close()
-#       show animation
+        #show animation for each sweep
         plt.cla()
         im=plt.imshow(d.spin, animated=True,vmin=-1,vmax=1)
         plt.draw()
         plt.pause(0.0001)
-   # print(f"Iteration = {n}")
-
     plt.show()
 
 
@@ -288,17 +297,23 @@ def animate(n,T,nSteps):
 
 
 if __name__ == "__main__":
+
+    #Running the system
     if(len(sys.argv) != 3):
         print("Usage python ising.animation.py N T")
         sys.exit()
+    
     t1=time.time()
     print("Started")
+    #storing teh respective arguments to respective variables
     lx = int(sys.argv[1])
     ly = lx
     kT=float(sys.argv[2]) 
     nSteps= 10000
     print(f"Nsteps = {nSteps}")
-    dynamics = int(input("0=GenerateGlauber\n1=Generatekawasaki\n2=animate"))
+    
+    dynamics = int(input("0 to Generate Glauber data\n1 to Generate kawasaki data\n2 to show animation\nAnything else to just plot the figures "))
+
     if(dynamics==0):
         generateGlauberData(lx,kT,nSteps)
     elif(dynamics==1):
@@ -307,7 +322,6 @@ if __name__ == "__main__":
         animate(lx,kT,nSteps)
     else:
         print("Just going to plot")
-    #plotGraphs2()
     plotGraphs()
     t2=time.time()
     print(f"Time taken for everything= {t2-t1}")
