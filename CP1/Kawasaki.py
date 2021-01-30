@@ -6,7 +6,7 @@ import random
 class Kawasaki(Lattice):
 
     '''
-    Below is glauber, change it to update of kawasaki
+    Subclass of lattice and has methods that only kawasaki dynamic rule uses
     '''
     def swap(self,i,j,x,y):
         '''
