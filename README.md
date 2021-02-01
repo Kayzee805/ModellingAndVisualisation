@@ -36,8 +36,20 @@ input 2 to start an animation of the system. Where further user input will be ne
 ___Plotting___\
 input 3 to plot and save the data generated.
 
+## Data files
 
+### Glauber Data
 
+The data order for glauber for each column follows as:\
+Temperature, Average absolute Magnetisation, Average Energy, Specific Heat, Specific Heat error and Susceptibility 
 
+---
+
+### Kawasaki Data
+
+The data order for Kawasaki for each column follows as:\
+Temperature, Average Energy, Specific Heat and Specific heat error
+
+---
 
 

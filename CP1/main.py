@@ -59,8 +59,10 @@ def generateGlauberData(systemSize,Temperature,nSteps):
             
             #for each sweep, update the lattice
             glauber.update()
-            if(n%500==0):
-                print(n)
+
+            #uncomment below to keep track of how far into the sweep we are
+            # if(n%1000==0):
+            #     print(n)
 
             #only taking in every 10th measurement after the equilibration wait of 100
             if(n%10==0 and n>=100):
@@ -131,8 +133,11 @@ def generateKawasakiData(systemSize,Temperature,nSteps):
         for n in range(nSteps):
             #for each sweep, update the spin lattice
             kawasaki.update()
-            if(n%500==0):
-                print(n)
+
+            #uncomment below to keep track of how far into the sweep we are
+            # if(n%1000==0):
+            #     print(n)
+
             #take every 10th measurement after the equilibriation wait 
             if(n%10==0 and n>100):
                 #add each measurement to the energy array
@@ -157,7 +162,6 @@ def plotGraphs():
     Plots all the necessary plots then save the figures in a folder
     called figures
     '''
-    print("TESTING")
     glauberData = np.loadtxt("data/glauberData.dat")  
     temp = glauberData[:,0] 
     gMagnetisation = glauberData[:,1]
@@ -175,7 +179,7 @@ def plotGraphs():
     plt.plot(temp,gMagnetisation)
     plt.scatter(temp,gMagnetisation,c='r',marker='x')
     plt.xlabel("Temperature")
-    plt.ylabel("Magnetisation")
+    plt.ylabel("Average Absolute Magnetisation")
     plt.title("Temperature against Glauber Magnetisation")
     plt.savefig("figures/Glauber_AverageMagnetisation_Figure.png")
     plt.show()
@@ -184,7 +188,7 @@ def plotGraphs():
     plt.plot(temp,gEnergy)
     plt.scatter(temp,gEnergy,c='r',marker='x')
     plt.xlabel("Temperature")
-    plt.ylabel("Total Energy")
+    plt.ylabel("Average Total Energy")
     plt.title("Temperature against Glauber Energy")
     plt.savefig("figures/Glauber_AverageTotalEnergy_Figure.png")
     plt.show()
@@ -212,7 +216,7 @@ def plotGraphs():
     plt.plot(temp,kEnergy)
     plt.scatter(temp,kEnergy,c='r',marker='x')
     plt.xlabel("Temperature")
-    plt.ylabel("Total Energy")
+    plt.ylabel("Average Total Energy")
     plt.title("Temperature against Kawasaki Energy")
     plt.savefig("figures/Kawasaki_AverageTotalEnergy_Figure.png")
     plt.show()
