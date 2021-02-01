@@ -2,7 +2,7 @@
 
 
 ## Initial run
-Run the file using the following command from the same directory as 'CP1':
+Run the file using the following command from the 'CP1' directory:
 ```
 python main.py N T
 
