@@ -246,7 +246,7 @@ def animate(n,T,nSteps):
 
     #takes in user input on which dynamic rule to animate
     while True:
-        method = input("0 for Glauber animation\n 1 for kawasaki animation")
+        method = input("0 for Glauber animation\n1 for kawasaki animation")
         try:
             method = int(method)
         except ValueError:
@@ -300,7 +300,7 @@ if __name__ == "__main__":
 
     #Running the system
     if(len(sys.argv) != 3):
-        print("Usage python ising.animation.py N T")
+        print("Usage python main.py N T")
         sys.exit()
     
     t1=time.time()
@@ -312,19 +312,23 @@ if __name__ == "__main__":
     nSteps= 10000
     print(f"Nsteps = {nSteps}")
     
-    dynamics = int(input("0 to Generate Glauber data\n1 to Generate kawasaki data\n2 to show animation\nAnything else to just plot the figures "))
+    dynamics = int(input("0 to Generate Glauber data\n1 to Generate kawasaki data\n2 to show animation\n3 to Plot and save figures\nAnything else to exit"))
 
     if(dynamics==0):
         generateGlauberData(lx,kT,nSteps)
+        #plotGraphs()
     elif(dynamics==1):
         generateKawasakiData(lx,kT,nSteps)
+        plotGraphs()
     elif(dynamics==2):
         animate(lx,kT,nSteps)
+    elif(dynamics==3):
+        plotGraphs()
     else:
-        print("Just going to plot")
-    plotGraphs()
+        print("Exiting")
     t2=time.time()
     print(f"Time taken for everything= {t2-t1}")
+    sys.exit()
 
     
 
