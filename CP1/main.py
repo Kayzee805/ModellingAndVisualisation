@@ -72,20 +72,20 @@ def generateGlauberData(systemSize,Temperature,nSteps):
                 magnetisation.append(glauber.totalMagnetisation())
 
         #for each temperature after the sweeps, do the calculations and index it to the right array
-        averageMagnetisation[t] = np.mean(magnetisation)
+        averageMagnetisation[t] = np.mean(np.abs(magnetisation))
         averageEnergy[t] = np.mean(energy)
         susceptibility[t] = glauber.calculuateSusceptibility(glauber.calculateVariance(magnetisation))
         specificHeat[t] = glauber.calculateHeatCapacity(glauber.calculateVariance(energy))
         
         #call jacknife method to calculate the error 
         specificHeatError[t] = glauber.jacknife(energy)
-        print(f"t ={tempList[t]}  Time taken ={time.time()-start}   Specific heat = {specificHeat[t]}")
+        print(f"t ={tempList[t]}  Time taken ={time.time()-start}   Specific heat = {specificHeat[t]}  Magnetisation={averageMagnetisation[t]} sus={susceptibility[t]}")
 
 
     #after simulation done for all arrays, save it in a big array to write it to a file
     combinedArray = np.array((tempList,averageMagnetisation,averageEnergy,specificHeat,specificHeatError,susceptibility))
     #write a transposed array to make it easier to read.
-    np.savetxt('data/glauberData.dat',np.transpose(combinedArray),fmt='%.7f')
+    np.savetxt('data/glauberDatav3.dat',np.transpose(combinedArray),fmt='%.7f')
     print(f"Finished generating data")
 
 def generateKawasakiData(systemSize,Temperature,nSteps):
@@ -135,8 +135,8 @@ def generateKawasakiData(systemSize,Temperature,nSteps):
             kawasaki.update()
 
             #uncomment below to keep track of how far into the sweep we are
-            # if(n%1000==0):
-            #     print(n)
+            if(n%1000==0):
+                print(n)
 
             #take every 10th measurement after the equilibriation wait 
             if(n%10==0 and n>100):
@@ -209,6 +209,7 @@ def plotGraphs():
     plt.xlabel("Temperature")
     plt.ylabel("Susceptibility")
     plt.title("Temperature against Glauber Susceptibility")
+    plt.grid(b=True,which='both')
     plt.savefig("figures/Glauber_Susceptibility_Figure.png")
     plt.show()
 
@@ -320,7 +321,7 @@ if __name__ == "__main__":
 
     if(dynamics==0):
         generateGlauberData(lx,kT,nSteps)
-        #plotGraphs()
+        plotGraphs()
     elif(dynamics==1):
         generateKawasakiData(lx,kT,nSteps)
         plotGraphs()

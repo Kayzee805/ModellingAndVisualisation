@@ -65,7 +65,7 @@ class Kawasaki(Lattice):
 
                 #check if nearest neighbours
                 jDiff = np.abs(jOne-jTwo)%(self.ly-2)
-                iDiff = np.abs(iOne-iTwo)%(self.ly-2)
+                iDiff = np.abs(iOne-iTwo)%(self.lx-2)
 
                 if(((iOne==iTwo) and jDiff==1) or ((iDiff==1) and (jOne==jTwo))):
                     #if nearestNeighbours, then we calculate the energy after swap

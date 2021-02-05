@@ -138,9 +138,9 @@ class Lattice(object):
         Returns:
         --------
         Type Integer
-        The absolute magnetisation of the system.
+        The  magnetisation of the system.
         '''
-        return np.abs(np.sum(self.spin))
+        return (np.sum(self.spin))
     
     def calculuateSusceptibility(self,MagnetisationVariance):
         '''
