@@ -2,7 +2,7 @@
 
 
 ## Initial run
-Run the file using the following command:
+Run the file using the following command from the 'CP1' directory:
 ```
 python main.py N T
 
@@ -41,14 +41,14 @@ input 3 to plot and save the data generated.
 ### Glauber Data
 
 The data order for glauber for each column follows as:\
-Temperature, Average absolute Magnetisation, Average Energy, Specific Heat, Specific Heat error and Susceptibility 
+_Temperature, Average absolute Magnetisation, Average Energy, Specific Heat, Specific Heat error and Susceptibility_
 
 ---
 
 ### Kawasaki Data
 
 The data order for Kawasaki for each column follows as:\
-Temperature, Average Energy, Specific Heat and Specific heat error
+_Temperature, Average Energy, Specific Heat and Specific heat error_
 
 ---
 
