@@ -2,7 +2,6 @@ import numpy as np
 import random
 class gameOfLife(object):
     #random.seed(12345)
-
     def __init__(self,size, initialisation):
         self.lattice = np.zeros((size,size))
         self.size = size
@@ -17,14 +16,14 @@ class gameOfLife(object):
         self.activeSitesCounter=1
         self.currentActiveSite=0
  
-    def newState(self,i,j,nn):
+    def newState(self,int i,int j,int nn):
         '''
         Live cell: 2< or >3 dies
                     only live cell with 2 or 3 live nn lives
         dead cell: only if nn= 3, cell goes to live
         nn==nearest neighbours
         '''
-        cell = self.lattice[i,j]
+        cdef int cell = self.lattice[i,j]
         if(cell==0):
             #dead
             if(nn==3):
@@ -48,6 +47,7 @@ class gameOfLife(object):
         
         '''
         tempLattice = np.zeros((self.size,self.size))
+        cdef int nn
         for i in range(self.size):
             for j in range(self.size):
                 nn = self.nearestNeighbours(i,j)
@@ -90,8 +90,9 @@ class gameOfLife(object):
                 if(r<0.5):self.lattice[i,j]=1
                 else:self.lattice[i,j]=0
 
-    def nearestNeighbours(self,i,j):
+    def nearestNeighbours(self,int i,int j):
         #I guess I return the sum of the nearest neighbours 
+        cdef int size,top,topRight,topLeft,bot,botRight,botLeft,left,right
         size = self.size
         top=self.lattice[i,(j-1)%size]
         topRight=self.lattice[(i+1)%size,(j-1)%size]
@@ -103,6 +104,7 @@ class gameOfLife(object):
         right = self.lattice[(i+1)%size,j]
 
         return top+topRight+topLeft+bot+botRight+botLeft+left+right
+
 
 
 '''
