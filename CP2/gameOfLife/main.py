@@ -151,10 +151,10 @@ def plotAll():
 if __name__=="__main__":
     size = 50
     sweeps = 10000
-    initialisation="glider"
+    initialisation="random"
     t1=time.time()
     #animate(size,sweeps,initialisation)
-    #generateHistogram(size,sweeps,initialisation)
+    generateHistogram(size,sweeps,initialisation)
     #generateCom(size,sweeps,initialisation)
     centreOfMass = np.loadtxt("data/centreOfMass.dat")
     vel=getVelocity(centreOfMass)

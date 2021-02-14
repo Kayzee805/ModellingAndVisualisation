@@ -1,0 +1,10 @@
+From lecture
+
+Absorbing state:   50 0.5 0.6 0.1
+
+Dynamic equilibrium:50  0.5 0.6 0.45
+
+
+waves:  50 0.3 0.05 0.01
+
+100    0.8  0.1    0.001
