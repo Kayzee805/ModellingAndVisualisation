@@ -80,12 +80,11 @@ class sirs(object):
         self.immune=counter
 
     def update(self):
-        counter=0
+       # counter=0
 
         for i in range(self.size):
             for j in range(self.size):
-                if(self.lattice[i,j]==-1):
-                    counter+=1
+             
                 iTrial = random.randint(0,self.size-1)
                 jTrial = random.randint(0,self.size-1)
                 #if 0, check for infected states and carry out test
@@ -99,10 +98,12 @@ class sirs(object):
                         #nn is infected
                         if(r<=self.p1):
                             self.lattice[iTrial,jTrial]=-1
+                        #    counter+=1
                 elif(value==-1):
                     #is infected
                     if(r<=self.p2):
                         self.lattice[iTrial,jTrial]=1
+                      #  counter-=1
                 elif(value==1):
                     #in recovery
                     if(r<=self.p3):
@@ -110,28 +111,41 @@ class sirs(object):
                 else:
                 #    print("Immune so skip?")
                     continue
+
+         
+        counter=0
+        for i in range(self.size):
+            for j in range(self.size):
+                if(self.lattice[i,j]==-1):
+                    counter+=1
         self.infected = counter
-    
-    def jacknife(self,data):
+
+    def countInfected(self):
+        counter=0
+        for i in range(self.size):
+            for j in range(self.size):
+                if(self.lattice[i,j]==-1):
+                    counter+=1
+        self.infected=counter
+
+        
+    def jacknifeError(self,data):
         N=self.size*self.size
+       # resamples = jackknife_resampling(data)
         length=len(data)
-        newData = np.zeros(length)
-        resamples=np.empty([length,length-1])
+        resamples = np.zeros((len(data),len(data)-1))
+        newC = np.zeros((len(data)))
+
+
         for i in range(length):
             resamples[i] = np.delete(data,i)
-            newData[i] = np.var(resamples[i])/N
-        result=0.0
+            newC[i] = np.var(resamples[i])/N        
+        originalC = np.var(data)/N
+        result=0
 
-        originalC = np.var(data)/N   
-        for i in newData:
-            result+= (i-originalC)**2
+        for i in range(len(newC)):
+            result+=(newC[i]-originalC)**2
         return np.sqrt(result)
-
-    def jackknife2(self,data, n):
-        resamples = jackknife_resampling(data)
-        x_resamples = [np.var(resamples[i])/(n*n) for i in range (len(resamples))]
-        v = np.var(data)/(n*n)
-        return np.sqrt(np.sum([(x_resamples[i] - v) * (x_resamples[i]-v) for i in range (len(x_resamples))]))
 '''
 onnly 4 nearest neighbours. top,bot,left and right
 

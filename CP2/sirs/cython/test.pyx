@@ -6,6 +6,7 @@ from matplotlib import colors
 import matplotlib.patches as mpatches
 from scipy.stats import sem
 
+
 import time
 import random
 import sys
@@ -101,8 +102,6 @@ class sirs(object):
         counter=0
         for i in range(self.size):
             for j in range(self.size):
-                if(self.lattice[i,j]==-1):
-                    counter+=1
                 iTrial = random.randint(0,self.size-1)
                 jTrial = random.randint(0,self.size-1)
                 #if 0, check for infected states and carry out test
@@ -116,10 +115,13 @@ class sirs(object):
                         #nn is infected
                         if(r<=self.p1):
                             self.lattice[iTrial,jTrial]=-1
+                            counter+=1
                 elif(value==-1):
                     #is infected
                     if(r<=self.p2):
                         self.lattice[iTrial,jTrial]=1
+                    else:
+                        counter+=1
                 elif(value==1):
                     #in recovery
                     if(r<=self.p3):
@@ -129,24 +131,32 @@ class sirs(object):
                     #its immune
         self.infected = counter
 
-    def jacknife(self,data):
-        cdef int N,length, i
-        cdef double result
+
+
+    def jacknifeError(self,data):
         N=self.size*self.size
+       # resamples = jackknife_resampling(data)
         length=len(data)
-        newData = np.zeros(length)
-        resamples=np.empty([length,length-1])
+        resamples = np.zeros((len(data),len(data)-1))
+
+
         for i in range(length):
             resamples[i] = np.delete(data,i)
-            newData[i] = np.var(resamples[i])/N
-        result=0.0
 
-        originalC = np.var(data)/N   
-        for i in newData:
-            result+= (i-originalC)**2
+
+        x_resamples = np.zeros((len(data)))
+        for i in range(len(resamples)):
+            x_resamples[i] = np.var(resamples[i])/N
+        
+        v = np.var(data)/N
+        result=0
+
+        for i in range(len(x_resamples)):
+            result+=(x_resamples[i]-v)**2
+
+
         return np.sqrt(result)
-  
-
+       
 def animate(int size,int sweeps,double pS,double pI,double pR):
     '''
     pink = sus
@@ -209,7 +219,7 @@ def task3(int size):
             infectedRate=[]
             for n in range(1000):
                 model.update()
-                if(n>100):
+                if(n>=100):
                     infected = model.infected
                    # temp = model.meanInfected()
                     infectedRate.append(infected)
@@ -218,8 +228,8 @@ def task3(int size):
                         break
 
             if(infected==0):
-                averageInfected=0
                 variance=0
+                averageInfected=0
             else:
                 infectedRate=np.asarray(infectedRate)
                 variance = np.var((infectedRate))/N
@@ -232,10 +242,62 @@ def task3(int size):
 
 
     print(f"time taken = {time.time()-t1}")
-    np.savetxt("data/task32.dat",allArray,fmt='%.7f')
+    np.savetxt("data/task3ProcessedData.dat",allArray,fmt='%.7f')
             
 
+def calculateVariance(data):
+    meanSq = np.mean(np.square(data))
+    squareMean = np.square(np.mean(data))
+    print(f"Mean square ={meanSq}  squareMean ={squareMean} ")
+    return (np.mean(np.square(data))-(np.square(np.mean(data))))
+           
+def task4(int size):
+    '''
+    so I plot x axis = p1s
+    y axmis = varance?
+    '''
+    cdef int infected,i,name
+    cdef double t1,p3,p2,variance,vError
+    t1=time.time()
+    p3=0.5
+    p2=0.5
+    p1s=np.linspace(0.2,0.5,31)
+    size=50
+    varianceArray=[]
+    varianceError = []
+    N=size*size
+    print("starting")
+    sweeps=10000
+    wait =300
+    for i in range(len(p1s)):
+        model=sirs(50,p1s[i],0.5,0.5)
+        infectedRate=np.zeros(sweeps-wait)
+        for n in range(sweeps):
+            model.update()
+            if(n>=wait):
+                infected=model.infected
+                infectedRate[n-wait]=infected
+                if(infected==0):
+                # print(f"Breaking at n=d{n}")
+                    break
+   
+            #infectedRate=np.array(infectedRate)
+       # autoVar = np.var(infectedRa)
+        variance = calculateVariance(infectedRate)/N
+        vError = model.jacknifeError(infectedRate)
+        print(f"{p1s[i]} variance={variance}  error = {vError} mean = {np.mean(infectedRate)}")
+        varianceArray.append(variance)
+        varianceError.append(vError)
 
+    combined = np.array((p1s,varianceArray,varianceError))
+    np.savetxt("data/task4ProcessedData.dat",np.transpose(combined),fmt='%.6f')
+
+    plt.scatter(p1s,varianceArray,s=5)
+    plt.plot(p1s,varianceArray)
+    plt.errorbar(p1s,varianceArray,yerr=varianceError)
+    plt.show()
+    t2=time.time()
+    print(f"Time taken = {t2-t1}s")
 
 def task5(int size,int sweeps, name):
     '''
@@ -258,14 +320,53 @@ def task5(int size,int sweeps, name):
         for i in range(len(pImmune)):
             model=sirs(size,p1,p2,p3)
             model.isImmune(pImmune[i])
-            infectedRate=[]
+            infectedRate=np.zeros(sweeps-100)
             t3=time.time()
             for n in range(sweeps): 
                 model.update()
 
                 if(n>=100):
                     infected=model.infected
-                    infectedRate.append(infected)
+                    infectedRate[n-100]=infected
+                    if(infected==0):
+                        break
+            infectionArray[i,s]=np.mean(infectedRate)/N 
+            print(f"{name} at i {i}Time taken {s} == {time.time()-t3}s")
+        print(f"{name}Time taken {s} == {time.time()-t1}s")
+    
+    return infectionArray
+
+def task7(int size,int sweeps, name):
+    '''
+    1000-10,000
+    y-axis is avg infected
+    x axis is avg immune
+    '''
+    cdef double p1,p2,p3,t1
+    cdef int precision,N,infected,s,i,n
+    p1=0.8
+    p2=0.1
+    p3=0.02
+    pImmune = np.linspace(0,1,101) 
+    precision = len(pImmune)
+    N=size*size
+    times = 1
+    infectionArray = np.zeros((precision,times))
+    print(f"Starting {name}")
+    for s in range(times):
+        t1=time.time()
+
+        for i in range(len(pImmune)):
+            model=sirs(size,p1,p2,p3)
+            model.isImmune(pImmune[i])
+            infectedRate=np.zeros(sweeps-100)
+            t3=time.time()
+            for n in range(sweeps): 
+                model.update()
+
+                if(n>=100):
+                    infected=model.infected
+                    infectedRate[n-100]=infected
                     if(infected==0):
                         break
             infectionArray[i,s]=np.mean(infectedRate)/N 

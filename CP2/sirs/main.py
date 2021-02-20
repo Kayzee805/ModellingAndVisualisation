@@ -59,18 +59,17 @@ def task3(size):
     N=size*size
     t1=time.time()
     counter =0
-    for i in range(10,21):
+    for i in range(21):
         #print(i)
         start=time.time()
 
-        for j in range(5,21):
+        for j in range(21):
 
             model = sirs(size,p1s[i],p2,p3s[j])
-            model.setImmune(0.1)
             infectedRate=[]
             for n in range(1000):
                 model.update()
-                if(n>100):
+                if(n>=100):
                     infected = model.infected
                    # temp = model.meanInfected()
                     infectedRate.append(infected)
@@ -107,26 +106,31 @@ def task4(size):
     varianceError = []
     N=size*size
     print("starting")
-    print(p1s)
+    #print(p1s)
     for i in range(len(p1s)):
         model=sirs(size,p1s[i],p2,p3)
+        #infectedRate=np.zeros(10000-100)
         infectedRate=[]
         for n in range(10000):
             model.update()
+            before = model.infected
+            model.countInfected()
+            after=model.infected
             if(n>=100):
                 infected=model.infected
+               # infectedRate[n-100]=infected
                 infectedRate.append(infected)
+
                 if(infected==0):
-                    print(f"Breaking at n={n}")
+                   # print(f"Breaking at n={n}")
                     break
-        
         if(infected==0):
             variance=0
             vError=0
         else:
             #infectedRate=np.array(infectedRate)
             variance = np.var(infectedRate)/N
-            vError = model.jacknife(infectedRate)
+            vError = model.jacknifeError(infectedRate)
         print(f"{p1s[i]} variance={variance} error = {vError}")
 
         varianceArray.append(variance)
@@ -148,28 +152,28 @@ def task5(size,sweeps):
     x axis is avg immune
     '''
     p1=p2=p3=0.5
-    pImmune = np.linspace(0,1,3) 
+    pImmune = np.linspace(0,1,5) 
     precision = len(pImmune)
     N=size*size
     infectionArray = np.zeros((precision,5))
-    
-    for s in range(5):
+    sweeps=200
+    for s in range(1):
         print(s)
         t1=time.time()
 
         for i in range(len(pImmune)):
             model=sirs(size,p1,p2,p3)
             model.isImmune(pImmune[i])
-            infectedRate=[]
+            infectedRate=np.zeros(sweeps-100)
 
             for n in range(sweeps):
                 model.update()
-
                 if(n>=100):
                     infected=model.infected
-                    infectedRate.append(infected)
+                    infectedRate[n-100]=infected
                     if(infected==0):
                         break
+
             infectionArray[i,s]=np.mean(infectedRate)/N 
         print(f"Time taken {s} == {time.time()-t1}s")
     finalArray = []
@@ -179,7 +183,8 @@ def task5(size,sweeps):
         errors.append(sem(infectionArray[i]))
     
     combined = np.array((pImmune,finalArray,errors))
-    np.savetxt('data/TestTASK5.dat',np.transpose(combined),fmt='%.6f')
+    np.savetxt('data/task5RawData.dat',infectionArray,fmt='%.6ft')
+    np.savetxt('data/task5ProcessedData.dat',np.transpose(combined),fmt='%.6f')
 
     plt.scatter(pImmune,finalArray,s=5)
     plt.plot(pImmune,finalArray)
@@ -189,9 +194,60 @@ def task5(size,sweeps):
     plt.savefig("figures/immune.png")
     plt.show()
 
+def task7(size,sweeps):
+    '''
+    1000-10,000
+    y-axis is avg infected
+    x axis is avg immune
+    '''
+    p1=0.8
+    p2=0.1
+    p3=.02
+    pImmune = np.linspace(0,1,101) 
+    precision = len(pImmune)
+    N=size*size
+    infectionArray = np.zeros((precision,5))
+    for s in range(1):
+        print(s)
+        t1=time.time()
+
+        for i in range(len(pImmune)):
+            model=sirs(size,p1,p2,p3)
+            model.isImmune(pImmune[i])
+            infectedRate=np.zeros(sweeps-100)
+
+            for n in range(sweeps):
+                model.update()
+
+                if(n>=100):
+                    infected=model.infected
+                    infectedRate[n-100]=infected
+                    if(infected==0):
+                        break
+
+            infectionArray[i,s]=np.mean(infectedRate)/N 
+        print(f"Time taken {s} == {time.time()-t1}s")
+    finalArray = []
+    errors = []
+    for i in range(precision):
+        finalArray.append(np.mean(infectionArray[i]))
+        errors.append(sem(infectionArray[i]))
     
-def pltContour():
-    array = np.loadtxt("data/task32.dat")
+    combined = np.array((pImmune,finalArray,errors))
+    np.savetxt('data/task7RawData.dat',infectionArray,fmt='%.6ft')
+    np.savetxt('data/task7ProcessedData.dat',np.transpose(combined),fmt='%.6f')
+
+    plt.scatter(pImmune,finalArray,s=5)
+    plt.plot(pImmune,finalArray)
+    plt.xlabel("Immune")
+    plt.ylabel("Infection")
+    plt.title("immune vs infection")
+    plt.savefig("figures/immune.png")
+    plt.show()
+
+
+def plotAll():
+    array = np.loadtxt("data/task3ProcessedData.dat")
     p1s=array[:,0]
     p3s=array[:,1]
     infected = array[:,2]
@@ -214,7 +270,7 @@ def pltContour():
     plt.xlabel("P1")
     plt.ylabel("P3")
     plt.title("Average infected of p1-p3 plane")
-    plt.savefig("figures/infectedContour.png")
+    plt.savefig("figures/Task3_AverageInfected.png")
     plt.show()
 
     #plt.cla()
@@ -230,11 +286,11 @@ def pltContour():
     plt.xlabel("P1")
     plt.ylabel("P3")
     plt.title("Scaled variance of p1-p3 plane")
-    plt.savefig("figures/varianceContour.png")
+    plt.savefig("figures/Task3_ScaledVariance.png")
     plt.show()
 
 
-    array2 = np.loadtxt("data/task4Variance.dat")
+    array2 = np.loadtxt("data/task4ProcessedData.dat")
     xAxis = array2[:,0]
     yAxis=array2[:,1]
     yError=array2[:,2]
@@ -245,8 +301,41 @@ def pltContour():
     plt.xlabel("P1")
     plt.ylabel("Variance")
     plt.title("Variance vs P1 with p2=p3=0.5")
-    plt.savefig("figures/variance_p1.png")
+    plt.savefig("figures/Task4_ScaledVariance_cutP3.png")
     plt.show()
+
+
+    #TASK 5
+    task5Array = np.loadtxt("data/task5ProcessedData.dat")
+    immuneProbability = task5Array[:,0]
+    task5Variance = task5Array[:,1]
+    task5Error = task5Array[:,2]
+
+    plt.scatter(immuneProbability,task5Variance,s=10,color='k')
+    plt.plot(immuneProbability,task5Variance,color='b')
+    plt.errorbar(immuneProbability,task5Variance,yerr=task5Error,ecolor='r')
+    plt.xlabel("Immune probability")
+    plt.ylabel("Average infected")
+    plt.title("Immune vs Infected for 50x50 p1=p2=p3=0.5")
+    plt.savefig("figures/Task5_50x50.png")
+    plt.show()
+
+        #TASK 7
+    task7Array = np.loadtxt("data/task7ProcessedData.dat")
+    immuneProbability7 = task7Array[:,0]
+    task7Variance = task7Array[:,1]
+    task7Error = task7Array[:,2]
+
+    plt.scatter(immuneProbability7,task7Variance,s=10,color='k')
+    plt.plot(immuneProbability7,task7Variance,color='b')
+    plt.errorbar(immuneProbability7,task7Variance,yerr=task7Error,ecolor='r')
+    plt.xlabel("Immune probability")
+    plt.ylabel("Average infected")
+    plt.title("Immune vs Infected for 100x100 p1=0.8,p2=0.1,p3=0.02")
+    plt.savefig("figures/Task5_100x100.png")
+    plt.show()
+
+
 if __name__=="__main__":
     if(len(sys.argv)!=5):
         print("usage python main.py N p1 p2 p3")
@@ -259,7 +348,8 @@ if __name__=="__main__":
 
     #animate(size,sweeps,pS,pI,pR)
     #task3(size)
-    #ask4(size)
-    task5(size,sweeps)
+   # task4(size)
+   # task5(size,sweeps)
+    plotAll()
   #  pltContour()
 #
