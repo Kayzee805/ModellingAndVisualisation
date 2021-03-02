@@ -61,7 +61,7 @@ class sirs(object):
         pRest = (1-immuneProbability)/3
         infectedCounter=0
         immuneCounter=0
-        print(f"SETTTING IMMUNE = {immuneProbability}")
+      #  print(f"SETTTING IMMUNE = {immuneProbability}")
         for i in range(self.size):
             for j in range(self.size):
                 r=random.random()
@@ -79,7 +79,7 @@ class sirs(object):
                     self.lattice[i,j]=0
         self.infected=infectedCounter
         self.immune=immuneCounter
-        print(f"INFECTED = {infectedCounter} immune = {immuneCounter}")
+       # print(f"INFECTED = {infectedCounter} immune = {immuneCounter}")
 
 
 
@@ -152,23 +152,7 @@ class sirs(object):
 
 
         
-    def jacknifeError(self,data):
-        N=self.size*self.size
-       # resamples = jackknife_resampling(data)
-        length=len(data)
-        resamples = np.zeros((len(data),len(data)-1))
-        newC = np.zeros((len(data)))
 
-
-        for i in range(length):
-            resamples[i] = np.delete(data,i)
-            newC[i] = np.var(resamples[i])/N        
-        originalC = np.var(data)/N
-        result=0
-
-        for i in range(len(newC)):
-            result+=(newC[i]-originalC)**2
-        return np.sqrt(result)
 '''
 onnly 4 nearest neighbours. top,bot,left and right
 

@@ -2,7 +2,7 @@ import numpy as np
 from gameOfLife import gameOfLife
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import time
+import time,sys
 def animate(size,sweeps,initialisation):
     '''
     Plots the game of life animation for the given input.
@@ -22,13 +22,12 @@ def animate(size,sweeps,initialisation):
     model.currentActiveSite=model.activeSites()
     im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1,cmap='magma')
     plt.draw()
-    plt.pause(0.001)
+    plt.pause(0.1)
 
     
     for i in range(sweeps):
         #updating the model for each sweep
         model.update()
-        #updating the number of live cells for each update
         #tracking number of live cells for testing purposes
         newActiveSite = model.activeSites()
         if(newActiveSite==model.currentActiveSite):
@@ -39,7 +38,7 @@ def animate(size,sweeps,initialisation):
         plt.cla()
         im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1,cmap='magma')
         plt.draw()
-        plt.pause(0.001)
+        plt.pause(0.1)
       #  print(f"iteration {i} active state= {model.activeSites()}")
     plt.show()
 
@@ -114,8 +113,17 @@ def generateCom(size,sweeps,initialisation):
     arrayCombined = np.array((t,xCom,yCom))
    # print(arrayCombined)
     np.savetxt("data/centreOfMass.dat",np.transpose(arrayCombined),fmt='%.4f')
+    print("Done")
 #
 def getVelocity(allArray):
+    '''
+    Using numpy poly fit to calculate the velocity of the glider 
+    Parameters:
+    -----------
+    allArray: Type ndArray
+               MultiD array that contains the centre of mass for x and y components and the
+               corresponding time.
+    '''
     t=allArray[:,0]
     x=allArray[:,1]
     y=allArray[:,2]
@@ -123,6 +131,7 @@ def getVelocity(allArray):
     newY=[]
     newT = []
     for i in range(len(t)):
+        #adding only the elements between 150 and 250, to calculate the velocity
         if(i>150 and i<250):
             newX.append(x[i])
             newY.append(y[i])
@@ -135,10 +144,10 @@ def getVelocity(allArray):
     xfit,xin = np.polyfit(newT,newX,1)
     yfit,fin = np.polyfit(newT,newY,1)
 
-    print(f"Xvel = {xfit}\nyVel = {yfit}")
+    print(f"X velocity = {xfit}\nY velocity = {yfit}")
 
     vel = np.sqrt(xfit**2+yfit**2)
-    print(f"Velocity = {vel}")
+    print(f"Total Velocity = {vel}")
     return vel
 
 
@@ -159,23 +168,23 @@ def plotAll():
     xCom=centreOfMass[:,1]
     yCom=centreOfMass[:,2]
 
-    plt.scatter(t[::10],xCom[::10],s=10)
-    plt.title("Scatter for xCom")
-    plt.ylabel("centre of mass X")
+    plt.scatter(t[::10],xCom[::10],s=10,color='k',marker='x')
+    plt.title("Centre of mass for the x component, plotting every 10th data")
+    plt.ylabel("centre of mass for the X component")
     plt.xlabel("Time (Sweeps)")
     plt.savefig("figures/xCom.png")
     plt.show()
 
-    plt.scatter(t[::10],yCom[::10],s=10)
-    plt.title("Scatter for yCom")
-    plt.ylabel("centre of mass Y")
+    plt.scatter(t[::10],yCom[::10],s=10,color='r')
+    plt.title("Centre of mass for the y component, plotting every 10th data")
+    plt.ylabel("centre of mass for the y component")
     plt.xlabel("Time (Sweeps)")
     plt.savefig("figures/yCom.png")
     plt.show()
 
-    plt.scatter(t[::10],xCom[::10],s=10,label="x")
-    plt.scatter(t[::10],yCom[::10],s=10,label="y")
-    plt.title("Scatter of both com")
+    plt.scatter(t[::10],xCom[::10],s=10,color='k',marker='x',label="X component")
+    plt.scatter(t[::10],yCom[::10],s=10,color='r',label="y component")
+    plt.title("Centre of mass for the x and y component, plotting every 10th data")
     plt.xlabel("Time (Sweeps)")
     plt.ylabel("Centre of mass")
     plt.legend()
@@ -184,16 +193,31 @@ def plotAll():
 
 
 if __name__=="__main__":
-    size = 50
-    sweeps = 10000
-    initialisation="glider"
-    t1=time.time()
-   # animate(size,sweeps,initialisation)
-   # generateHistogram(size,sweeps,initialisation)
-   # generateCom(size,sweeps,initialisation)
-    centreOfMass = np.loadtxt("data/centreOfMass.dat")
-    vel=getVelocity(centreOfMass)
-    # t2=time.time()
-    # print(f"Time taken for all = {t2-t1}s")
+    if(len(sys.argv)!=3):
+        print("usage python main.py N sweeps")
+    size = int(sys.argv[1])
+    sweeps = int(sys.argv[2])
+    loop=True
+    while True:
+        initialisation = int(input("0 for Random initialisation\n1 for Blinker\n2 for Glider"))
+        if(initialisation==0 or initialisation==1 or initialisation==2):
+            break
+        else:
+         #   loop=False
+         print("Please enter a valid input")
+            
+    
+    toDo = int(input("\n\n0 to animate\n1 to generate histogram data\n2 generate centre of mass data and generate velocity data\n3 Plot graphs"))
 
-    plotAll()
+    if(toDo==0):
+        animate(size,sweeps,initialisation)
+    elif(toDo==1):
+        generateHistogram(size,sweeps,initialisation)
+    elif(toDo==2):
+        generateCom(size,sweeps,initialisation)
+        centreOfMassData = np.loadtxt("data/centreOfMass.dat")
+        getVelocity(centreOfMassData)
+    elif(toDo==3):
+        plotAll()
+    else:
+        print("Exiting as invalid input")

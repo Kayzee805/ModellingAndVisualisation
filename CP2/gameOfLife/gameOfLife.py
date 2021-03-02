@@ -11,9 +11,9 @@ class gameOfLife(object):
         -------------
         Size: Type integer
               Size of the system/lattice, system will be of Size x Size
-        initialisation: Type string
-                        Initialisation method for the system, can be glider, blinker or random
-                        Default: random
+        initialisation: Type Integer
+                        Initialisation method for the system, can be 2=glider,1= blinker or 0=random
+                        Default:0 random
         '''
 
         #Lattice of an object, of size (size*size)
@@ -21,11 +21,11 @@ class gameOfLife(object):
         self.size = size
 
         #Initialising the lattice over different states. Default: random
-        if(initialisation=="blinker"):
+        if(initialisation==1):
             self.setBlinker()
             print("Initialise blinker lattice")
 
-        elif(initialisation=="glider"):
+        elif(initialisation==2):
             self.setGlider()
             print("Initialise glider lattice")
         else:

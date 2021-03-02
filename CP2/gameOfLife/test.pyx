@@ -197,7 +197,7 @@ def generateHistogram(int size,int sweeps,str initialisation):
                 break
         print(f"Time taken for {i} == {time.time()-t1}s")       
     #print(f"Absorbing state = {absorbingState}")
-    np.savetxt("data/cython/histogram1000.dat",np.transpose(absorbingState),fmt='%.4f')
+    np.savetxt("data/histogramCython.dat",np.transpose(absorbingState),fmt='%.4f')
     plt.hist(absorbingState,bins=100)
     plt.show()
 
@@ -219,7 +219,7 @@ def generateCom(int size,int sweeps,str initialisation):
         model.update()
 
     arrayCombined = np.array((t,xCom,yCom))
-    np.savetxt("data/cython/centreOfMass3.dat",np.transpose(arrayCombined),fmt='%.4f')
+    np.savetxt("data/centreOfMassCYTHON.dat",np.transpose(arrayCombined),fmt='%.4f')
 #
 def getVelocity(allArray):
     t=allArray[:,0]
@@ -251,16 +251,16 @@ def getVelocity(allArray):
 def plotAll():
 
     #data 1
-    data1 = np.loadtxt("data/cython/normalHistogram3.dat")
+    data1 = np.loadtxt("data/histogramCython.dat")
     plt.hist(data1,bins=25)
     plt.title("Cython histogram 1")
     plt.xlabel("Time step till absorbing state")
     plt.ylabel("Frequency")
-    plt.savefig("figures/cython/Histogram3.png")
+    plt.savefig("figures/HistogramCython.png")
     plt.show()
 
     
-    centreOfMass = np.loadtxt("data/cython/centreOfMass3.dat")
+    centreOfMass = np.loadtxt("data/centreOfMass3Cython.dat")
     t=centreOfMass[:,0]
     xCom=centreOfMass[:,1]
     yCom=centreOfMass[:,2]
@@ -269,14 +269,14 @@ def plotAll():
     plt.title("Scatter for xCom")
     plt.ylabel("centre of mass X")
     plt.xlabel("Time (Sweeps)")
-    plt.savefig("figures/cython/xCom3.png")
+    plt.savefig("figures/xComCython.png")
     plt.show()
 
     plt.scatter(t[::10],yCom[::10],s=8)
     plt.title("Scatter for yCom")
     plt.ylabel("centre of mass Y")
     plt.xlabel("Time (Sweeps)")
-    plt.savefig("figures/cython/yCom3.png")
+    plt.savefig("figures/yComCython.png")
     plt.show()
 
     plt.scatter(t[::10],xCom[::10],s=8,label="x")
@@ -285,7 +285,7 @@ def plotAll():
     plt.xlabel("Time (Sweeps)")
     plt.ylabel("Centre of mass")
     plt.legend()
-    plt.savefig("figures/cython/bothCOM3.png")
+    plt.savefig("figures/bothCOMCython.png")
     plt.show()
 
 
