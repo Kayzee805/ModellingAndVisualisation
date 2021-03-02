@@ -49,7 +49,6 @@ class gameOfLife(object):
         and just creating a whole new array and compare the time
         
         '''
-        tempLattice = np.zeros((self.size,self.size))
         cdef int nn
         for i in range(self.size):
             for j in range(self.size):
@@ -174,11 +173,13 @@ def animate(int size,int sweeps,str initialisation):
     plt.show()
 
 def generateHistogram(int size,int sweeps,str initialisation):
-
+    cdef double t1
+    cdef int newActiveSite, i,j
     absorbingState = []
     newActiveSite=0
 
-    for i in range(100):
+    for i in range(1000):
+        t1=time.time()
         model = gameOfLife(size,initialisation)
         model.currentActiveSite=model.activeSites()
         print(f"Iteration = {i}")
@@ -194,11 +195,11 @@ def generateHistogram(int size,int sweeps,str initialisation):
                 #break and add to absorbing state
                 absorbingState.append(j-9)
                 break
-    print(f"Absorbing state = {absorbingState}")
-    np.savetxt("data/cython/normalHistogram3.dat",np.transpose(absorbingState),fmt='%.4f')
-    #plt.hist(absorbingState)
-   #plt.show()
-   # np.savetxt('data/Normalhistogram3.dat',np.transpose(absorbingState),fmt='%.4f')
+        print(f"Time taken for {i} == {time.time()-t1}s")       
+    #print(f"Absorbing state = {absorbingState}")
+    np.savetxt("data/cython/histogram1000.dat",np.transpose(absorbingState),fmt='%.4f')
+    plt.hist(absorbingState,bins=100)
+    plt.show()
 
 def generateCom(int size,int sweeps,str initialisation):
     xCom =[]

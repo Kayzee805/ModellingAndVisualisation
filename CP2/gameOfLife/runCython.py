@@ -13,5 +13,5 @@ def main():
     t2=time.time()
     print(f"Time taken for all = {t2-t1}s")
 
-    test.plotAll()
+    #test.plotAll()
 main()

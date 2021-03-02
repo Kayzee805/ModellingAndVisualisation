@@ -4,37 +4,59 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import time
 def animate(size,sweeps,initialisation):
-    #for now I only have random initialisation
+    '''
+    Plots the game of life animation for the given input.
+    Parameters:
+    -----------
+    size: Type Integer
+          Size of the system
+    sweeps: Type Integer
+            Number of sweeps for the animation. 
+    initialisation: Type string
+                    Type of initialisation, if given wrong initialisation, random is used.
+    '''
 
-    #need a switch case here for glider and blinker
     model = gameOfLife(size,initialisation)
 
+    #calculating the number of live cells 
     model.currentActiveSite=model.activeSites()
-    im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1)
+    im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1,cmap='magma')
     plt.draw()
-    plt.pause(0.1)
+    plt.pause(0.001)
 
     
     for i in range(sweeps):
+        #updating the model for each sweep
         model.update()
+        #updating the number of live cells for each update
+        #tracking number of live cells for testing purposes
         newActiveSite = model.activeSites()
         if(newActiveSite==model.currentActiveSite):
             model.activeSitesCounter+=1
         else:
             model.activeSitesCounter=1
             model.currentActiveSite=newActiveSite
-       # model.centreOfMass()
         plt.cla()
-        im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1)
+        im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1,cmap='magma')
         plt.draw()
-        plt.pause(0.1)
-        print(model.activeSites())
-  
-
+        plt.pause(0.001)
+      #  print(f"iteration {i} active state= {model.activeSites()}")
     plt.show()
 
 def generateHistogram(size,sweeps,initialisation):
-
+    '''
+    Generates and saves a dat file for the time taken to reach the absorbing state
+    for 1000 simulations. Time is measured in number of sweeps here.
+    Parameters:
+    -----------
+    size: Type Integer
+          Size of the system
+    sweeps: Type Integer
+            Number of sweeps for the animation. 
+    initialisation: Type string
+                    Type of initialisation, if given wrong initialisation, random is used.
+    
+    '''
     absorbingState = []
 
     for i in range(100):
@@ -53,31 +75,44 @@ def generateHistogram(size,sweeps,initialisation):
                 #break and add to absorbing state
                 absorbingState.append(j-9)
                 break
-    print(f"Absorbing state = {absorbingState}")
-    np.savetxt("data/normalHistogram.dat",np.transpose(absorbingState),fmt='%.4f')
-    #plt.hist(absorbingState)
-   #plt.show()
-   # np.savetxt('data/Normalhistogram3.dat',np.transpose(absorbingState),fmt='%.4f')
-
+   #print(f"Absorbing state = {absorbingState}")
+    np.savetxt("data/histogram1000.dat",np.transpose(absorbingState),fmt='%.4f')
+      
 def generateCom(size,sweeps,initialisation):
+    '''
+    Calculates tthe centre of mass for the x and y component for upto 300sweeps.
+    centre of mass is only calculated for glider that does not crossses the boundary
+    of the lattice.
+    The centre of mass is saved in a dat file.
+    Parameters:
+    -----------
+    size: Type Integer
+          Size of the system
+    sweeps: Type Integer
+            Number of sweeps for the animation. 
+    initialisation: Type string
+                    Type of initialisation, if given wrong initialisation, random is used.
+    
+    '''
     xCom =[]
     yCom=[]
     t=[]
     model = gameOfLife(size,initialisation)
-    for i in range(300):
-        if(i%100==0):print(f"Iteration = {i}")
+    print(f"Starting to generate centre of mass.")
+    for i in range(500):
+        model.update()
+       # print(len(np.where(model.lattice==1)[0]))
         com = model.centreOfMass()
         #com[0]= x, com[1] = y
         if(com[0]!=-1 and com[1]!=-1):
             #add com
-            #i can probs keep it how it is and just slice an array later?
             xCom.append(com[0])
             yCom.append(com[1])
             t.append(i)
-        model.update()
+        #model.update()
 
     arrayCombined = np.array((t,xCom,yCom))
-    print(arrayCombined)
+   # print(arrayCombined)
     np.savetxt("data/centreOfMass.dat",np.transpose(arrayCombined),fmt='%.4f')
 #
 def getVelocity(allArray):
@@ -110,12 +145,12 @@ def getVelocity(allArray):
 def plotAll():
 
     #data 1
-    data1 = np.loadtxt("data/normalhistogram.dat")
-    plt.hist(data1,bins=25)
-    plt.title("Cython histogram 1")
+    data1 = np.loadtxt("data/histogram1000.dat")
+    plt.hist(data1,bins=25,density=False,facecolor='none',edgecolor='k')
+    plt.title("Histogram for the time taken to reach absorbing state")
     plt.xlabel("Time step till absorbing state")
     plt.ylabel("Frequency")
-    plt.savefig("figures/CythonHistogram.png")
+    plt.savefig("figures/Histogram.png")
     plt.show()
 
     
@@ -151,14 +186,14 @@ def plotAll():
 if __name__=="__main__":
     size = 50
     sweeps = 10000
-    initialisation="random"
+    initialisation="glider"
     t1=time.time()
-    #animate(size,sweeps,initialisation)
+   # animate(size,sweeps,initialisation)
    # generateHistogram(size,sweeps,initialisation)
-    #generateCom(size,sweeps,initialisation)
+   # generateCom(size,sweeps,initialisation)
     centreOfMass = np.loadtxt("data/centreOfMass.dat")
     vel=getVelocity(centreOfMass)
-    t2=time.time()
-    print(f"Time taken for all = {t2-t1}s")
+    # t2=time.time()
+    # print(f"Time taken for all = {t2-t1}s")
 
     plotAll()
