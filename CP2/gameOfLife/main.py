@@ -154,7 +154,7 @@ if __name__=="__main__":
     initialisation="random"
     t1=time.time()
     #animate(size,sweeps,initialisation)
-    generateHistogram(size,sweeps,initialisation)
+   # generateHistogram(size,sweeps,initialisation)
     #generateCom(size,sweeps,initialisation)
     centreOfMass = np.loadtxt("data/centreOfMass.dat")
     vel=getVelocity(centreOfMass)
