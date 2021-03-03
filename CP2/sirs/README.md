@@ -20,19 +20,19 @@ A user input will be taken after the initial run.
 
 ---
 
-___AnimationGenerating Data___\
-Input 1 to start an animation of teh system for 10,000 sweeps. The lattice is updated each sweep.
+__1: Animation__\
+Input 1 to start an animation of the system for 10,000 sweeps. The lattice is updated each sweep.
 
-__Plot Data__\
+__2: Plot Data__\
 Input 2 to plot all data. This should only be ran if data already exists if not, data should be generated for each task first. Figures are saved in the figures directory.
 
-__Task 3__\
+__3: Task 3__\
 Input 3 to generate data for Task 3 of the SIRS check point. All data are saved in the data directory. 
 
-__Task 4__\
+__4: Task 4__\
 Input 4 to generate data for Task 4 of the SIRS check point. 
 
-__Task5__\
+__5: Task5__\
 Input 5 to generate data for Task 5.
 
 Further input will be required at this point. Note: the program will run for 5 simulation so can take up alot of time. Which is why a cython code has been provided.

@@ -112,9 +112,15 @@ def generateCom(size,sweeps,initialisation):
 
     arrayCombined = np.array((t,xCom,yCom))
    # print(arrayCombined)
-    np.savetxt("data/centreOfMass.dat",np.transpose(arrayCombined),fmt='%.4f')
+    arrayCombined= np.transpose(arrayCombined)
+    np.savetxt("data/centreOfMass.dat",(arrayCombined),fmt='%.4f')
+
+    velocities = getVelocity(arrayCombined)
+    print(f"X velocity ={velocities[0]}\nY velocity = {velocities[1]}\nTotal velocity = {velocities[2]}")
+    np.savetxt("data/velocity.dat",np.transpose(velocities),fmt='%.4f')
     print("Done")
-#
+
+
 def getVelocity(allArray):
     '''
     Using numpy poly fit to calculate the velocity of the glider 
@@ -142,13 +148,13 @@ def getVelocity(allArray):
     newT=np.asarray(newT)
 
     xfit,xin = np.polyfit(newT,newX,1)
-    yfit,fin = np.polyfit(newT,newY,1)
+    yfit,yin = np.polyfit(newT,newY,1)
 
-    print(f"X velocity = {xfit}\nY velocity = {yfit}")
+    #print(f"X velocity = {xfit}\nY velocity = {yfit}")
 
     vel = np.sqrt(xfit**2+yfit**2)
-    print(f"Total Velocity = {vel}")
-    return vel
+   # print(f"Total Velocity = {vel}")
+    return [xfit,yfit,vel]
 
 
 def plotAll():
@@ -197,27 +203,26 @@ if __name__=="__main__":
         print("usage python main.py N sweeps")
     size = int(sys.argv[1])
     sweeps = int(sys.argv[2])
-    loop=True
     while True:
         initialisation = int(input("0 for Random initialisation\n1 for Blinker\n2 for Glider"))
         if(initialisation==0 or initialisation==1 or initialisation==2):
             break
         else:
-         #   loop=False
-         print("Please enter a valid input")
+            print("Please enter a valid input")
             
     
-    toDo = int(input("\n\n0 to animate\n1 to generate histogram data\n2 generate centre of mass data and generate velocity data\n3 Plot graphs"))
+    toDo = int(input("\n\n1 to animate\n2 to generate histogram data\n3 generate centre of mass data and generate velocity data: Recommended for Glider initialisation"
+    +"\n4 Plot graphs"))
 
-    if(toDo==0):
+    if(toDo==1):
         animate(size,sweeps,initialisation)
-    elif(toDo==1):
-        generateHistogram(size,sweeps,initialisation)
     elif(toDo==2):
-        generateCom(size,sweeps,initialisation)
-        centreOfMassData = np.loadtxt("data/centreOfMass.dat")
-        getVelocity(centreOfMassData)
+        generateHistogram(size,sweeps,initialisation)
     elif(toDo==3):
+        generateCom(size,sweeps,initialisation)
+        #centreOfMassData = np.loadtxt("data/centreOfMass.dat")
+       # getVelocity(centreOfMassData)
+    elif(toDo==4):
         plotAll()
     else:
         print("Exiting as invalid input")
