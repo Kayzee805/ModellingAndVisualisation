@@ -24,7 +24,7 @@ def animate(size,sweeps,initialisation):
     plt.draw()
     plt.pause(0.1)
 
-    
+
     for i in range(sweeps):
         #updating the model for each sweep
         model.update()
@@ -37,6 +37,9 @@ def animate(size,sweeps,initialisation):
             model.currentActiveSite=newActiveSite
         plt.cla()
         im=plt.imshow(model.lattice,animated=True,vmin=-1,vmax=1,cmap='magma')
+        plt.xlabel("X axis")
+        plt.ylabel("Y axis")
+        plt.title("Animation for game of life model")
         plt.draw()
         plt.pause(0.1)
       #  print(f"iteration {i} active state= {model.activeSites()}")

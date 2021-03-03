@@ -20,16 +20,17 @@ def animate(size,sweeps,pS,pI,pR):
     model = sirs(size,pS,pI,pR)
     cMap='magma'
     im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
+
     plt.draw()
     plt.pause(0.0001)
     for i in range(sweeps):
         model.update()
         plt.cla()
         im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
-        plt.draw()
+        plt.xlabel("X axis")
+        plt.ylabel("Y axis")
+        plt.title("Animation for SIRS model")
         plt.pause(0.0001)
-        if(i%1000==0):
-            print(i)
         # if(model.infected==0):
         #     print(f"Infected = 0 at {i}")
 
