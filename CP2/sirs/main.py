@@ -327,7 +327,7 @@ def task5_Part2(size,sweeps):
                 infectionArray[i,s] =0
             #else take the averag scaled infection
             else:
-                infectionArray[i,s]=np.mean(infectedTotal)/N 
+                infectionArray[i,s]=np.mean()/N 
         print(f"Time taken {s} == {time.time()-t1}s")
 
     #calculating the standard error and mean scaled variance over 5 simulations
@@ -478,18 +478,18 @@ if __name__=="__main__":
     #sweeps will be 10,000 for all tasks but 1 for which it has been changed in the method
     sweeps = 10000
 
-    toDo = int(input("\n0 to animate\n1 to plot graphs\n2 to generate data for Task 3"+
-    "\n3 to generate data for Task 4\n4 to generate data for Task5"))
+    toDo = int(input("\n1 to animate\n2 to plot graphs\n3 to generate data for Task 3"+
+    "\n4 to generate data for Task 4\n5 to generate data for Task5"))
     
-    if(toDo==0):
+    if(toDo==1):
         animate(size,sweeps,pS,pI,pR)
-    elif(toDo==1):
-        plotAll()
     elif(toDo==2):
-        task3(size,sweeps)
+        plotAll()
     elif(toDo==3):
-        task4(size,sweeps)
+        task3(size,sweeps)
     elif(toDo==4):
+        task4(size,sweeps)
+    elif(toDo==5):
         part = int(input("\n\n0 for part one, 50x50\n1 for part two, 100x100"))
         if(part==0):
             task5(size,sweeps)

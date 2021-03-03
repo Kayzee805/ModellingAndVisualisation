@@ -1,4 +1,4 @@
-import test
+import cythonCode
 import logging
 import threading
 import time
@@ -10,13 +10,18 @@ sweeps=10000
 pS=0.8
 pI=0.1
 pR=0.01
-#test.main(size,sweeps,pS,pI,pR,runAnim=True)
-#test.task3(50)
+
+'''
+Uncomment the following to run each of the task. Input args has not been provided so the user will need to type in the values for each variable manually.
+'''
+#cythonCode.main(size,sweeps,pS,pI,pR,runAnim=True)
+#cythonCode.task3(50)
 #test.task4(50,sweeps)
-#test.task5(50,10000)
-#test.task7(100,10000)
+#cythonCode.task5(50,10000)
+#cythonCode.task7(100,10000)
 # #100    0.8  0.1    0.001
 # #test.main(size,sweeps,pS,pI,pR,runAnim=False,genData=False,task5DO=True)
+
 def plot5():
     array1 = np.loadtxt("data/task5/Task5_RawData1.dat")
     array2 = np.loadtxt("data/task5/Task5_RawData2.dat")
@@ -46,8 +51,8 @@ def plot5Combined():
     plt.show()
 
 
-#plot5()
-#plot5Combined()
+# plot5()
+# plot5Combined()
 
 
 def plot7():
@@ -77,8 +82,8 @@ def plot7Combined():
     plt.title("Immune vs Infection fractions for 100x100 model")
     plt.savefig("figures/Task5_100x100.png")
     plt.show()
-plot7()
-plot7Combined()
+# plot7()
+# plot7Combined()
 def plot4():
     array1 = np.loadtxt("data/Task4_RawData1.dat")
     array2 = np.loadtxt("data/Task4_RawData2.dat")
@@ -126,14 +131,3 @@ def plot4Combined():
 
 #plot4()
 #plot4Combined()
-
-# name = input("Enter file name")
-
-# #array2 = test.task5(50,sweeps,name)
-# array2 = test.task7(100,sweeps,name)
-
-# array2 = np.array(array2)
-# #np.savetxt("data/"+name+"v2.dat",np.transpose(array2),fmt='%.7f')
-# np.savetxt("data/100/"+name+"v2.dat",np.transpose(array2),fmt='%.7f')
-#test.task4(50)
-#test.task3(size)

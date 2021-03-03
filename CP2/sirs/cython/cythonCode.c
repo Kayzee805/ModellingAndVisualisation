@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "test",
+        "name": "cythonCode",
         "sources": [
-            "test.pyx"
+            "cythonCode.pyx"
         ]
     },
-    "module_name": "test"
+    "module_name": "cythonCode"
 }
 END: Cython Metadata */
 
@@ -614,8 +614,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__test
-#define __PYX_HAVE_API__test
+#define __PYX_HAVE__cythonCode
+#define __PYX_HAVE_API__cythonCode
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -825,7 +825,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "test.pyx",
+  "cythonCode.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1344,12 +1344,12 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'test' */
-#define __Pyx_MODULE_NAME "test"
-extern int __pyx_module_is_main_test;
-int __pyx_module_is_main_test = 0;
+/* Module declarations from 'cythonCode' */
+#define __Pyx_MODULE_NAME "cythonCode"
+extern int __pyx_module_is_main_cythonCode;
+int __pyx_module_is_main_cythonCode = 0;
 
-/* Implementation of 'test' */
+/* Implementation of 'cythonCode' */
 static PyObject *__pyx_builtin_object;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_print;
@@ -1407,7 +1407,7 @@ static const char __pyx_k_show[] = "show";
 static const char __pyx_k_sirs[] = "sirs";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_sqrt[] = "sqrt";
-static const char __pyx_k_test[] = "test";
+static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
 static const char __pyx_k_vmax[] = "vmax";
 static const char __pyx_k_vmin[] = "vmin";
@@ -1452,7 +1452,6 @@ static const char __pyx_k_random[] = "random";
 static const char __pyx_k_result[] = "result";
 static const char __pyx_k_square[] = "square";
 static const char __pyx_k_sweeps[] = "sweeps";
-static const char __pyx_k_test_2[] = "__test__";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_vError[] = "vError";
 static const char __pyx_k_xlabel[] = "xlabel";
@@ -1488,7 +1487,6 @@ static const char __pyx_k_isImmune[] = "isImmune";
 static const char __pyx_k_linspace[] = "linspace";
 static const char __pyx_k_mpatches[] = "mpatches";
 static const char __pyx_k_qualname[] = "__qualname__";
-static const char __pyx_k_test_pyx[] = "test.pyx";
 static const char __pyx_k_variance[] = "variance";
 static const char __pyx_k_Lengh_p1s[] = "Lengh.  p1s=";
 static const char __pyx_k_animation[] = "animation";
@@ -1499,6 +1497,7 @@ static const char __pyx_k_setImmune[] = "setImmune";
 static const char __pyx_k_setRandom[] = "setRandom";
 static const char __pyx_k_transpose[] = "transpose";
 static const char __pyx_k_Time_taken[] = "Time taken ";
+static const char __pyx_k_cythonCode[] = "cythonCode";
 static const char __pyx_k_infected_2[] = " infected=";
 static const char __pyx_k_matplotlib[] = "matplotlib";
 static const char __pyx_k_pltContour[] = "pltContour";
@@ -1514,6 +1513,7 @@ static const char __pyx_k_squareMean_2[] = "squareMean";
 static const char __pyx_k_Infected_0_at[] = "Infected = 0 at ";
 static const char __pyx_k_immuneCounter[] = "immuneCounter";
 static const char __pyx_k_jacknifeError[] = "jacknifeError";
+static const char __pyx_k_cythonCode_pyx[] = "cythonCode.pyx";
 static const char __pyx_k_infectionArray[] = "infectionArray";
 static const char __pyx_k_sirs_setImmune[] = "sirs.setImmune";
 static const char __pyx_k_sirs_setRandom[] = "sirs.setRandom";
@@ -1581,6 +1581,8 @@ static PyObject *__pyx_n_s_colorbar;
 static PyObject *__pyx_n_s_colors;
 static PyObject *__pyx_n_s_contourf;
 static PyObject *__pyx_n_s_counter;
+static PyObject *__pyx_n_s_cythonCode;
+static PyObject *__pyx_kp_s_cythonCode_pyx;
 static PyObject *__pyx_kp_u_dat;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_kp_u_data_Task3ProcessedData_dat;
@@ -1702,8 +1704,6 @@ static PyObject *__pyx_n_s_task5;
 static PyObject *__pyx_n_s_task5DO;
 static PyObject *__pyx_n_s_task7;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_test_2;
-static PyObject *__pyx_kp_s_test_pyx;
 static PyObject *__pyx_n_s_time;
 static PyObject *__pyx_kp_u_time_taken;
 static PyObject *__pyx_n_s_times;
@@ -1725,20 +1725,20 @@ static PyObject *__pyx_n_s_xticks;
 static PyObject *__pyx_n_s_ylabel;
 static PyObject *__pyx_n_s_yticks;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_size, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_isImmune, double __pyx_v_immuneProbability); /* proto */
-static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, double __pyx_v_immuneProbability); /* proto */
-static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_i, int __pyx_v_j); /* proto */
-static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_data); /* proto */
-static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR); /* proto */
-static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size); /* proto */
-static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data); /* proto */
-static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
-static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
-static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
-static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_runAnim, PyObject *__pyx_v_genData, PyObject *__pyx_v_task5DO); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_size, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_isImmune, double __pyx_v_immuneProbability); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, double __pyx_v_immuneProbability); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_i, int __pyx_v_j); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_data); /* proto */
+static PyObject *__pyx_pf_10cythonCode_animate(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR); /* proto */
+static PyObject *__pyx_pf_10cythonCode_2task3(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size); /* proto */
+static PyObject *__pyx_pf_10cythonCode_4calculateVariance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data); /* proto */
+static PyObject *__pyx_pf_10cythonCode_6task4(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
+static PyObject *__pyx_pf_10cythonCode_8task5(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
+static PyObject *__pyx_pf_10cythonCode_10task7(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps); /* proto */
+static PyObject *__pyx_pf_10cythonCode_12pltContour(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_10cythonCode_14main(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_runAnim, PyObject *__pyx_v_genData, PyObject *__pyx_v_task5DO); /* proto */
 static PyObject *__pyx_float_0_2;
 static PyObject *__pyx_float_0_5;
 static PyObject *__pyx_float_0_0001;
@@ -1800,7 +1800,7 @@ static PyObject *__pyx_codeobj__45;
 static PyObject *__pyx_codeobj__47;
 /* Late includes */
 
-/* "test.pyx":16
+/* "cythonCode.pyx":16
  * 
  * class sirs(object):
  *     def __init__(self,int size,double pS,double pI,double pR, isImmune = False,double immuneProbability=0):             # <<<<<<<<<<<<<<
@@ -1809,10 +1809,10 @@ static PyObject *__pyx_codeobj__47;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4test_4sirs___init__[] = "\n        pS=p1. probability of S->I\n        pI=p2. probability of I->R\n        pR=p3, probability of R->S\n        ";
-static PyMethodDef __pyx_mdef_4test_4sirs_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_4sirs_1__init__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4test_4sirs___init__};
-static PyObject *__pyx_pw_4test_4sirs_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_10cythonCode_4sirs___init__[] = "\n        pS=p1. probability of S->I\n        pI=p2. probability of I->R\n        pR=p3, probability of R->S\n        ";
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_4sirs_1__init__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10cythonCode_4sirs___init__};
+static PyObject *__pyx_pw_10cythonCode_4sirs_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   int __pyx_v_size;
   double __pyx_v_pS;
@@ -1927,18 +1927,18 @@ static PyObject *__pyx_pw_4test_4sirs_1__init__(PyObject *__pyx_self, PyObject *
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__init__", 0, 5, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.sirs.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_4sirs___init__(__pyx_self, __pyx_v_self, __pyx_v_size, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR, __pyx_v_isImmune, __pyx_v_immuneProbability);
+  __pyx_r = __pyx_pf_10cythonCode_4sirs___init__(__pyx_self, __pyx_v_self, __pyx_v_size, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR, __pyx_v_isImmune, __pyx_v_immuneProbability);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_size, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_isImmune, double __pyx_v_immuneProbability) {
+static PyObject *__pyx_pf_10cythonCode_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_size, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_isImmune, double __pyx_v_immuneProbability) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1952,7 +1952,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "test.pyx":22
+  /* "cythonCode.pyx":22
  *         pR=p3, probability of R->S
  *         '''
  *         self.size=size             # <<<<<<<<<<<<<<
@@ -1964,7 +1964,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_size, __pyx_t_1) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":23
+  /* "cythonCode.pyx":23
  *         '''
  *         self.size=size
  *         self.p1=pS             # <<<<<<<<<<<<<<
@@ -1976,7 +1976,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_p1, __pyx_t_1) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":24
+  /* "cythonCode.pyx":24
  *         self.size=size
  *         self.p1=pS
  *         self.p2=pI             # <<<<<<<<<<<<<<
@@ -1988,7 +1988,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_p2, __pyx_t_1) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":25
+  /* "cythonCode.pyx":25
  *         self.p1=pS
  *         self.p2=pI
  *         self.p3=pR             # <<<<<<<<<<<<<<
@@ -2000,7 +2000,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_p3, __pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":26
+  /* "cythonCode.pyx":26
  *         self.p2=pI
  *         self.p3=pR
  *         self.lattice = np.zeros((size,size))             # <<<<<<<<<<<<<<
@@ -2043,7 +2043,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_lattice, __pyx_t_1) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":27
+  /* "cythonCode.pyx":27
  *         self.p3=pR
  *         self.lattice = np.zeros((size,size))
  *         self.infected=0             # <<<<<<<<<<<<<<
@@ -2052,7 +2052,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_infected, __pyx_int_0) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
 
-  /* "test.pyx":28
+  /* "cythonCode.pyx":28
  *         self.lattice = np.zeros((size,size))
  *         self.infected=0
  *         self.immune=0             # <<<<<<<<<<<<<<
@@ -2061,7 +2061,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_immune, __pyx_int_0) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
 
-  /* "test.pyx":29
+  /* "cythonCode.pyx":29
  *         self.infected=0
  *         self.immune=0
  *         if(isImmune):             # <<<<<<<<<<<<<<
@@ -2071,7 +2071,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_isImmune); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 29, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "test.pyx":30
+    /* "cythonCode.pyx":30
  *         self.immune=0
  *         if(isImmune):
  *             self.setImmune(immuneProbability)             # <<<<<<<<<<<<<<
@@ -2100,7 +2100,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "test.pyx":29
+    /* "cythonCode.pyx":29
  *         self.infected=0
  *         self.immune=0
  *         if(isImmune):             # <<<<<<<<<<<<<<
@@ -2110,7 +2110,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
     goto __pyx_L3;
   }
 
-  /* "test.pyx":32
+  /* "cythonCode.pyx":32
  *             self.setImmune(immuneProbability)
  *         else:
  *             self.setRandom()             # <<<<<<<<<<<<<<
@@ -2139,7 +2139,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   }
   __pyx_L3:;
 
-  /* "test.pyx":16
+  /* "cythonCode.pyx":16
  * 
  * class sirs(object):
  *     def __init__(self,int size,double pS,double pI,double pR, isImmune = False,double immuneProbability=0):             # <<<<<<<<<<<<<<
@@ -2156,7 +2156,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("test.sirs.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2164,7 +2164,7 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "test.pyx":34
+/* "cythonCode.pyx":34
  *             self.setRandom()
  * 
  *     def setRandom(self):             # <<<<<<<<<<<<<<
@@ -2173,20 +2173,20 @@ static PyObject *__pyx_pf_4test_4sirs___init__(CYTHON_UNUSED PyObject *__pyx_sel
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_3setRandom(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_4test_4sirs_3setRandom = {"setRandom", (PyCFunction)__pyx_pw_4test_4sirs_3setRandom, METH_O, 0};
-static PyObject *__pyx_pw_4test_4sirs_3setRandom(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_3setRandom(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_3setRandom = {"setRandom", (PyCFunction)__pyx_pw_10cythonCode_4sirs_3setRandom, METH_O, 0};
+static PyObject *__pyx_pw_10cythonCode_4sirs_3setRandom(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setRandom (wrapper)", 0);
-  __pyx_r = __pyx_pf_4test_4sirs_2setRandom(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10cythonCode_4sirs_2setRandom(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_10cythonCode_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   int __pyx_v_counter;
   double __pyx_v_r;
   PyObject *__pyx_v_i = NULL;
@@ -2209,7 +2209,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("setRandom", 0);
 
-  /* "test.pyx":37
+  /* "cythonCode.pyx":37
  *         cdef int counter
  *         cdef double r
  *         counter= 0             # <<<<<<<<<<<<<<
@@ -2218,7 +2218,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_counter = 0;
 
-  /* "test.pyx":38
+  /* "cythonCode.pyx":38
  *         cdef double r
  *         counter= 0
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -2273,7 +2273,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "test.pyx":39
+    /* "cythonCode.pyx":39
  *         counter= 0
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -2328,7 +2328,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "test.pyx":40
+      /* "cythonCode.pyx":40
  *         for i in range(self.size):
  *             for j in range(self.size):
  *                 r= random.random()             # <<<<<<<<<<<<<<
@@ -2359,7 +2359,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_r = __pyx_t_10;
 
-      /* "test.pyx":41
+      /* "cythonCode.pyx":41
  *             for j in range(self.size):
  *                 r= random.random()
  *                 if(r<0.33):             # <<<<<<<<<<<<<<
@@ -2369,7 +2369,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_t_11 = ((__pyx_v_r < 0.33) != 0);
       if (__pyx_t_11) {
 
-        /* "test.pyx":42
+        /* "cythonCode.pyx":42
  *                 r= random.random()
  *                 if(r<0.33):
  *                     self.lattice[i,j]=0   #S             # <<<<<<<<<<<<<<
@@ -2390,7 +2390,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "test.pyx":41
+        /* "cythonCode.pyx":41
  *             for j in range(self.size):
  *                 r= random.random()
  *                 if(r<0.33):             # <<<<<<<<<<<<<<
@@ -2400,7 +2400,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
         goto __pyx_L7;
       }
 
-      /* "test.pyx":43
+      /* "cythonCode.pyx":43
  *                 if(r<0.33):
  *                     self.lattice[i,j]=0   #S
  *                 elif(r<0.66):             # <<<<<<<<<<<<<<
@@ -2410,7 +2410,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_t_11 = ((__pyx_v_r < 0.66) != 0);
       if (__pyx_t_11) {
 
-        /* "test.pyx":44
+        /* "cythonCode.pyx":44
  *                     self.lattice[i,j]=0   #S
  *                 elif(r<0.66):
  *                     self.lattice[i,j]=-1 #I             # <<<<<<<<<<<<<<
@@ -2431,7 +2431,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "test.pyx":45
+        /* "cythonCode.pyx":45
  *                 elif(r<0.66):
  *                     self.lattice[i,j]=-1 #I
  *                     counter+=1             # <<<<<<<<<<<<<<
@@ -2440,7 +2440,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
  */
         __pyx_v_counter = (__pyx_v_counter + 1);
 
-        /* "test.pyx":43
+        /* "cythonCode.pyx":43
  *                 if(r<0.33):
  *                     self.lattice[i,j]=0   #S
  *                 elif(r<0.66):             # <<<<<<<<<<<<<<
@@ -2450,7 +2450,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
         goto __pyx_L7;
       }
 
-      /* "test.pyx":47
+      /* "cythonCode.pyx":47
  *                     counter+=1
  *                 else:#
  *                     self.lattice[i,j]=1  #R             # <<<<<<<<<<<<<<
@@ -2474,7 +2474,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
       }
       __pyx_L7:;
 
-      /* "test.pyx":39
+      /* "cythonCode.pyx":39
  *         counter= 0
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -2484,7 +2484,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":38
+    /* "cythonCode.pyx":38
  *         cdef double r
  *         counter= 0
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -2494,7 +2494,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":48
+  /* "cythonCode.pyx":48
  *                 else:#
  *                     self.lattice[i,j]=1  #R
  *         self.infected=counter             # <<<<<<<<<<<<<<
@@ -2506,7 +2506,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_infected, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":34
+  /* "cythonCode.pyx":34
  *             self.setRandom()
  * 
  *     def setRandom(self):             # <<<<<<<<<<<<<<
@@ -2523,7 +2523,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("test.sirs.setRandom", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.setRandom", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_i);
@@ -2533,7 +2533,7 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "test.pyx":50
+/* "cythonCode.pyx":50
  *         self.infected=counter
  * 
  *     def setImmune(self,double immuneProbability):             # <<<<<<<<<<<<<<
@@ -2542,9 +2542,9 @@ static PyObject *__pyx_pf_4test_4sirs_2setRandom(CYTHON_UNUSED PyObject *__pyx_s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_5setImmune(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_4test_4sirs_5setImmune = {"setImmune", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_4sirs_5setImmune, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4test_4sirs_5setImmune(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_5setImmune(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_5setImmune = {"setImmune", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_4sirs_5setImmune, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10cythonCode_4sirs_5setImmune(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   double __pyx_v_immuneProbability;
   int __pyx_lineno = 0;
@@ -2595,18 +2595,18 @@ static PyObject *__pyx_pw_4test_4sirs_5setImmune(PyObject *__pyx_self, PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("setImmune", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.sirs.setImmune", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.setImmune", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_4sirs_4setImmune(__pyx_self, __pyx_v_self, __pyx_v_immuneProbability);
+  __pyx_r = __pyx_pf_10cythonCode_4sirs_4setImmune(__pyx_self, __pyx_v_self, __pyx_v_immuneProbability);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, double __pyx_v_immuneProbability) {
+static PyObject *__pyx_pf_10cythonCode_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, double __pyx_v_immuneProbability) {
   double __pyx_v_pRest;
   double __pyx_v_r;
   int __pyx_v_infectedCounter;
@@ -2631,7 +2631,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("setImmune", 0);
 
-  /* "test.pyx":53
+  /* "cythonCode.pyx":53
  *         cdef double pRest, r
  *         cdef int infectedCounter,immuneCounter
  *         pRest = (1-immuneProbability)/3             # <<<<<<<<<<<<<<
@@ -2640,7 +2640,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_pRest = ((1.0 - __pyx_v_immuneProbability) / 3.0);
 
-  /* "test.pyx":54
+  /* "cythonCode.pyx":54
  *         cdef int infectedCounter,immuneCounter
  *         pRest = (1-immuneProbability)/3
  *         infectedCounter=0             # <<<<<<<<<<<<<<
@@ -2649,7 +2649,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_infectedCounter = 0;
 
-  /* "test.pyx":55
+  /* "cythonCode.pyx":55
  *         pRest = (1-immuneProbability)/3
  *         infectedCounter=0
  *         immuneCounter=0             # <<<<<<<<<<<<<<
@@ -2658,7 +2658,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_immuneCounter = 0;
 
-  /* "test.pyx":56
+  /* "cythonCode.pyx":56
  *         infectedCounter=0
  *         immuneCounter=0
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -2713,7 +2713,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "test.pyx":57
+    /* "cythonCode.pyx":57
  *         immuneCounter=0
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -2768,7 +2768,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "test.pyx":58
+      /* "cythonCode.pyx":58
  *         for i in range(self.size):
  *             for j in range(self.size):
  *                 r=random.random()             # <<<<<<<<<<<<<<
@@ -2799,7 +2799,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_r = __pyx_t_10;
 
-      /* "test.pyx":59
+      /* "cythonCode.pyx":59
  *             for j in range(self.size):
  *                 r=random.random()
  *                 if(r<immuneProbability):             # <<<<<<<<<<<<<<
@@ -2809,7 +2809,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_t_11 = ((__pyx_v_r < __pyx_v_immuneProbability) != 0);
       if (__pyx_t_11) {
 
-        /* "test.pyx":61
+        /* "cythonCode.pyx":61
  *                 if(r<immuneProbability):
  *                     #2 is immune
  *                     self.lattice[i,j]=2             # <<<<<<<<<<<<<<
@@ -2830,7 +2830,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "test.pyx":62
+        /* "cythonCode.pyx":62
  *                     #2 is immune
  *                     self.lattice[i,j]=2
  *                     immuneCounter+=1             # <<<<<<<<<<<<<<
@@ -2839,7 +2839,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
         __pyx_v_immuneCounter = (__pyx_v_immuneCounter + 1);
 
-        /* "test.pyx":59
+        /* "cythonCode.pyx":59
  *             for j in range(self.size):
  *                 r=random.random()
  *                 if(r<immuneProbability):             # <<<<<<<<<<<<<<
@@ -2849,7 +2849,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         goto __pyx_L7;
       }
 
-      /* "test.pyx":64
+      /* "cythonCode.pyx":64
  *                     immuneCounter+=1
  *                  #   print("hello")
  *                 elif(r<(pRest+immuneProbability)):             # <<<<<<<<<<<<<<
@@ -2859,7 +2859,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_t_11 = ((__pyx_v_r < (__pyx_v_pRest + __pyx_v_immuneProbability)) != 0);
       if (__pyx_t_11) {
 
-        /* "test.pyx":65
+        /* "cythonCode.pyx":65
  *                  #   print("hello")
  *                 elif(r<(pRest+immuneProbability)):
  *                     self.lattice[i,j]=-1             # <<<<<<<<<<<<<<
@@ -2880,7 +2880,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "test.pyx":66
+        /* "cythonCode.pyx":66
  *                 elif(r<(pRest+immuneProbability)):
  *                     self.lattice[i,j]=-1
  *                     infectedCounter+=1             # <<<<<<<<<<<<<<
@@ -2889,7 +2889,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
         __pyx_v_infectedCounter = (__pyx_v_infectedCounter + 1);
 
-        /* "test.pyx":64
+        /* "cythonCode.pyx":64
  *                     immuneCounter+=1
  *                  #   print("hello")
  *                 elif(r<(pRest+immuneProbability)):             # <<<<<<<<<<<<<<
@@ -2899,7 +2899,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         goto __pyx_L7;
       }
 
-      /* "test.pyx":67
+      /* "cythonCode.pyx":67
  *                     self.lattice[i,j]=-1
  *                     infectedCounter+=1
  *                 elif(r<(pRest*2+immuneProbability)):             # <<<<<<<<<<<<<<
@@ -2909,7 +2909,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_t_11 = ((__pyx_v_r < ((__pyx_v_pRest * 2.0) + __pyx_v_immuneProbability)) != 0);
       if (__pyx_t_11) {
 
-        /* "test.pyx":68
+        /* "cythonCode.pyx":68
  *                     infectedCounter+=1
  *                 elif(r<(pRest*2+immuneProbability)):
  *                     self.lattice[i,j]=1             # <<<<<<<<<<<<<<
@@ -2930,7 +2930,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "test.pyx":67
+        /* "cythonCode.pyx":67
  *                     self.lattice[i,j]=-1
  *                     infectedCounter+=1
  *                 elif(r<(pRest*2+immuneProbability)):             # <<<<<<<<<<<<<<
@@ -2940,7 +2940,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
         goto __pyx_L7;
       }
 
-      /* "test.pyx":70
+      /* "cythonCode.pyx":70
  *                     self.lattice[i,j]=1
  *                 else:
  *                     self.lattice[i,j]=0             # <<<<<<<<<<<<<<
@@ -2964,7 +2964,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
       }
       __pyx_L7:;
 
-      /* "test.pyx":57
+      /* "cythonCode.pyx":57
  *         immuneCounter=0
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -2974,7 +2974,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":56
+    /* "cythonCode.pyx":56
  *         infectedCounter=0
  *         immuneCounter=0
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -2984,7 +2984,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":71
+  /* "cythonCode.pyx":71
  *                 else:
  *                     self.lattice[i,j]=0
  *         self.infected=infectedCounter             # <<<<<<<<<<<<<<
@@ -2996,7 +2996,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_infected, __pyx_t_1) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":72
+  /* "cythonCode.pyx":72
  *                     self.lattice[i,j]=0
  *         self.infected=infectedCounter
  *         self.immune=immuneCounter             # <<<<<<<<<<<<<<
@@ -3008,7 +3008,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_immune, __pyx_t_1) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":50
+  /* "cythonCode.pyx":50
  *         self.infected=counter
  * 
  *     def setImmune(self,double immuneProbability):             # <<<<<<<<<<<<<<
@@ -3025,7 +3025,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("test.sirs.setImmune", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.setImmune", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_i);
@@ -3035,7 +3035,7 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "test.pyx":75
+/* "cythonCode.pyx":75
  * 
  * 
  *     def nearestNeighboursInfected(self,int i,int j):             # <<<<<<<<<<<<<<
@@ -3044,9 +3044,9 @@ static PyObject *__pyx_pf_4test_4sirs_4setImmune(CYTHON_UNUSED PyObject *__pyx_s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_7nearestNeighboursInfected(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_4test_4sirs_7nearestNeighboursInfected = {"nearestNeighboursInfected", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_4sirs_7nearestNeighboursInfected, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4test_4sirs_7nearestNeighboursInfected(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_7nearestNeighboursInfected(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_7nearestNeighboursInfected = {"nearestNeighboursInfected", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_4sirs_7nearestNeighboursInfected, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10cythonCode_4sirs_7nearestNeighboursInfected(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   int __pyx_v_i;
   int __pyx_v_j;
@@ -3108,18 +3108,18 @@ static PyObject *__pyx_pw_4test_4sirs_7nearestNeighboursInfected(PyObject *__pyx
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("nearestNeighboursInfected", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 75, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.sirs.nearestNeighboursInfected", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.nearestNeighboursInfected", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_4sirs_6nearestNeighboursInfected(__pyx_self, __pyx_v_self, __pyx_v_i, __pyx_v_j);
+  __pyx_r = __pyx_pf_10cythonCode_4sirs_6nearestNeighboursInfected(__pyx_self, __pyx_v_self, __pyx_v_i, __pyx_v_j);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_i, int __pyx_v_j) {
+static PyObject *__pyx_pf_10cythonCode_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, int __pyx_v_i, int __pyx_v_j) {
   int __pyx_v_size;
   int __pyx_v_top;
   int __pyx_v_bot;
@@ -3140,7 +3140,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nearestNeighboursInfected", 0);
 
-  /* "test.pyx":81
+  /* "cythonCode.pyx":81
  *         #returning false means not infected, so Sus or Rec
  *         cdef int size,top,bot,left,right
  *         size = self.size             # <<<<<<<<<<<<<<
@@ -3153,7 +3153,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_size = __pyx_t_2;
 
-  /* "test.pyx":82
+  /* "cythonCode.pyx":82
  *         cdef int size,top,bot,left,right
  *         size = self.size
  *         top=self.lattice[i,(j-1)%size]             # <<<<<<<<<<<<<<
@@ -3187,7 +3187,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_top = __pyx_t_2;
 
-  /* "test.pyx":83
+  /* "cythonCode.pyx":83
  *         size = self.size
  *         top=self.lattice[i,(j-1)%size]
  *         bot= self.lattice[i,(j+1)%size]             # <<<<<<<<<<<<<<
@@ -3221,7 +3221,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_bot = __pyx_t_2;
 
-  /* "test.pyx":84
+  /* "cythonCode.pyx":84
  *         top=self.lattice[i,(j-1)%size]
  *         bot= self.lattice[i,(j+1)%size]
  *         left = self.lattice[(i-1)%size,j]             # <<<<<<<<<<<<<<
@@ -3255,7 +3255,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_left = __pyx_t_2;
 
-  /* "test.pyx":85
+  /* "cythonCode.pyx":85
  *         bot= self.lattice[i,(j+1)%size]
  *         left = self.lattice[(i-1)%size,j]
  *         right = self.lattice[(i+1)%size,j]             # <<<<<<<<<<<<<<
@@ -3289,7 +3289,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_right = __pyx_t_2;
 
-  /* "test.pyx":86
+  /* "cythonCode.pyx":86
  *         left = self.lattice[(i-1)%size,j]
  *         right = self.lattice[(i+1)%size,j]
  *         if(top==-1 or bot ==-1 or left==-1 or right==-1):             # <<<<<<<<<<<<<<
@@ -3319,7 +3319,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_7) {
 
-    /* "test.pyx":87
+    /* "cythonCode.pyx":87
  *         right = self.lattice[(i+1)%size,j]
  *         if(top==-1 or bot ==-1 or left==-1 or right==-1):
  *             return True             # <<<<<<<<<<<<<<
@@ -3331,7 +3331,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
     __pyx_r = Py_True;
     goto __pyx_L0;
 
-    /* "test.pyx":86
+    /* "cythonCode.pyx":86
  *         left = self.lattice[(i-1)%size,j]
  *         right = self.lattice[(i+1)%size,j]
  *         if(top==-1 or bot ==-1 or left==-1 or right==-1):             # <<<<<<<<<<<<<<
@@ -3340,7 +3340,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
  */
   }
 
-  /* "test.pyx":88
+  /* "cythonCode.pyx":88
  *         if(top==-1 or bot ==-1 or left==-1 or right==-1):
  *             return True
  *         return False             # <<<<<<<<<<<<<<
@@ -3352,7 +3352,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __pyx_r = Py_False;
   goto __pyx_L0;
 
-  /* "test.pyx":75
+  /* "cythonCode.pyx":75
  * 
  * 
  *     def nearestNeighboursInfected(self,int i,int j):             # <<<<<<<<<<<<<<
@@ -3366,7 +3366,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("test.sirs.nearestNeighboursInfected", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.nearestNeighboursInfected", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3374,7 +3374,7 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "test.pyx":90
+/* "cythonCode.pyx":90
  *         return False
  * 
  *     def update(self):             # <<<<<<<<<<<<<<
@@ -3383,20 +3383,20 @@ static PyObject *__pyx_pf_4test_4sirs_6nearestNeighboursInfected(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_9update(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_4test_4sirs_9update = {"update", (PyCFunction)__pyx_pw_4test_4sirs_9update, METH_O, 0};
-static PyObject *__pyx_pw_4test_4sirs_9update(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_9update(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_9update = {"update", (PyCFunction)__pyx_pw_10cythonCode_4sirs_9update, METH_O, 0};
+static PyObject *__pyx_pw_10cythonCode_4sirs_9update(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("update (wrapper)", 0);
-  __pyx_r = __pyx_pf_4test_4sirs_8update(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10cythonCode_4sirs_8update(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_10cythonCode_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   int __pyx_v_iTrial;
   int __pyx_v_jTrial;
   int __pyx_v_value;
@@ -3425,7 +3425,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update", 0);
 
-  /* "test.pyx":92
+  /* "cythonCode.pyx":92
  *     def update(self):
  *         cdef int iTrial,jTrial,value, infectedCounter
  *         infectedCounter=self.infected             # <<<<<<<<<<<<<<
@@ -3438,7 +3438,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_infectedCounter = __pyx_t_2;
 
-  /* "test.pyx":93
+  /* "cythonCode.pyx":93
  *         cdef int iTrial,jTrial,value, infectedCounter
  *         infectedCounter=self.infected
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -3493,7 +3493,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "test.pyx":94
+    /* "cythonCode.pyx":94
  *         infectedCounter=self.infected
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -3548,7 +3548,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "test.pyx":95
+      /* "cythonCode.pyx":95
  *         for i in range(self.size):
  *             for j in range(self.size):
  *                 iTrial = random.randint(0,self.size-1)             # <<<<<<<<<<<<<<
@@ -3616,7 +3616,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_iTrial = __pyx_t_2;
 
-      /* "test.pyx":96
+      /* "cythonCode.pyx":96
  *             for j in range(self.size):
  *                 iTrial = random.randint(0,self.size-1)
  *                 jTrial = random.randint(0,self.size-1)             # <<<<<<<<<<<<<<
@@ -3684,7 +3684,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_jTrial = __pyx_t_2;
 
-      /* "test.pyx":100
+      /* "cythonCode.pyx":100
  *                 #if 1, generate random number then check <= p2
  *                 #if 2, generate random number then check <=p3
  *                 r = random.random()             # <<<<<<<<<<<<<<
@@ -3714,7 +3714,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       __Pyx_XDECREF_SET(__pyx_v_r, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "test.pyx":101
+      /* "cythonCode.pyx":101
  *                 #if 2, generate random number then check <=p3
  *                 r = random.random()
  *                 value = self.lattice[iTrial,jTrial]             # <<<<<<<<<<<<<<
@@ -3743,7 +3743,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_v_value = __pyx_t_2;
 
-      /* "test.pyx":102
+      /* "cythonCode.pyx":102
  *                 r = random.random()
  *                 value = self.lattice[iTrial,jTrial]
  *                 if(value==0):             # <<<<<<<<<<<<<<
@@ -3753,7 +3753,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
       switch (__pyx_v_value) {
         case 0:
 
-        /* "test.pyx":104
+        /* "cythonCode.pyx":104
  *                 if(value==0):
  *                     #is sus, so check for nn
  *                     if(self.nearestNeighboursInfected(iTrial,jTrial)):             # <<<<<<<<<<<<<<
@@ -3819,7 +3819,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         if (__pyx_t_14) {
 
-          /* "test.pyx":106
+          /* "cythonCode.pyx":106
  *                     if(self.nearestNeighboursInfected(iTrial,jTrial)):
  *                         #nn is infected
  *                         if(r<=self.p1):             # <<<<<<<<<<<<<<
@@ -3834,7 +3834,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           if (__pyx_t_14) {
 
-            /* "test.pyx":107
+            /* "cythonCode.pyx":107
  *                         #nn is infected
  *                         if(r<=self.p1):
  *                             self.lattice[iTrial,jTrial]=-1             # <<<<<<<<<<<<<<
@@ -3859,7 +3859,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "test.pyx":108
+            /* "cythonCode.pyx":108
  *                         if(r<=self.p1):
  *                             self.lattice[iTrial,jTrial]=-1
  *                             infectedCounter+=1             # <<<<<<<<<<<<<<
@@ -3868,7 +3868,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
             __pyx_v_infectedCounter = (__pyx_v_infectedCounter + 1);
 
-            /* "test.pyx":106
+            /* "cythonCode.pyx":106
  *                     if(self.nearestNeighboursInfected(iTrial,jTrial)):
  *                         #nn is infected
  *                         if(r<=self.p1):             # <<<<<<<<<<<<<<
@@ -3877,7 +3877,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
           }
 
-          /* "test.pyx":104
+          /* "cythonCode.pyx":104
  *                 if(value==0):
  *                     #is sus, so check for nn
  *                     if(self.nearestNeighboursInfected(iTrial,jTrial)):             # <<<<<<<<<<<<<<
@@ -3886,7 +3886,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
         }
 
-        /* "test.pyx":102
+        /* "cythonCode.pyx":102
  *                 r = random.random()
  *                 value = self.lattice[iTrial,jTrial]
  *                 if(value==0):             # <<<<<<<<<<<<<<
@@ -3896,7 +3896,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         break;
         case -1L:
 
-        /* "test.pyx":111
+        /* "cythonCode.pyx":111
  *                 elif(value==-1):
  *                     #is infected
  *                     if(r<=self.p2):             # <<<<<<<<<<<<<<
@@ -3911,7 +3911,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         if (__pyx_t_14) {
 
-          /* "test.pyx":112
+          /* "cythonCode.pyx":112
  *                     #is infected
  *                     if(r<=self.p2):
  *                         self.lattice[iTrial,jTrial]=1             # <<<<<<<<<<<<<<
@@ -3936,7 +3936,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "test.pyx":113
+          /* "cythonCode.pyx":113
  *                     if(r<=self.p2):
  *                         self.lattice[iTrial,jTrial]=1
  *                         infectedCounter-=1             # <<<<<<<<<<<<<<
@@ -3945,7 +3945,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
           __pyx_v_infectedCounter = (__pyx_v_infectedCounter - 1);
 
-          /* "test.pyx":111
+          /* "cythonCode.pyx":111
  *                 elif(value==-1):
  *                     #is infected
  *                     if(r<=self.p2):             # <<<<<<<<<<<<<<
@@ -3954,7 +3954,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
         }
 
-        /* "test.pyx":109
+        /* "cythonCode.pyx":109
  *                             self.lattice[iTrial,jTrial]=-1
  *                             infectedCounter+=1
  *                 elif(value==-1):             # <<<<<<<<<<<<<<
@@ -3964,7 +3964,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         break;
         case 1:
 
-        /* "test.pyx":116
+        /* "cythonCode.pyx":116
  *                 elif(value==1):
  *                     #in recovery
  *                     if(r<=self.p3):             # <<<<<<<<<<<<<<
@@ -3979,7 +3979,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         if (__pyx_t_14) {
 
-          /* "test.pyx":117
+          /* "cythonCode.pyx":117
  *                     #in recovery
  *                     if(r<=self.p3):
  *                         self.lattice[iTrial,jTrial]=0             # <<<<<<<<<<<<<<
@@ -4004,7 +4004,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-          /* "test.pyx":116
+          /* "cythonCode.pyx":116
  *                 elif(value==1):
  *                     #in recovery
  *                     if(r<=self.p3):             # <<<<<<<<<<<<<<
@@ -4013,7 +4013,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
         }
 
-        /* "test.pyx":114
+        /* "cythonCode.pyx":114
  *                         self.lattice[iTrial,jTrial]=1
  *                         infectedCounter-=1
  *                 elif(value==1):             # <<<<<<<<<<<<<<
@@ -4023,7 +4023,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         break;
         default:
 
-        /* "test.pyx":119
+        /* "cythonCode.pyx":119
  *                         self.lattice[iTrial,jTrial]=0
  *                 else:
  *                     continue             # <<<<<<<<<<<<<<
@@ -4034,7 +4034,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
         break;
       }
 
-      /* "test.pyx":94
+      /* "cythonCode.pyx":94
  *         infectedCounter=self.infected
  *         for i in range(self.size):
  *             for j in range(self.size):             # <<<<<<<<<<<<<<
@@ -4045,7 +4045,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "test.pyx":93
+    /* "cythonCode.pyx":93
  *         cdef int iTrial,jTrial,value, infectedCounter
  *         infectedCounter=self.infected
  *         for i in range(self.size):             # <<<<<<<<<<<<<<
@@ -4055,7 +4055,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":121
+  /* "cythonCode.pyx":121
  *                     continue
  *                     #its immune
  *         self.infected = infectedCounter             # <<<<<<<<<<<<<<
@@ -4067,7 +4067,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_infected, __pyx_t_1) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":90
+  /* "cythonCode.pyx":90
  *         return False
  * 
  *     def update(self):             # <<<<<<<<<<<<<<
@@ -4087,7 +4087,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("test.sirs.update", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.update", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_i);
@@ -4098,7 +4098,7 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "test.pyx":125
+/* "cythonCode.pyx":125
  * 
  * 
  *     def jacknifeError(self,data):             # <<<<<<<<<<<<<<
@@ -4107,9 +4107,9 @@ static PyObject *__pyx_pf_4test_4sirs_8update(CYTHON_UNUSED PyObject *__pyx_self
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_4sirs_11jacknifeError(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_4test_4sirs_11jacknifeError = {"jacknifeError", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_4sirs_11jacknifeError, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4test_4sirs_11jacknifeError(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_4sirs_11jacknifeError(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_4sirs_11jacknifeError = {"jacknifeError", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_4sirs_11jacknifeError, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10cythonCode_4sirs_11jacknifeError(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_data = 0;
   int __pyx_lineno = 0;
@@ -4160,18 +4160,18 @@ static PyObject *__pyx_pw_4test_4sirs_11jacknifeError(PyObject *__pyx_self, PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("jacknifeError", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 125, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.sirs.jacknifeError", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.jacknifeError", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_4sirs_10jacknifeError(__pyx_self, __pyx_v_self, __pyx_v_data);
+  __pyx_r = __pyx_pf_10cythonCode_4sirs_10jacknifeError(__pyx_self, __pyx_v_self, __pyx_v_data);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_data) {
+static PyObject *__pyx_pf_10cythonCode_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_data) {
   PyObject *__pyx_v_N = NULL;
   Py_ssize_t __pyx_v_length;
   PyObject *__pyx_v_resamples = NULL;
@@ -4195,7 +4195,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("jacknifeError", 0);
 
-  /* "test.pyx":126
+  /* "cythonCode.pyx":126
  * 
  *     def jacknifeError(self,data):
  *         N=self.size*self.size             # <<<<<<<<<<<<<<
@@ -4213,7 +4213,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_v_N = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "test.pyx":128
+  /* "cythonCode.pyx":128
  *         N=self.size*self.size
  *        # resamples = jackknife_resampling(data)
  *         length=len(data)             # <<<<<<<<<<<<<<
@@ -4223,7 +4223,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_t_4 = PyObject_Length(__pyx_v_data); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
   __pyx_v_length = __pyx_t_4;
 
-  /* "test.pyx":129
+  /* "cythonCode.pyx":129
  *        # resamples = jackknife_resampling(data)
  *         length=len(data)
  *         resamples = np.zeros((len(data),len(data)-1))             # <<<<<<<<<<<<<<
@@ -4268,7 +4268,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_v_resamples = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "test.pyx":132
+  /* "cythonCode.pyx":132
  * 
  * 
  *         for i in range(length):             # <<<<<<<<<<<<<<
@@ -4280,7 +4280,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "test.pyx":133
+    /* "cythonCode.pyx":133
  * 
  *         for i in range(length):
  *             resamples[i] = np.delete(data,i)             # <<<<<<<<<<<<<<
@@ -4345,7 +4345,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "test.pyx":136
+  /* "cythonCode.pyx":136
  * 
  * 
  *         x_resamples = np.zeros((len(data)))             # <<<<<<<<<<<<<<
@@ -4379,7 +4379,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_v_x_resamples = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "test.pyx":137
+  /* "cythonCode.pyx":137
  * 
  *         x_resamples = np.zeros((len(data)))
  *         for i in range(len(resamples)):             # <<<<<<<<<<<<<<
@@ -4391,7 +4391,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "test.pyx":138
+    /* "cythonCode.pyx":138
  *         x_resamples = np.zeros((len(data)))
  *         for i in range(len(resamples)):
  *             x_resamples[i] = np.var(resamples[i])/N             # <<<<<<<<<<<<<<
@@ -4428,7 +4428,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
 
-  /* "test.pyx":140
+  /* "cythonCode.pyx":140
  *             x_resamples[i] = np.var(resamples[i])/N
  * 
  *         v = np.var(data)/N             # <<<<<<<<<<<<<<
@@ -4461,7 +4461,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_v_v = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "test.pyx":141
+  /* "cythonCode.pyx":141
  * 
  *         v = np.var(data)/N
  *         result=0             # <<<<<<<<<<<<<<
@@ -4471,7 +4471,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_result = __pyx_int_0;
 
-  /* "test.pyx":143
+  /* "cythonCode.pyx":143
  *         result=0
  * 
  *         for i in range(len(x_resamples)):             # <<<<<<<<<<<<<<
@@ -4483,7 +4483,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "test.pyx":144
+    /* "cythonCode.pyx":144
  * 
  *         for i in range(len(x_resamples)):
  *             result+=(x_resamples[i]-v)**2             # <<<<<<<<<<<<<<
@@ -4505,7 +4505,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
     __pyx_t_6 = 0;
   }
 
-  /* "test.pyx":147
+  /* "cythonCode.pyx":147
  * 
  * 
  *         return np.sqrt(result)             # <<<<<<<<<<<<<<
@@ -4537,7 +4537,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "test.pyx":125
+  /* "cythonCode.pyx":125
  * 
  * 
  *     def jacknifeError(self,data):             # <<<<<<<<<<<<<<
@@ -4552,7 +4552,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("test.sirs.jacknifeError", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.sirs.jacknifeError", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_N);
@@ -4565,7 +4565,7 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "test.pyx":149
+/* "cythonCode.pyx":149
  *         return np.sqrt(result)
  * 
  * def animate(int size,int sweeps,double pS,double pI,double pR):             # <<<<<<<<<<<<<<
@@ -4574,10 +4574,10 @@ static PyObject *__pyx_pf_4test_4sirs_10jacknifeError(CYTHON_UNUSED PyObject *__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_1animate(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4test_animate[] = "\n    pink = sus\n    black= infected\n    white = rec\n    ";
-static PyMethodDef __pyx_mdef_4test_1animate = {"animate", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_1animate, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4test_animate};
-static PyObject *__pyx_pw_4test_1animate(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_1animate(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_10cythonCode_animate[] = "\n    pink = sus\n    black= infected\n    white = rec\n    ";
+static PyMethodDef __pyx_mdef_10cythonCode_1animate = {"animate", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_1animate, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10cythonCode_animate};
+static PyObject *__pyx_pw_10cythonCode_1animate(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_sweeps;
   double __pyx_v_pS;
@@ -4661,18 +4661,18 @@ static PyObject *__pyx_pw_4test_1animate(PyObject *__pyx_self, PyObject *__pyx_a
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("animate", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 149, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.animate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.animate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_animate(__pyx_self, __pyx_v_size, __pyx_v_sweeps, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR);
+  __pyx_r = __pyx_pf_10cythonCode_animate(__pyx_self, __pyx_v_size, __pyx_v_sweeps, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR) {
+static PyObject *__pyx_pf_10cythonCode_animate(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR) {
   PyObject *__pyx_v_model = NULL;
   PyObject *__pyx_v_cMap = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_im = NULL;
@@ -4696,7 +4696,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("animate", 0);
 
-  /* "test.pyx":158
+  /* "cythonCode.pyx":158
  * 
  *     #need a switch case here for glider and blinker
  *     model = sirs(size,pS,pI,pR)             # <<<<<<<<<<<<<<
@@ -4775,7 +4775,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_v_model = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":159
+  /* "cythonCode.pyx":159
  *     #need a switch case here for glider and blinker
  *     model = sirs(size,pS,pI,pR)
  *     cMap='magma'             # <<<<<<<<<<<<<<
@@ -4785,7 +4785,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_INCREF(__pyx_n_u_magma);
   __pyx_v_cMap = __pyx_n_u_magma;
 
-  /* "test.pyx":160
+  /* "cythonCode.pyx":160
  *     model = sirs(size,pS,pI,pR)
  *     cMap='magma'
  *     im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)             # <<<<<<<<<<<<<<
@@ -4818,7 +4818,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_v_im = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "test.pyx":161
+  /* "cythonCode.pyx":161
  *     cMap='magma'
  *     im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
  *     plt.draw()             # <<<<<<<<<<<<<<
@@ -4847,7 +4847,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "test.pyx":162
+  /* "cythonCode.pyx":162
  *     im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
  *     plt.draw()
  *     plt.pause(0.0001)             # <<<<<<<<<<<<<<
@@ -4876,7 +4876,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "test.pyx":163
+  /* "cythonCode.pyx":163
  *     plt.draw()
  *     plt.pause(0.0001)
  *     for i in range(sweeps):             # <<<<<<<<<<<<<<
@@ -4931,7 +4931,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "test.pyx":164
+    /* "cythonCode.pyx":164
  *     plt.pause(0.0001)
  *     for i in range(sweeps):
  *         model.update()             # <<<<<<<<<<<<<<
@@ -4957,7 +4957,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "test.pyx":165
+    /* "cythonCode.pyx":165
  *     for i in range(sweeps):
  *         model.update()
  *         plt.cla()             # <<<<<<<<<<<<<<
@@ -4986,7 +4986,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "test.pyx":166
+    /* "cythonCode.pyx":166
  *         model.update()
  *         plt.cla()
  *         im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)             # <<<<<<<<<<<<<<
@@ -5019,7 +5019,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF_SET(__pyx_v_im, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "test.pyx":167
+    /* "cythonCode.pyx":167
  *         plt.cla()
  *         im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
  *         plt.draw()             # <<<<<<<<<<<<<<
@@ -5048,7 +5048,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "test.pyx":168
+    /* "cythonCode.pyx":168
  *         im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
  *         plt.draw()
  *         plt.pause(0.0001)             # <<<<<<<<<<<<<<
@@ -5077,7 +5077,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "test.pyx":169
+    /* "cythonCode.pyx":169
  *         plt.draw()
  *         plt.pause(0.0001)
  *         if(i%1000==0):             # <<<<<<<<<<<<<<
@@ -5093,7 +5093,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_12) {
 
-      /* "test.pyx":170
+      /* "cythonCode.pyx":170
  *         plt.pause(0.0001)
  *         if(i%1000==0):
  *             print(i)             # <<<<<<<<<<<<<<
@@ -5104,7 +5104,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "test.pyx":169
+      /* "cythonCode.pyx":169
  *         plt.draw()
  *         plt.pause(0.0001)
  *         if(i%1000==0):             # <<<<<<<<<<<<<<
@@ -5113,7 +5113,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
     }
 
-    /* "test.pyx":171
+    /* "cythonCode.pyx":171
  *         if(i%1000==0):
  *             print(i)
  *         if(model.infected==0):             # <<<<<<<<<<<<<<
@@ -5129,7 +5129,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_12) {
 
-      /* "test.pyx":172
+      /* "cythonCode.pyx":172
  *             print(i)
  *         if(model.infected==0):
  *             print(f"Infected = 0 at {i}")             # <<<<<<<<<<<<<<
@@ -5146,7 +5146,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "test.pyx":171
+      /* "cythonCode.pyx":171
  *         if(i%1000==0):
  *             print(i)
  *         if(model.infected==0):             # <<<<<<<<<<<<<<
@@ -5155,7 +5155,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
     }
 
-    /* "test.pyx":163
+    /* "cythonCode.pyx":163
  *     plt.draw()
  *     plt.pause(0.0001)
  *     for i in range(sweeps):             # <<<<<<<<<<<<<<
@@ -5165,7 +5165,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "test.pyx":174
+  /* "cythonCode.pyx":174
  *             print(f"Infected = 0 at {i}")
  * 
  *     plt.show()             # <<<<<<<<<<<<<<
@@ -5194,7 +5194,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "test.pyx":149
+  /* "cythonCode.pyx":149
  *         return np.sqrt(result)
  * 
  * def animate(int size,int sweeps,double pS,double pI,double pR):             # <<<<<<<<<<<<<<
@@ -5214,7 +5214,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("test.animate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.animate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_model);
@@ -5226,7 +5226,7 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
   return __pyx_r;
 }
 
-/* "test.pyx":178
+/* "cythonCode.pyx":178
  * 
  * 
  * def task3(int size):             # <<<<<<<<<<<<<<
@@ -5235,9 +5235,9 @@ static PyObject *__pyx_pf_4test_animate(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_3task3(PyObject *__pyx_self, PyObject *__pyx_arg_size); /*proto*/
-static PyMethodDef __pyx_mdef_4test_3task3 = {"task3", (PyCFunction)__pyx_pw_4test_3task3, METH_O, 0};
-static PyObject *__pyx_pw_4test_3task3(PyObject *__pyx_self, PyObject *__pyx_arg_size) {
+static PyObject *__pyx_pw_10cythonCode_3task3(PyObject *__pyx_self, PyObject *__pyx_arg_size); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_3task3 = {"task3", (PyCFunction)__pyx_pw_10cythonCode_3task3, METH_O, 0};
+static PyObject *__pyx_pw_10cythonCode_3task3(PyObject *__pyx_self, PyObject *__pyx_arg_size) {
   int __pyx_v_size;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -5250,18 +5250,18 @@ static PyObject *__pyx_pw_4test_3task3(PyObject *__pyx_self, PyObject *__pyx_arg
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.task3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_2task3(__pyx_self, ((int)__pyx_v_size));
+  __pyx_r = __pyx_pf_10cythonCode_2task3(__pyx_self, ((int)__pyx_v_size));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size) {
+static PyObject *__pyx_pf_10cythonCode_2task3(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size) {
   int __pyx_v_N;
   int __pyx_v_counter;
   int __pyx_v_infected;
@@ -5302,7 +5302,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("task3", 0);
 
-  /* "test.pyx":185
+  /* "cythonCode.pyx":185
  *     p1. p3. averageInfected averageofSq variance
  *     '''
  *     p2=0.5             # <<<<<<<<<<<<<<
@@ -5311,7 +5311,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_p2 = 0.5;
 
-  /* "test.pyx":186
+  /* "cythonCode.pyx":186
  *     '''
  *     p2=0.5
  *     p1s= np.linspace(0,1,21)             # <<<<<<<<<<<<<<
@@ -5329,7 +5329,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_p1s = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":187
+  /* "cythonCode.pyx":187
  *     p2=0.5
  *     p1s= np.linspace(0,1,21)
  *     p3s= np.linspace(0,1,21)             # <<<<<<<<<<<<<<
@@ -5347,7 +5347,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_p3s = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":189
+  /* "cythonCode.pyx":189
  *     p3s= np.linspace(0,1,21)
  *     #maybe I only save average infected and varaince
  *     allArray = np.zeros((21*21,4))             # <<<<<<<<<<<<<<
@@ -5377,7 +5377,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_allArray = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":190
+  /* "cythonCode.pyx":190
  *     #maybe I only save average infected and varaince
  *     allArray = np.zeros((21*21,4))
  *     N=size*size             # <<<<<<<<<<<<<<
@@ -5386,7 +5386,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_N = (__pyx_v_size * __pyx_v_size);
 
-  /* "test.pyx":191
+  /* "cythonCode.pyx":191
  *     allArray = np.zeros((21*21,4))
  *     N=size*size
  *     t1=time.time()             # <<<<<<<<<<<<<<
@@ -5416,7 +5416,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_t1 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":192
+  /* "cythonCode.pyx":192
  *     N=size*size
  *     t1=time.time()
  *     counter =0             # <<<<<<<<<<<<<<
@@ -5425,7 +5425,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_counter = 0;
 
-  /* "test.pyx":193
+  /* "cythonCode.pyx":193
  *     t1=time.time()
  *     counter =0
  *     for i in range(21):             # <<<<<<<<<<<<<<
@@ -5435,7 +5435,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   for (__pyx_t_4 = 0; __pyx_t_4 < 21; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "test.pyx":194
+    /* "cythonCode.pyx":194
  *     counter =0
  *     for i in range(21):
  *         print(i)             # <<<<<<<<<<<<<<
@@ -5449,7 +5449,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":195
+    /* "cythonCode.pyx":195
  *     for i in range(21):
  *         print(i)
  *         start=time.time()             # <<<<<<<<<<<<<<
@@ -5479,7 +5479,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "test.pyx":197
+    /* "cythonCode.pyx":197
  *         start=time.time()
  * 
  *         for j in range(21):             # <<<<<<<<<<<<<<
@@ -5489,7 +5489,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
     for (__pyx_t_5 = 0; __pyx_t_5 < 21; __pyx_t_5+=1) {
       __pyx_v_j = __pyx_t_5;
 
-      /* "test.pyx":199
+      /* "cythonCode.pyx":199
  *         for j in range(21):
  * 
  *             model = sirs(size,p1s[i],p2,p3s[j])             # <<<<<<<<<<<<<<
@@ -5568,7 +5568,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_model, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "test.pyx":200
+      /* "cythonCode.pyx":200
  * 
  *             model = sirs(size,p1s[i],p2,p3s[j])
  *             infectedRate=[]             # <<<<<<<<<<<<<<
@@ -5580,7 +5580,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_infectedRate, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "test.pyx":201
+      /* "cythonCode.pyx":201
  *             model = sirs(size,p1s[i],p2,p3s[j])
  *             infectedRate=[]
  *             for n in range(1000):             # <<<<<<<<<<<<<<
@@ -5590,7 +5590,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       for (__pyx_t_12 = 0; __pyx_t_12 < 0x3E8; __pyx_t_12+=1) {
         __pyx_v_n = __pyx_t_12;
 
-        /* "test.pyx":202
+        /* "cythonCode.pyx":202
  *             infectedRate=[]
  *             for n in range(1000):
  *                 model.update()             # <<<<<<<<<<<<<<
@@ -5616,7 +5616,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "test.pyx":203
+        /* "cythonCode.pyx":203
  *             for n in range(1000):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -5626,7 +5626,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
         __pyx_t_13 = ((__pyx_v_n >= 0x64) != 0);
         if (__pyx_t_13) {
 
-          /* "test.pyx":204
+          /* "cythonCode.pyx":204
  *                 model.update()
  *                 if(n>=100):
  *                     infected = model.infected             # <<<<<<<<<<<<<<
@@ -5639,7 +5639,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_v_infected = __pyx_t_10;
 
-          /* "test.pyx":205
+          /* "cythonCode.pyx":205
  *                 if(n>=100):
  *                     infected = model.infected
  *                     infectedRate.append(infected)             # <<<<<<<<<<<<<<
@@ -5651,7 +5651,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_14 = __Pyx_PyObject_Append(__pyx_v_infectedRate, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "test.pyx":206
+          /* "cythonCode.pyx":206
  *                     infected = model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -5661,7 +5661,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_13 = ((__pyx_v_infected == 0) != 0);
           if (__pyx_t_13) {
 
-            /* "test.pyx":207
+            /* "cythonCode.pyx":207
  *                     infectedRate.append(infected)
  *                     if(infected==0):
  *                         break             # <<<<<<<<<<<<<<
@@ -5670,7 +5670,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
             goto __pyx_L8_break;
 
-            /* "test.pyx":206
+            /* "cythonCode.pyx":206
  *                     infected = model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -5679,7 +5679,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
           }
 
-          /* "test.pyx":203
+          /* "cythonCode.pyx":203
  *             for n in range(1000):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -5690,7 +5690,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L8_break:;
 
-      /* "test.pyx":208
+      /* "cythonCode.pyx":208
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -5700,7 +5700,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       __pyx_t_13 = ((__pyx_v_infected == 0) != 0);
       if (__pyx_t_13) {
 
-        /* "test.pyx":209
+        /* "cythonCode.pyx":209
  *                         break
  *             if(infected==0):
  *                 averageInfected=0             # <<<<<<<<<<<<<<
@@ -5709,7 +5709,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
         __pyx_v_averageInfected = 0.0;
 
-        /* "test.pyx":210
+        /* "cythonCode.pyx":210
  *             if(infected==0):
  *                 averageInfected=0
  *                 variance=0             # <<<<<<<<<<<<<<
@@ -5718,7 +5718,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
         __pyx_v_variance = 0.0;
 
-        /* "test.pyx":208
+        /* "cythonCode.pyx":208
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -5728,7 +5728,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
         goto __pyx_L11;
       }
 
-      /* "test.pyx":212
+      /* "cythonCode.pyx":212
  *                 variance=0
  *             else:
  *                 infectedRate=np.asarray(infectedRate)             # <<<<<<<<<<<<<<
@@ -5759,7 +5759,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
         __Pyx_DECREF_SET(__pyx_v_infectedRate, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "test.pyx":213
+        /* "cythonCode.pyx":213
  *             else:
  *                 infectedRate=np.asarray(infectedRate)
  *                 variance = np.var((infectedRate))/N             # <<<<<<<<<<<<<<
@@ -5796,7 +5796,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_v_variance = __pyx_t_15;
 
-        /* "test.pyx":214
+        /* "cythonCode.pyx":214
  *                 infectedRate=np.asarray(infectedRate)
  *                 variance = np.var((infectedRate))/N
  *                 averageInfected = np.mean(infectedRate)/N             # <<<<<<<<<<<<<<
@@ -5835,7 +5835,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L11:;
 
-      /* "test.pyx":215
+      /* "cythonCode.pyx":215
  *                 variance = np.var((infectedRate))/N
  *                 averageInfected = np.mean(infectedRate)/N
  *             allArray[counter]=[p1s[i],p3s[j],averageInfected,variance]             # <<<<<<<<<<<<<<
@@ -5867,7 +5867,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       if (unlikely(__Pyx_SetItemInt(__pyx_v_allArray, __pyx_v_counter, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "test.pyx":216
+      /* "cythonCode.pyx":216
  *                 averageInfected = np.mean(infectedRate)/N
  *             allArray[counter]=[p1s[i],p3s[j],averageInfected,variance]
  *             counter+=1             # <<<<<<<<<<<<<<
@@ -5877,7 +5877,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
       __pyx_v_counter = (__pyx_v_counter + 1);
     }
 
-    /* "test.pyx":217
+    /* "cythonCode.pyx":217
  *             allArray[counter]=[p1s[i],p3s[j],averageInfected,variance]
  *             counter+=1
  *         print(f"Finished {i} in time {time.time()-start}s")             # <<<<<<<<<<<<<<
@@ -5946,7 +5946,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
 
-  /* "test.pyx":220
+  /* "cythonCode.pyx":220
  * 
  * 
  *     print(f"time taken = {time.time()-t1}")             # <<<<<<<<<<<<<<
@@ -5987,7 +5987,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":221
+  /* "cythonCode.pyx":221
  * 
  *     print(f"time taken = {time.time()-t1}")
  *     np.savetxt("data/Task3ProcessedData.dat",allArray,fmt='%.7f')             # <<<<<<<<<<<<<<
@@ -6017,7 +6017,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "test.pyx":178
+  /* "cythonCode.pyx":178
  * 
  * 
  * def task3(int size):             # <<<<<<<<<<<<<<
@@ -6037,7 +6037,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("test.task3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_p1s);
@@ -6052,7 +6052,7 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
   return __pyx_r;
 }
 
-/* "test.pyx":224
+/* "cythonCode.pyx":224
  * 
  * 
  * def calculateVariance(data):             # <<<<<<<<<<<<<<
@@ -6061,20 +6061,20 @@ static PyObject *__pyx_pf_4test_2task3(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_5calculateVariance(PyObject *__pyx_self, PyObject *__pyx_v_data); /*proto*/
-static PyMethodDef __pyx_mdef_4test_5calculateVariance = {"calculateVariance", (PyCFunction)__pyx_pw_4test_5calculateVariance, METH_O, 0};
-static PyObject *__pyx_pw_4test_5calculateVariance(PyObject *__pyx_self, PyObject *__pyx_v_data) {
+static PyObject *__pyx_pw_10cythonCode_5calculateVariance(PyObject *__pyx_self, PyObject *__pyx_v_data); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_5calculateVariance = {"calculateVariance", (PyCFunction)__pyx_pw_10cythonCode_5calculateVariance, METH_O, 0};
+static PyObject *__pyx_pw_10cythonCode_5calculateVariance(PyObject *__pyx_self, PyObject *__pyx_v_data) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("calculateVariance (wrapper)", 0);
-  __pyx_r = __pyx_pf_4test_4calculateVariance(__pyx_self, ((PyObject *)__pyx_v_data));
+  __pyx_r = __pyx_pf_10cythonCode_4calculateVariance(__pyx_self, ((PyObject *)__pyx_v_data));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data) {
+static PyObject *__pyx_pf_10cythonCode_4calculateVariance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data) {
   PyObject *__pyx_v_meanSq = NULL;
   PyObject *__pyx_v_squareMean = NULL;
   PyObject *__pyx_r = NULL;
@@ -6092,7 +6092,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculateVariance", 0);
 
-  /* "test.pyx":225
+  /* "cythonCode.pyx":225
  * 
  * def calculateVariance(data):
  *     meanSq = np.mean(np.square(data))             # <<<<<<<<<<<<<<
@@ -6143,7 +6143,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_meanSq = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":226
+  /* "cythonCode.pyx":226
  * def calculateVariance(data):
  *     meanSq = np.mean(np.square(data))
  *     squareMean = np.square(np.mean(data))             # <<<<<<<<<<<<<<
@@ -6194,7 +6194,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_squareMean = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":227
+  /* "cythonCode.pyx":227
  *     meanSq = np.mean(np.square(data))
  *     squareMean = np.square(np.mean(data))
  *     print(f"Mean square ={meanSq}  squareMean ={squareMean} ")             # <<<<<<<<<<<<<<
@@ -6239,7 +6239,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":228
+  /* "cythonCode.pyx":228
  *     squareMean = np.square(np.mean(data))
  *     print(f"Mean square ={meanSq}  squareMean ={squareMean} ")
  *     return (np.mean(np.square(data))-(np.square(np.mean(data))))             # <<<<<<<<<<<<<<
@@ -6337,7 +6337,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "test.pyx":224
+  /* "cythonCode.pyx":224
  * 
  * 
  * def calculateVariance(data):             # <<<<<<<<<<<<<<
@@ -6353,7 +6353,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("test.calculateVariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.calculateVariance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_meanSq);
@@ -6363,7 +6363,7 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "test.pyx":230
+/* "cythonCode.pyx":230
  *     return (np.mean(np.square(data))-(np.square(np.mean(data))))
  * 
  * def task4(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -6372,10 +6372,10 @@ static PyObject *__pyx_pf_4test_4calculateVariance(CYTHON_UNUSED PyObject *__pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_7task4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4test_6task4[] = "\n    so I plot x axis = p1s\n    y axmis = varance?\n    ";
-static PyMethodDef __pyx_mdef_4test_7task4 = {"task4", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_7task4, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4test_6task4};
-static PyObject *__pyx_pw_4test_7task4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_7task4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_10cythonCode_6task4[] = "\n    so I plot x axis = p1s\n    y axmis = varance?\n    ";
+static PyMethodDef __pyx_mdef_10cythonCode_7task4 = {"task4", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_7task4, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10cythonCode_6task4};
+static PyObject *__pyx_pw_10cythonCode_7task4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_sweeps;
   int __pyx_lineno = 0;
@@ -6426,18 +6426,18 @@ static PyObject *__pyx_pw_4test_7task4(PyObject *__pyx_self, PyObject *__pyx_arg
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("task4", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 230, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.task4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_6task4(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
+  __pyx_r = __pyx_pf_10cythonCode_6task4(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
+static PyObject *__pyx_pf_10cythonCode_6task4(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
   PyObject *__pyx_v_fileName = NULL;
   int __pyx_v_infected;
   int __pyx_v_i;
@@ -6481,7 +6481,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("task4", 0);
 
-  /* "test.pyx":235
+  /* "cythonCode.pyx":235
  *     y axmis = varance?
  *     '''
  *     fileName = input("Enter teh name of the file")             # <<<<<<<<<<<<<<
@@ -6493,7 +6493,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_fileName = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":236
+  /* "cythonCode.pyx":236
  *     '''
  *     fileName = input("Enter teh name of the file")
  *     print(fileName)             # <<<<<<<<<<<<<<
@@ -6504,7 +6504,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":239
+  /* "cythonCode.pyx":239
  *     cdef int infected,i,name,N
  *     cdef double t1,p3,p2,variance,vError,start
  *     t1=time.time()             # <<<<<<<<<<<<<<
@@ -6535,7 +6535,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_t1 = __pyx_t_4;
 
-  /* "test.pyx":240
+  /* "cythonCode.pyx":240
  *     cdef double t1,p3,p2,variance,vError,start
  *     t1=time.time()
  *     p3=0.5             # <<<<<<<<<<<<<<
@@ -6544,7 +6544,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_p3 = 0.5;
 
-  /* "test.pyx":241
+  /* "cythonCode.pyx":241
  *     t1=time.time()
  *     p3=0.5
  *     p2=0.5             # <<<<<<<<<<<<<<
@@ -6553,7 +6553,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_p2 = 0.5;
 
-  /* "test.pyx":242
+  /* "cythonCode.pyx":242
  *     p3=0.5
  *     p2=0.5
  *     p1s=np.linspace(0.2,0.5,31)             # <<<<<<<<<<<<<<
@@ -6571,7 +6571,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_p1s = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":243
+  /* "cythonCode.pyx":243
  *     p2=0.5
  *     p1s=np.linspace(0.2,0.5,31)
  *     N=size*size             # <<<<<<<<<<<<<<
@@ -6580,7 +6580,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_N = (__pyx_v_size * __pyx_v_size);
 
-  /* "test.pyx":244
+  /* "cythonCode.pyx":244
  *     p1s=np.linspace(0.2,0.5,31)
  *     N=size*size
  *     allArray = np.zeros((len(p1s),1))             # <<<<<<<<<<<<<<
@@ -6622,7 +6622,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_allArray = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":246
+  /* "cythonCode.pyx":246
  *     allArray = np.zeros((len(p1s),1))
  * 
  *     for s in range(1):             # <<<<<<<<<<<<<<
@@ -6632,7 +6632,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   for (__pyx_t_7 = 0; __pyx_t_7 < 1; __pyx_t_7+=1) {
     __pyx_v_s = __pyx_t_7;
 
-    /* "test.pyx":247
+    /* "cythonCode.pyx":247
  * 
  *     for s in range(1):
  *         print(f"Starting {s}")             # <<<<<<<<<<<<<<
@@ -6649,7 +6649,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "test.pyx":248
+    /* "cythonCode.pyx":248
  *     for s in range(1):
  *         print(f"Starting {s}")
  *         for i in range(len(p1s)):             # <<<<<<<<<<<<<<
@@ -6661,7 +6661,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
     for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "test.pyx":249
+      /* "cythonCode.pyx":249
  *         print(f"Starting {s}")
  *         for i in range(len(p1s)):
  *             start = time.time()             # <<<<<<<<<<<<<<
@@ -6692,7 +6692,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_start = __pyx_t_4;
 
-      /* "test.pyx":251
+      /* "cythonCode.pyx":251
  *             start = time.time()
  * 
  *             model = sirs(size,p1s[i],p2,p3)             # <<<<<<<<<<<<<<
@@ -6771,7 +6771,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_model, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "test.pyx":252
+      /* "cythonCode.pyx":252
  * 
  *             model = sirs(size,p1s[i],p2,p3)
  *             infectedRate=[]             # <<<<<<<<<<<<<<
@@ -6783,7 +6783,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_infectedRate, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "test.pyx":253
+      /* "cythonCode.pyx":253
  *             model = sirs(size,p1s[i],p2,p3)
  *             infectedRate=[]
  *             for n in range(sweeps):             # <<<<<<<<<<<<<<
@@ -6795,7 +6795,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_n = __pyx_t_16;
 
-        /* "test.pyx":254
+        /* "cythonCode.pyx":254
  *             infectedRate=[]
  *             for n in range(sweeps):
  *                 model.update()             # <<<<<<<<<<<<<<
@@ -6821,7 +6821,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "test.pyx":255
+        /* "cythonCode.pyx":255
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -6831,7 +6831,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
         __pyx_t_17 = ((__pyx_v_n >= 0x64) != 0);
         if (__pyx_t_17) {
 
-          /* "test.pyx":256
+          /* "cythonCode.pyx":256
  *                 model.update()
  *                 if(n>=100):
  *                     infected=model.infected             # <<<<<<<<<<<<<<
@@ -6844,7 +6844,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_v_infected = __pyx_t_18;
 
-          /* "test.pyx":257
+          /* "cythonCode.pyx":257
  *                 if(n>=100):
  *                     infected=model.infected
  *                     infectedRate.append(infected)             # <<<<<<<<<<<<<<
@@ -6856,7 +6856,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_infectedRate, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 257, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "test.pyx":258
+          /* "cythonCode.pyx":258
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -6866,7 +6866,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
           if (__pyx_t_17) {
 
-            /* "test.pyx":259
+            /* "cythonCode.pyx":259
  *                     infectedRate.append(infected)
  *                     if(infected==0):
  *                         break             # <<<<<<<<<<<<<<
@@ -6875,7 +6875,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
             goto __pyx_L8_break;
 
-            /* "test.pyx":258
+            /* "cythonCode.pyx":258
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -6884,7 +6884,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
           }
 
-          /* "test.pyx":255
+          /* "cythonCode.pyx":255
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -6895,7 +6895,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L8_break:;
 
-      /* "test.pyx":260
+      /* "cythonCode.pyx":260
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -6905,7 +6905,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
       if (__pyx_t_17) {
 
-        /* "test.pyx":261
+        /* "cythonCode.pyx":261
  *                         break
  *             if(infected==0):
  *                 variance=0             # <<<<<<<<<<<<<<
@@ -6914,7 +6914,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
         __pyx_v_variance = 0.0;
 
-        /* "test.pyx":260
+        /* "cythonCode.pyx":260
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -6924,7 +6924,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
         goto __pyx_L11;
       }
 
-      /* "test.pyx":263
+      /* "cythonCode.pyx":263
  *                 variance=0
  *             else:
  *                 variance=np.var(infectedRate)/N             # <<<<<<<<<<<<<<
@@ -6964,7 +6964,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L11:;
 
-      /* "test.pyx":265
+      /* "cythonCode.pyx":265
  *                 variance=np.var(infectedRate)/N
  * 
  *             allArray[i,s]=variance             # <<<<<<<<<<<<<<
@@ -6989,7 +6989,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "test.pyx":266
+      /* "cythonCode.pyx":266
  * 
  *             allArray[i,s]=variance
  *             print(f"Time for {s} {i} at time = {time.time()-start}")             # <<<<<<<<<<<<<<
@@ -7068,7 +7068,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
     }
   }
 
-  /* "test.pyx":268
+  /* "cythonCode.pyx":268
  *             print(f"Time for {s} {i} at time = {time.time()-start}")
  * 
  *     np.savetxt(f"data/Task4_RawData{fileName}.dat",np.transpose(allArray),fmt='%.6f')             # <<<<<<<<<<<<<<
@@ -7140,7 +7140,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":276
+  /* "cythonCode.pyx":276
  *     #combined = np.array((p1s,finalArray,errors))
  *     #np.savetxt("data/Task4_ProcessedData.dat",np.transpose(combined),fmt='%.6f')
  *     print("DONEEE")             # <<<<<<<<<<<<<<
@@ -7151,7 +7151,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":230
+  /* "cythonCode.pyx":230
  *     return (np.mean(np.square(data))-(np.square(np.mean(data))))
  * 
  * def task4(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -7171,7 +7171,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("test.task4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_fileName);
@@ -7184,7 +7184,7 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
   return __pyx_r;
 }
 
-/* "test.pyx":278
+/* "cythonCode.pyx":278
  *     print("DONEEE")
  * 
  * def task5(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -7193,10 +7193,10 @@ static PyObject *__pyx_pf_4test_6task4(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_9task5(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4test_8task5[] = "\n    1000-10,000\n    y-axis is avg infected\n    x axis is avg immune\n    ";
-static PyMethodDef __pyx_mdef_4test_9task5 = {"task5", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_9task5, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4test_8task5};
-static PyObject *__pyx_pw_4test_9task5(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_9task5(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_10cythonCode_8task5[] = "\n    1000-10,000\n    y-axis is avg infected\n    x axis is avg immune\n    ";
+static PyMethodDef __pyx_mdef_10cythonCode_9task5 = {"task5", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_9task5, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10cythonCode_8task5};
+static PyObject *__pyx_pw_10cythonCode_9task5(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_sweeps;
   int __pyx_lineno = 0;
@@ -7247,18 +7247,18 @@ static PyObject *__pyx_pw_4test_9task5(PyObject *__pyx_self, PyObject *__pyx_arg
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("task5", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 278, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.task5", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task5", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_8task5(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
+  __pyx_r = __pyx_pf_10cythonCode_8task5(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
+static PyObject *__pyx_pf_10cythonCode_8task5(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
   double __pyx_v_p1;
   double __pyx_v_p2;
   double __pyx_v_p3;
@@ -7303,7 +7303,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("task5", 0);
 
-  /* "test.pyx":286
+  /* "cythonCode.pyx":286
  *     cdef double p1,p2,p3,t1
  *     cdef int precision,N,infected,s,i,n,times
  *     times=1             # <<<<<<<<<<<<<<
@@ -7312,7 +7312,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_times = 1;
 
-  /* "test.pyx":287
+  /* "cythonCode.pyx":287
  *     cdef int precision,N,infected,s,i,n,times
  *     times=1
  *     name = input("Enter file name")             # <<<<<<<<<<<<<<
@@ -7324,7 +7324,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_name = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":288
+  /* "cythonCode.pyx":288
  *     times=1
  *     name = input("Enter file name")
  *     p1=p2=p3=0.5             # <<<<<<<<<<<<<<
@@ -7335,7 +7335,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_p2 = 0.5;
   __pyx_v_p3 = 0.5;
 
-  /* "test.pyx":289
+  /* "cythonCode.pyx":289
  *     name = input("Enter file name")
  *     p1=p2=p3=0.5
  *     pImmune = np.linspace(0,1,101)             # <<<<<<<<<<<<<<
@@ -7353,7 +7353,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_pImmune = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":290
+  /* "cythonCode.pyx":290
  *     p1=p2=p3=0.5
  *     pImmune = np.linspace(0,1,101)
  *     precision = len(pImmune)             # <<<<<<<<<<<<<<
@@ -7363,7 +7363,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_t_3 = PyObject_Length(__pyx_v_pImmune); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 290, __pyx_L1_error)
   __pyx_v_precision = __pyx_t_3;
 
-  /* "test.pyx":291
+  /* "cythonCode.pyx":291
  *     pImmune = np.linspace(0,1,101)
  *     precision = len(pImmune)
  *     N=size*size             # <<<<<<<<<<<<<<
@@ -7372,7 +7372,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   __pyx_v_N = (__pyx_v_size * __pyx_v_size);
 
-  /* "test.pyx":292
+  /* "cythonCode.pyx":292
  *     precision = len(pImmune)
  *     N=size*size
  *     infectionArray = np.zeros((precision,times))             # <<<<<<<<<<<<<<
@@ -7415,7 +7415,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_v_infectionArray = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":293
+  /* "cythonCode.pyx":293
  *     N=size*size
  *     infectionArray = np.zeros((precision,times))
  *     for s in range(times):             # <<<<<<<<<<<<<<
@@ -7427,7 +7427,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_s = __pyx_t_9;
 
-    /* "test.pyx":294
+    /* "cythonCode.pyx":294
  *     infectionArray = np.zeros((precision,times))
  *     for s in range(times):
  *         for i in range(len(pImmune)):             # <<<<<<<<<<<<<<
@@ -7439,7 +7439,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
     for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
       __pyx_v_i = __pyx_t_11;
 
-      /* "test.pyx":295
+      /* "cythonCode.pyx":295
  *     for s in range(times):
  *         for i in range(len(pImmune)):
  *             print(pImmune[i])             # <<<<<<<<<<<<<<
@@ -7453,7 +7453,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "test.pyx":296
+      /* "cythonCode.pyx":296
  *         for i in range(len(pImmune)):
  *             print(pImmune[i])
  *             t1=time.time()             # <<<<<<<<<<<<<<
@@ -7484,7 +7484,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_t1 = __pyx_t_12;
 
-      /* "test.pyx":298
+      /* "cythonCode.pyx":298
  *             t1=time.time()
  * 
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])             # <<<<<<<<<<<<<<
@@ -7530,7 +7530,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_model, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "test.pyx":299
+      /* "cythonCode.pyx":299
  * 
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])
  *             infectedRate=[]             # <<<<<<<<<<<<<<
@@ -7542,7 +7542,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       __Pyx_XDECREF_SET(__pyx_v_infectedRate, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":300
+      /* "cythonCode.pyx":300
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])
  *             infectedRate=[]
  *             for n in range(sweeps):             # <<<<<<<<<<<<<<
@@ -7554,7 +7554,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_n = __pyx_t_16;
 
-        /* "test.pyx":301
+        /* "cythonCode.pyx":301
  *             infectedRate=[]
  *             for n in range(sweeps):
  *                 model.update()             # <<<<<<<<<<<<<<
@@ -7580,7 +7580,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "test.pyx":302
+        /* "cythonCode.pyx":302
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -7590,7 +7590,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
         __pyx_t_17 = ((__pyx_v_n >= 0x64) != 0);
         if (__pyx_t_17) {
 
-          /* "test.pyx":303
+          /* "cythonCode.pyx":303
  *                 model.update()
  *                 if(n>=100):
  *                     infected=model.infected             # <<<<<<<<<<<<<<
@@ -7603,7 +7603,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_v_infected = __pyx_t_18;
 
-          /* "test.pyx":304
+          /* "cythonCode.pyx":304
  *                 if(n>=100):
  *                     infected=model.infected
  *                     infectedRate.append(infected)             # <<<<<<<<<<<<<<
@@ -7615,7 +7615,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_infectedRate, __pyx_t_5); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 304, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "test.pyx":305
+          /* "cythonCode.pyx":305
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -7625,7 +7625,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
           __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
           if (__pyx_t_17) {
 
-            /* "test.pyx":306
+            /* "cythonCode.pyx":306
  *                     infectedRate.append(infected)
  *                     if(infected==0):
  *                         break             # <<<<<<<<<<<<<<
@@ -7634,7 +7634,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
             goto __pyx_L8_break;
 
-            /* "test.pyx":305
+            /* "cythonCode.pyx":305
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -7643,7 +7643,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
           }
 
-          /* "test.pyx":302
+          /* "cythonCode.pyx":302
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -7654,7 +7654,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L8_break:;
 
-      /* "test.pyx":307
+      /* "cythonCode.pyx":307
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -7664,7 +7664,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
       if (__pyx_t_17) {
 
-        /* "test.pyx":308
+        /* "cythonCode.pyx":308
  *                         break
  *             if(infected==0):
  *                 infectionArray[i,s]=0             # <<<<<<<<<<<<<<
@@ -7686,7 +7686,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
         if (unlikely(PyObject_SetItem(__pyx_v_infectionArray, __pyx_t_13, __pyx_int_0) < 0)) __PYX_ERR(0, 308, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-        /* "test.pyx":307
+        /* "cythonCode.pyx":307
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -7696,7 +7696,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
         goto __pyx_L11;
       }
 
-      /* "test.pyx":310
+      /* "cythonCode.pyx":310
  *                 infectionArray[i,s]=0
  *             else:
  *                 infectionArray[i,s]=np.mean(infectedRate)/N             # <<<<<<<<<<<<<<
@@ -7748,7 +7748,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
       }
       __pyx_L11:;
 
-      /* "test.pyx":311
+      /* "cythonCode.pyx":311
  *             else:
  *                 infectionArray[i,s]=np.mean(infectedRate)/N
  *             print(f"Time taken {i} == {time.time()-t1}s")             # <<<<<<<<<<<<<<
@@ -7821,7 +7821,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
     }
   }
 
-  /* "test.pyx":313
+  /* "cythonCode.pyx":313
  *             print(f"Time taken {i} == {time.time()-t1}s")
  * 
  *     np.savetxt(f"data/task5/Task5_RawData{name}.dat",infectionArray,fmt='%.6f')             # <<<<<<<<<<<<<<
@@ -7873,7 +7873,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "test.pyx":278
+  /* "cythonCode.pyx":278
  *     print("DONEEE")
  * 
  * def task5(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -7891,7 +7891,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("test.task5", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task5", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_name);
@@ -7904,7 +7904,7 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
   return __pyx_r;
 }
 
-/* "test.pyx":322
+/* "cythonCode.pyx":322
  *     #combined = np.array((pImmune,finalArray,errors))
  * 
  * def task7(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -7913,10 +7913,10 @@ static PyObject *__pyx_pf_4test_8task5(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_11task7(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4test_10task7[] = "\n    1000-10,000\n    y-axis is avg infected\n    x axis is avg immune\n    ";
-static PyMethodDef __pyx_mdef_4test_11task7 = {"task7", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_11task7, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4test_10task7};
-static PyObject *__pyx_pw_4test_11task7(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_11task7(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_10cythonCode_10task7[] = "\n    1000-10,000\n    y-axis is avg infected\n    x axis is avg immune\n    ";
+static PyMethodDef __pyx_mdef_10cythonCode_11task7 = {"task7", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_11task7, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10cythonCode_10task7};
+static PyObject *__pyx_pw_10cythonCode_11task7(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_sweeps;
   int __pyx_lineno = 0;
@@ -7967,18 +7967,18 @@ static PyObject *__pyx_pw_4test_11task7(PyObject *__pyx_self, PyObject *__pyx_ar
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("task7", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 322, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.task7", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task7", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_10task7(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
+  __pyx_r = __pyx_pf_10cythonCode_10task7(__pyx_self, __pyx_v_size, __pyx_v_sweeps);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
+static PyObject *__pyx_pf_10cythonCode_10task7(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps) {
   double __pyx_v_p1;
   double __pyx_v_p2;
   double __pyx_v_p3;
@@ -8023,7 +8023,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("task7", 0);
 
-  /* "test.pyx":330
+  /* "cythonCode.pyx":330
  *     cdef double p1,p2,p3,t1
  *     cdef int precision,N,infected,s,i,n
  *     p1=0.8             # <<<<<<<<<<<<<<
@@ -8032,7 +8032,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_p1 = 0.8;
 
-  /* "test.pyx":331
+  /* "cythonCode.pyx":331
  *     cdef int precision,N,infected,s,i,n
  *     p1=0.8
  *     p2=0.1             # <<<<<<<<<<<<<<
@@ -8041,7 +8041,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_p2 = 0.1;
 
-  /* "test.pyx":332
+  /* "cythonCode.pyx":332
  *     p1=0.8
  *     p2=0.1
  *     p3=0.02             # <<<<<<<<<<<<<<
@@ -8050,7 +8050,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_p3 = 0.02;
 
-  /* "test.pyx":333
+  /* "cythonCode.pyx":333
  *     p2=0.1
  *     p3=0.02
  *     size=100             # <<<<<<<<<<<<<<
@@ -8059,7 +8059,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_size = 0x64;
 
-  /* "test.pyx":334
+  /* "cythonCode.pyx":334
  *     p3=0.02
  *     size=100
  *     times=1             # <<<<<<<<<<<<<<
@@ -8068,7 +8068,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_times = 1;
 
-  /* "test.pyx":335
+  /* "cythonCode.pyx":335
  *     size=100
  *     times=1
  *     name = input("Enter file name")             # <<<<<<<<<<<<<<
@@ -8080,7 +8080,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_v_name = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":336
+  /* "cythonCode.pyx":336
  *     times=1
  *     name = input("Enter file name")
  *     pImmune = np.linspace(0,1,101)             # <<<<<<<<<<<<<<
@@ -8098,7 +8098,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_v_pImmune = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":337
+  /* "cythonCode.pyx":337
  *     name = input("Enter file name")
  *     pImmune = np.linspace(0,1,101)
  *     precision = len(pImmune)             # <<<<<<<<<<<<<<
@@ -8108,7 +8108,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_t_3 = PyObject_Length(__pyx_v_pImmune); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 337, __pyx_L1_error)
   __pyx_v_precision = __pyx_t_3;
 
-  /* "test.pyx":338
+  /* "cythonCode.pyx":338
  *     pImmune = np.linspace(0,1,101)
  *     precision = len(pImmune)
  *     N=size*size             # <<<<<<<<<<<<<<
@@ -8117,7 +8117,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
   __pyx_v_N = (__pyx_v_size * __pyx_v_size);
 
-  /* "test.pyx":339
+  /* "cythonCode.pyx":339
  *     precision = len(pImmune)
  *     N=size*size
  *     infectionArray = np.zeros((precision,times))             # <<<<<<<<<<<<<<
@@ -8160,7 +8160,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __pyx_v_infectionArray = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":340
+  /* "cythonCode.pyx":340
  *     N=size*size
  *     infectionArray = np.zeros((precision,times))
  *     for s in range(times):             # <<<<<<<<<<<<<<
@@ -8172,7 +8172,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_s = __pyx_t_9;
 
-    /* "test.pyx":341
+    /* "cythonCode.pyx":341
  *     infectionArray = np.zeros((precision,times))
  *     for s in range(times):
  *         for i in range(len(pImmune)):             # <<<<<<<<<<<<<<
@@ -8184,7 +8184,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
     for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
       __pyx_v_i = __pyx_t_11;
 
-      /* "test.pyx":342
+      /* "cythonCode.pyx":342
  *     for s in range(times):
  *         for i in range(len(pImmune)):
  *             print(pImmune[i])             # <<<<<<<<<<<<<<
@@ -8198,7 +8198,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "test.pyx":343
+      /* "cythonCode.pyx":343
  *         for i in range(len(pImmune)):
  *             print(pImmune[i])
  *             t1=time.time()             # <<<<<<<<<<<<<<
@@ -8229,7 +8229,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_t1 = __pyx_t_12;
 
-      /* "test.pyx":345
+      /* "cythonCode.pyx":345
  *             t1=time.time()
  * 
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])             # <<<<<<<<<<<<<<
@@ -8275,7 +8275,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_XDECREF_SET(__pyx_v_model, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "test.pyx":346
+      /* "cythonCode.pyx":346
  * 
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])
  *             infectedRate=[]             # <<<<<<<<<<<<<<
@@ -8287,7 +8287,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       __Pyx_XDECREF_SET(__pyx_v_infectedRate, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":347
+      /* "cythonCode.pyx":347
  *             model=sirs(size,p1,p2,p3,isImmune=True,immuneProbability=pImmune[i])
  *             infectedRate=[]
  *             for n in range(sweeps):             # <<<<<<<<<<<<<<
@@ -8299,7 +8299,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_n = __pyx_t_16;
 
-        /* "test.pyx":348
+        /* "cythonCode.pyx":348
  *             infectedRate=[]
  *             for n in range(sweeps):
  *                 model.update()             # <<<<<<<<<<<<<<
@@ -8325,7 +8325,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "test.pyx":349
+        /* "cythonCode.pyx":349
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -8335,7 +8335,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
         __pyx_t_17 = ((__pyx_v_n >= 0x64) != 0);
         if (__pyx_t_17) {
 
-          /* "test.pyx":350
+          /* "cythonCode.pyx":350
  *                 model.update()
  *                 if(n>=100):
  *                     infected=model.infected             # <<<<<<<<<<<<<<
@@ -8348,7 +8348,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_v_infected = __pyx_t_18;
 
-          /* "test.pyx":351
+          /* "cythonCode.pyx":351
  *                 if(n>=100):
  *                     infected=model.infected
  *                     infectedRate.append(infected)             # <<<<<<<<<<<<<<
@@ -8360,7 +8360,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
           __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_infectedRate, __pyx_t_5); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 351, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "test.pyx":352
+          /* "cythonCode.pyx":352
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -8370,7 +8370,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
           __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
           if (__pyx_t_17) {
 
-            /* "test.pyx":353
+            /* "cythonCode.pyx":353
  *                     infectedRate.append(infected)
  *                     if(infected==0):
  *                         break             # <<<<<<<<<<<<<<
@@ -8379,7 +8379,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
             goto __pyx_L8_break;
 
-            /* "test.pyx":352
+            /* "cythonCode.pyx":352
  *                     infected=model.infected
  *                     infectedRate.append(infected)
  *                     if(infected==0):             # <<<<<<<<<<<<<<
@@ -8388,7 +8388,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
           }
 
-          /* "test.pyx":349
+          /* "cythonCode.pyx":349
  *             for n in range(sweeps):
  *                 model.update()
  *                 if(n>=100):             # <<<<<<<<<<<<<<
@@ -8399,7 +8399,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       }
       __pyx_L8_break:;
 
-      /* "test.pyx":354
+      /* "cythonCode.pyx":354
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -8409,7 +8409,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       __pyx_t_17 = ((__pyx_v_infected == 0) != 0);
       if (__pyx_t_17) {
 
-        /* "test.pyx":355
+        /* "cythonCode.pyx":355
  *                         break
  *             if(infected==0):
  *                 infectionArray[i,s]=0             # <<<<<<<<<<<<<<
@@ -8431,7 +8431,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
         if (unlikely(PyObject_SetItem(__pyx_v_infectionArray, __pyx_t_13, __pyx_int_0) < 0)) __PYX_ERR(0, 355, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-        /* "test.pyx":354
+        /* "cythonCode.pyx":354
  *                     if(infected==0):
  *                         break
  *             if(infected==0):             # <<<<<<<<<<<<<<
@@ -8441,7 +8441,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
         goto __pyx_L11;
       }
 
-      /* "test.pyx":357
+      /* "cythonCode.pyx":357
  *                 infectionArray[i,s]=0
  *             else:
  *                 infectionArray[i,s]=np.mean(infectedRate)/N             # <<<<<<<<<<<<<<
@@ -8493,7 +8493,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
       }
       __pyx_L11:;
 
-      /* "test.pyx":358
+      /* "cythonCode.pyx":358
  *             else:
  *                 infectionArray[i,s]=np.mean(infectedRate)/N
  *             print(f"Time taken {i} == {time.time()-t1}s")             # <<<<<<<<<<<<<<
@@ -8566,7 +8566,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
     }
   }
 
-  /* "test.pyx":360
+  /* "cythonCode.pyx":360
  *             print(f"Time taken {i} == {time.time()-t1}s")
  * 
  *     np.savetxt(f"data/task7/Task7_RawData{name}.dat",infectionArray,fmt='%.6f')             # <<<<<<<<<<<<<<
@@ -8618,7 +8618,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "test.pyx":322
+  /* "cythonCode.pyx":322
  *     #combined = np.array((pImmune,finalArray,errors))
  * 
  * def task7(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -8636,7 +8636,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("test.task7", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.task7", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_name);
@@ -8649,7 +8649,7 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
   return __pyx_r;
 }
 
-/* "test.pyx":379
+/* "cythonCode.pyx":379
  * 
  * 
  * def pltContour():             # <<<<<<<<<<<<<<
@@ -8658,20 +8658,20 @@ static PyObject *__pyx_pf_4test_10task7(CYTHON_UNUSED PyObject *__pyx_self, int 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_13pltContour(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_4test_13pltContour = {"pltContour", (PyCFunction)__pyx_pw_4test_13pltContour, METH_NOARGS, 0};
-static PyObject *__pyx_pw_4test_13pltContour(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_10cythonCode_13pltContour(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_13pltContour = {"pltContour", (PyCFunction)__pyx_pw_10cythonCode_13pltContour, METH_NOARGS, 0};
+static PyObject *__pyx_pw_10cythonCode_13pltContour(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("pltContour (wrapper)", 0);
-  __pyx_r = __pyx_pf_4test_12pltContour(__pyx_self);
+  __pyx_r = __pyx_pf_10cythonCode_12pltContour(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_10cythonCode_12pltContour(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_array = NULL;
   PyObject *__pyx_v_p1s = NULL;
   PyObject *__pyx_v_p3s = NULL;
@@ -8693,7 +8693,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pltContour", 0);
 
-  /* "test.pyx":380
+  /* "cythonCode.pyx":380
  * 
  * def pltContour():
  *     array = np.loadtxt("data/task32.dat")             # <<<<<<<<<<<<<<
@@ -8723,7 +8723,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_array = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":381
+  /* "cythonCode.pyx":381
  * def pltContour():
  *     array = np.loadtxt("data/task32.dat")
  *     p1s=array[:,0]             # <<<<<<<<<<<<<<
@@ -8735,7 +8735,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_p1s = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":382
+  /* "cythonCode.pyx":382
  *     array = np.loadtxt("data/task32.dat")
  *     p1s=array[:,0]
  *     p3s=array[:,1]             # <<<<<<<<<<<<<<
@@ -8747,7 +8747,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_p3s = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":383
+  /* "cythonCode.pyx":383
  *     p1s=array[:,0]
  *     p3s=array[:,1]
  *     infected = array[:,2]             # <<<<<<<<<<<<<<
@@ -8759,7 +8759,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_infected = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":384
+  /* "cythonCode.pyx":384
  *     p3s=array[:,1]
  *     infected = array[:,2]
  *     variance = array[:,3]             # <<<<<<<<<<<<<<
@@ -8771,7 +8771,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_variance = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "test.pyx":386
+  /* "cythonCode.pyx":386
  *     variance = array[:,3]
  * 
  *     print(f"Lengh.  p1s={p1s.size}  p2s={p3s.size} infected={len(infected)}")             # <<<<<<<<<<<<<<
@@ -8829,7 +8829,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":387
+  /* "cythonCode.pyx":387
  * 
  *     print(f"Lengh.  p1s={p1s.size}  p2s={p3s.size} infected={len(infected)}")
  *     p1s = p1s.reshape((21,21))             # <<<<<<<<<<<<<<
@@ -8856,7 +8856,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_p1s, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":388
+  /* "cythonCode.pyx":388
  *     print(f"Lengh.  p1s={p1s.size}  p2s={p3s.size} infected={len(infected)}")
  *     p1s = p1s.reshape((21,21))
  *     p3s=p3s.reshape((21,21))             # <<<<<<<<<<<<<<
@@ -8883,7 +8883,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_p3s, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":389
+  /* "cythonCode.pyx":389
  *     p1s = p1s.reshape((21,21))
  *     p3s=p3s.reshape((21,21))
  *     infected = infected.reshape((21,21))             # <<<<<<<<<<<<<<
@@ -8910,7 +8910,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_infected, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":390
+  /* "cythonCode.pyx":390
  *     p3s=p3s.reshape((21,21))
  *     infected = infected.reshape((21,21))
  *     variance = variance.reshape((21,21))             # <<<<<<<<<<<<<<
@@ -8937,7 +8937,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_variance, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":392
+  /* "cythonCode.pyx":392
  *     variance = variance.reshape((21,21))
  * 
  *     plt.figure()             # <<<<<<<<<<<<<<
@@ -8966,7 +8966,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":394
+  /* "cythonCode.pyx":394
  *     plt.figure()
  *   #  CS=plt.contour(p1s,p3s,infected)
  *     CS=plt.contourf(p1s,p3s,infected,cmap='magma')             # <<<<<<<<<<<<<<
@@ -9000,7 +9000,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_CS = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "test.pyx":396
+  /* "cythonCode.pyx":396
  *     CS=plt.contourf(p1s,p3s,infected,cmap='magma')
  *     #plt.clabel(CS,fontsize=8,colors='k')
  *     cbar=plt.colorbar(CS)             # <<<<<<<<<<<<<<
@@ -9030,7 +9030,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_v_cbar = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "test.pyx":397
+  /* "cythonCode.pyx":397
  *     #plt.clabel(CS,fontsize=8,colors='k')
  *     cbar=plt.colorbar(CS)
  *     plt.xticks(np.linspace(0,1,11))             # <<<<<<<<<<<<<<
@@ -9068,7 +9068,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":398
+  /* "cythonCode.pyx":398
  *     cbar=plt.colorbar(CS)
  *     plt.xticks(np.linspace(0,1,11))
  *     plt.yticks(np.linspace(0,1,11))             # <<<<<<<<<<<<<<
@@ -9106,7 +9106,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":400
+  /* "cythonCode.pyx":400
  *     plt.yticks(np.linspace(0,1,11))
  * 
  *     plt.xlabel("P1")             # <<<<<<<<<<<<<<
@@ -9135,7 +9135,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":401
+  /* "cythonCode.pyx":401
  * 
  *     plt.xlabel("P1")
  *     plt.ylabel("P3")             # <<<<<<<<<<<<<<
@@ -9164,7 +9164,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":402
+  /* "cythonCode.pyx":402
  *     plt.xlabel("P1")
  *     plt.ylabel("P3")
  *     plt.title("Average infected of p1-p3 plane")             # <<<<<<<<<<<<<<
@@ -9193,7 +9193,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":403
+  /* "cythonCode.pyx":403
  *     plt.ylabel("P3")
  *     plt.title("Average infected of p1-p3 plane")
  *     plt.savefig("figures/infectedContour.png")             # <<<<<<<<<<<<<<
@@ -9222,7 +9222,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":404
+  /* "cythonCode.pyx":404
  *     plt.title("Average infected of p1-p3 plane")
  *     plt.savefig("figures/infectedContour.png")
  *     plt.show()             # <<<<<<<<<<<<<<
@@ -9251,7 +9251,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":408
+  /* "cythonCode.pyx":408
  *     #plt.cla()
  * 
  *     plt.figure()             # <<<<<<<<<<<<<<
@@ -9280,7 +9280,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "test.pyx":410
+  /* "cythonCode.pyx":410
  *     plt.figure()
  *   #  CS=plt.contour(p1s,p3s,infected)
  *     CS=plt.contourf(p1s,p3s,variance,cmap='magma')             # <<<<<<<<<<<<<<
@@ -9314,7 +9314,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_CS, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "test.pyx":412
+  /* "cythonCode.pyx":412
  *     CS=plt.contourf(p1s,p3s,variance,cmap='magma')
  *     #plt.clabel(CS,fontsize=8,colors='k')
  *     cbar=plt.colorbar(CS)             # <<<<<<<<<<<<<<
@@ -9344,7 +9344,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF_SET(__pyx_v_cbar, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "test.pyx":413
+  /* "cythonCode.pyx":413
  *     #plt.clabel(CS,fontsize=8,colors='k')
  *     cbar=plt.colorbar(CS)
  *     plt.xticks(np.linspace(0,1,11))             # <<<<<<<<<<<<<<
@@ -9382,7 +9382,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":414
+  /* "cythonCode.pyx":414
  *     cbar=plt.colorbar(CS)
  *     plt.xticks(np.linspace(0,1,11))
  *     plt.yticks(np.linspace(0,1,11))             # <<<<<<<<<<<<<<
@@ -9420,7 +9420,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":416
+  /* "cythonCode.pyx":416
  *     plt.yticks(np.linspace(0,1,11))
  * 
  *     plt.xlabel("P1")             # <<<<<<<<<<<<<<
@@ -9449,7 +9449,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":417
+  /* "cythonCode.pyx":417
  * 
  *     plt.xlabel("P1")
  *     plt.ylabel("P3")             # <<<<<<<<<<<<<<
@@ -9478,7 +9478,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":418
+  /* "cythonCode.pyx":418
  *     plt.xlabel("P1")
  *     plt.ylabel("P3")
  *     plt.title("Scaled variance of p1-p3 plane")             # <<<<<<<<<<<<<<
@@ -9507,7 +9507,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":419
+  /* "cythonCode.pyx":419
  *     plt.ylabel("P3")
  *     plt.title("Scaled variance of p1-p3 plane")
  *     plt.savefig("figures/varianceContour.png")             # <<<<<<<<<<<<<<
@@ -9536,7 +9536,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":420
+  /* "cythonCode.pyx":420
  *     plt.title("Scaled variance of p1-p3 plane")
  *     plt.savefig("figures/varianceContour.png")
  *     plt.show()             # <<<<<<<<<<<<<<
@@ -9565,7 +9565,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":379
+  /* "cythonCode.pyx":379
  * 
  * 
  * def pltContour():             # <<<<<<<<<<<<<<
@@ -9581,7 +9581,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("test.pltContour", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.pltContour", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_array);
@@ -9596,7 +9596,7 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
   return __pyx_r;
 }
 
-/* "test.pyx":422
+/* "cythonCode.pyx":422
  *     plt.show()
  * 
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):             # <<<<<<<<<<<<<<
@@ -9605,9 +9605,9 @@ static PyObject *__pyx_pf_4test_12pltContour(CYTHON_UNUSED PyObject *__pyx_self)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4test_15main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_4test_15main = {"main", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4test_15main, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4test_15main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10cythonCode_15main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10cythonCode_15main = {"main", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10cythonCode_15main, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10cythonCode_15main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_sweeps;
   double __pyx_v_pS;
@@ -9732,18 +9732,18 @@ static PyObject *__pyx_pw_4test_15main(PyObject *__pyx_self, PyObject *__pyx_arg
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("main", 0, 5, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 422, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("test.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4test_14main(__pyx_self, __pyx_v_size, __pyx_v_sweeps, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR, __pyx_v_runAnim, __pyx_v_genData, __pyx_v_task5DO);
+  __pyx_r = __pyx_pf_10cythonCode_14main(__pyx_self, __pyx_v_size, __pyx_v_sweeps, __pyx_v_pS, __pyx_v_pI, __pyx_v_pR, __pyx_v_runAnim, __pyx_v_genData, __pyx_v_task5DO);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_runAnim, PyObject *__pyx_v_genData, PyObject *__pyx_v_task5DO) {
+static PyObject *__pyx_pf_10cythonCode_14main(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_size, int __pyx_v_sweeps, double __pyx_v_pS, double __pyx_v_pI, double __pyx_v_pR, PyObject *__pyx_v_runAnim, PyObject *__pyx_v_genData, PyObject *__pyx_v_task5DO) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -9762,7 +9762,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "test.pyx":424
+  /* "cythonCode.pyx":424
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):
  * 
  *     if(runAnim):             # <<<<<<<<<<<<<<
@@ -9772,7 +9772,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_runAnim); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 424, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "test.pyx":425
+    /* "cythonCode.pyx":425
  * 
  *     if(runAnim):
  *         animate(size,sweeps,pS,pI,pR)             # <<<<<<<<<<<<<<
@@ -9857,7 +9857,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":424
+    /* "cythonCode.pyx":424
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):
  * 
  *     if(runAnim):             # <<<<<<<<<<<<<<
@@ -9866,7 +9866,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   }
 
-  /* "test.pyx":426
+  /* "cythonCode.pyx":426
  *     if(runAnim):
  *         animate(size,sweeps,pS,pI,pR)
  *     if(genData):             # <<<<<<<<<<<<<<
@@ -9876,7 +9876,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_genData); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 426, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "test.pyx":427
+    /* "cythonCode.pyx":427
  *         animate(size,sweeps,pS,pI,pR)
  *     if(genData):
  *         task3(size)             # <<<<<<<<<<<<<<
@@ -9905,7 +9905,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":426
+    /* "cythonCode.pyx":426
  *     if(runAnim):
  *         animate(size,sweeps,pS,pI,pR)
  *     if(genData):             # <<<<<<<<<<<<<<
@@ -9914,7 +9914,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   }
 
-  /* "test.pyx":428
+  /* "cythonCode.pyx":428
  *     if(genData):
  *         task3(size)
  *     if(task5DO):             # <<<<<<<<<<<<<<
@@ -9924,7 +9924,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_task5DO); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 428, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "test.pyx":429
+    /* "cythonCode.pyx":429
  *         task3(size)
  *     if(task5DO):
  *         task5(size,sweeps,"hello")             # <<<<<<<<<<<<<<
@@ -9990,7 +9990,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "test.pyx":428
+    /* "cythonCode.pyx":428
  *     if(genData):
  *         task3(size)
  *     if(task5DO):             # <<<<<<<<<<<<<<
@@ -9999,7 +9999,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
  */
   }
 
-  /* "test.pyx":430
+  /* "cythonCode.pyx":430
  *     if(task5DO):
  *         task5(size,sweeps,"hello")
  *     pltContour()             # <<<<<<<<<<<<<<
@@ -10023,7 +10023,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":422
+  /* "cythonCode.pyx":422
  *     plt.show()
  * 
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):             # <<<<<<<<<<<<<<
@@ -10044,7 +10044,7 @@ static PyObject *__pyx_pf_4test_14main(CYTHON_UNUSED PyObject *__pyx_self, int _
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("test.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cythonCode.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -10059,17 +10059,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_test(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_cythonCode(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_test},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_cythonCode},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "test",
+    "cythonCode",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -10140,6 +10140,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_colors, __pyx_k_colors, sizeof(__pyx_k_colors), 0, 0, 1, 1},
   {&__pyx_n_s_contourf, __pyx_k_contourf, sizeof(__pyx_k_contourf), 0, 0, 1, 1},
   {&__pyx_n_s_counter, __pyx_k_counter, sizeof(__pyx_k_counter), 0, 0, 1, 1},
+  {&__pyx_n_s_cythonCode, __pyx_k_cythonCode, sizeof(__pyx_k_cythonCode), 0, 0, 1, 1},
+  {&__pyx_kp_s_cythonCode_pyx, __pyx_k_cythonCode_pyx, sizeof(__pyx_k_cythonCode_pyx), 0, 0, 1, 0},
   {&__pyx_kp_u_dat, __pyx_k_dat, sizeof(__pyx_k_dat), 0, 1, 0, 0},
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_kp_u_data_Task3ProcessedData_dat, __pyx_k_data_Task3ProcessedData_dat, sizeof(__pyx_k_data_Task3ProcessedData_dat), 0, 1, 0, 0},
@@ -10261,8 +10263,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_task5DO, __pyx_k_task5DO, sizeof(__pyx_k_task5DO), 0, 0, 1, 1},
   {&__pyx_n_s_task7, __pyx_k_task7, sizeof(__pyx_k_task7), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_test_2, __pyx_k_test_2, sizeof(__pyx_k_test_2), 0, 0, 1, 1},
-  {&__pyx_kp_s_test_pyx, __pyx_k_test_pyx, sizeof(__pyx_k_test_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
   {&__pyx_kp_u_time_taken, __pyx_k_time_taken, sizeof(__pyx_k_time_taken), 0, 1, 0, 0},
   {&__pyx_n_s_times, __pyx_k_times, sizeof(__pyx_k_times), 0, 0, 1, 1},
@@ -10300,7 +10300,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "test.pyx":186
+  /* "cythonCode.pyx":186
  *     '''
  *     p2=0.5
  *     p1s= np.linspace(0,1,21)             # <<<<<<<<<<<<<<
@@ -10311,7 +10311,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "test.pyx":189
+  /* "cythonCode.pyx":189
  *     p3s= np.linspace(0,1,21)
  *     #maybe I only save average infected and varaince
  *     allArray = np.zeros((21*21,4))             # <<<<<<<<<<<<<<
@@ -10322,7 +10322,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "test.pyx":235
+  /* "cythonCode.pyx":235
  *     y axmis = varance?
  *     '''
  *     fileName = input("Enter teh name of the file")             # <<<<<<<<<<<<<<
@@ -10333,7 +10333,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "test.pyx":242
+  /* "cythonCode.pyx":242
  *     p3=0.5
  *     p2=0.5
  *     p1s=np.linspace(0.2,0.5,31)             # <<<<<<<<<<<<<<
@@ -10344,7 +10344,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "test.pyx":276
+  /* "cythonCode.pyx":276
  *     #combined = np.array((p1s,finalArray,errors))
  *     #np.savetxt("data/Task4_ProcessedData.dat",np.transpose(combined),fmt='%.6f')
  *     print("DONEEE")             # <<<<<<<<<<<<<<
@@ -10355,7 +10355,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "test.pyx":287
+  /* "cythonCode.pyx":287
  *     cdef int precision,N,infected,s,i,n,times
  *     times=1
  *     name = input("Enter file name")             # <<<<<<<<<<<<<<
@@ -10366,7 +10366,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "test.pyx":289
+  /* "cythonCode.pyx":289
  *     name = input("Enter file name")
  *     p1=p2=p3=0.5
  *     pImmune = np.linspace(0,1,101)             # <<<<<<<<<<<<<<
@@ -10377,7 +10377,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "test.pyx":381
+  /* "cythonCode.pyx":381
  * def pltContour():
  *     array = np.loadtxt("data/task32.dat")
  *     p1s=array[:,0]             # <<<<<<<<<<<<<<
@@ -10391,7 +10391,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "test.pyx":382
+  /* "cythonCode.pyx":382
  *     array = np.loadtxt("data/task32.dat")
  *     p1s=array[:,0]
  *     p3s=array[:,1]             # <<<<<<<<<<<<<<
@@ -10402,7 +10402,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "test.pyx":383
+  /* "cythonCode.pyx":383
  *     p1s=array[:,0]
  *     p3s=array[:,1]
  *     infected = array[:,2]             # <<<<<<<<<<<<<<
@@ -10413,7 +10413,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "test.pyx":384
+  /* "cythonCode.pyx":384
  *     p3s=array[:,1]
  *     infected = array[:,2]
  *     variance = array[:,3]             # <<<<<<<<<<<<<<
@@ -10424,7 +10424,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "test.pyx":387
+  /* "cythonCode.pyx":387
  * 
  *     print(f"Lengh.  p1s={p1s.size}  p2s={p3s.size} infected={len(infected)}")
  *     p1s = p1s.reshape((21,21))             # <<<<<<<<<<<<<<
@@ -10435,7 +10435,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "test.pyx":397
+  /* "cythonCode.pyx":397
  *     #plt.clabel(CS,fontsize=8,colors='k')
  *     cbar=plt.colorbar(CS)
  *     plt.xticks(np.linspace(0,1,11))             # <<<<<<<<<<<<<<
@@ -10446,7 +10446,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
-  /* "test.pyx":13
+  /* "cythonCode.pyx":13
  * import random
  * import sys
  * matplotlib.use('TKAgg')             # <<<<<<<<<<<<<<
@@ -10457,7 +10457,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "test.pyx":15
+  /* "cythonCode.pyx":15
  * matplotlib.use('TKAgg')
  * 
  * class sirs(object):             # <<<<<<<<<<<<<<
@@ -10468,7 +10468,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "test.pyx":16
+  /* "cythonCode.pyx":16
  * 
  * class sirs(object):
  *     def __init__(self,int size,double pS,double pI,double pR, isImmune = False,double immuneProbability=0):             # <<<<<<<<<<<<<<
@@ -10478,9 +10478,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__20 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_size, __pyx_n_s_pS, __pyx_n_s_pI, __pyx_n_s_pR, __pyx_n_s_isImmune, __pyx_n_s_immuneProbability); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(7, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_init, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(7, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_init, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "test.pyx":34
+  /* "cythonCode.pyx":34
  *             self.setRandom()
  * 
  *     def setRandom(self):             # <<<<<<<<<<<<<<
@@ -10490,9 +10490,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__22 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_counter, __pyx_n_s_r, __pyx_n_s_i, __pyx_n_s_j); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_setRandom, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_setRandom, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 34, __pyx_L1_error)
 
-  /* "test.pyx":50
+  /* "cythonCode.pyx":50
  *         self.infected=counter
  * 
  *     def setImmune(self,double immuneProbability):             # <<<<<<<<<<<<<<
@@ -10502,9 +10502,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__24 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_immuneProbability, __pyx_n_s_pRest, __pyx_n_s_r, __pyx_n_s_infectedCounter, __pyx_n_s_immuneCounter, __pyx_n_s_i, __pyx_n_s_j); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_setImmune, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_setImmune, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 50, __pyx_L1_error)
 
-  /* "test.pyx":75
+  /* "cythonCode.pyx":75
  * 
  * 
  *     def nearestNeighboursInfected(self,int i,int j):             # <<<<<<<<<<<<<<
@@ -10514,9 +10514,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__26 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_size, __pyx_n_s_top, __pyx_n_s_bot, __pyx_n_s_left, __pyx_n_s_right); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_nearestNeighboursInfected, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_nearestNeighboursInfected, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 75, __pyx_L1_error)
 
-  /* "test.pyx":90
+  /* "cythonCode.pyx":90
  *         return False
  * 
  *     def update(self):             # <<<<<<<<<<<<<<
@@ -10526,9 +10526,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__28 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_iTrial, __pyx_n_s_jTrial, __pyx_n_s_value, __pyx_n_s_infectedCounter, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_r); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_update, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_update, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "test.pyx":125
+  /* "cythonCode.pyx":125
  * 
  * 
  *     def jacknifeError(self,data):             # <<<<<<<<<<<<<<
@@ -10538,9 +10538,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__30 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_data, __pyx_n_s_N, __pyx_n_s_length, __pyx_n_s_resamples, __pyx_n_s_i, __pyx_n_s_x_resamples, __pyx_n_s_v, __pyx_n_s_result); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_jacknifeError, 125, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_jacknifeError, 125, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 125, __pyx_L1_error)
 
-  /* "test.pyx":149
+  /* "cythonCode.pyx":149
  *         return np.sqrt(result)
  * 
  * def animate(int size,int sweeps,double pS,double pI,double pR):             # <<<<<<<<<<<<<<
@@ -10550,9 +10550,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__32 = PyTuple_Pack(9, __pyx_n_s_size, __pyx_n_s_sweeps, __pyx_n_s_pS, __pyx_n_s_pI, __pyx_n_s_pR, __pyx_n_s_model, __pyx_n_s_cMap, __pyx_n_s_im, __pyx_n_s_i); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(5, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_animate, 149, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(5, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_animate, 149, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 149, __pyx_L1_error)
 
-  /* "test.pyx":178
+  /* "cythonCode.pyx":178
  * 
  * 
  * def task3(int size):             # <<<<<<<<<<<<<<
@@ -10562,9 +10562,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__34 = PyTuple_Pack(18, __pyx_n_s_size, __pyx_n_s_size, __pyx_n_s_N, __pyx_n_s_counter, __pyx_n_s_infected, __pyx_n_s_variance, __pyx_n_s_averageInfected, __pyx_n_s_p2, __pyx_n_s_p1s, __pyx_n_s_p3s, __pyx_n_s_allArray, __pyx_n_s_t1, __pyx_n_s_i, __pyx_n_s_start, __pyx_n_s_j, __pyx_n_s_model, __pyx_n_s_infectedRate, __pyx_n_s_n); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_task3, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_task3, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 178, __pyx_L1_error)
 
-  /* "test.pyx":224
+  /* "cythonCode.pyx":224
  * 
  * 
  * def calculateVariance(data):             # <<<<<<<<<<<<<<
@@ -10574,9 +10574,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__36 = PyTuple_Pack(3, __pyx_n_s_data, __pyx_n_s_meanSq, __pyx_n_s_squareMean_2); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_calculateVariance, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_calculateVariance, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 224, __pyx_L1_error)
 
-  /* "test.pyx":230
+  /* "cythonCode.pyx":230
  *     return (np.mean(np.square(data))-(np.square(np.mean(data))))
  * 
  * def task4(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -10586,9 +10586,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__38 = PyTuple_Pack(19, __pyx_n_s_size, __pyx_n_s_sweeps, __pyx_n_s_fileName, __pyx_n_s_infected, __pyx_n_s_i, __pyx_n_s_name_2, __pyx_n_s_N, __pyx_n_s_t1, __pyx_n_s_p3, __pyx_n_s_p2, __pyx_n_s_variance, __pyx_n_s_vError, __pyx_n_s_start, __pyx_n_s_p1s, __pyx_n_s_allArray, __pyx_n_s_s, __pyx_n_s_model, __pyx_n_s_infectedRate, __pyx_n_s_n); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_task4, 230, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_task4, 230, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 230, __pyx_L1_error)
 
-  /* "test.pyx":278
+  /* "cythonCode.pyx":278
  *     print("DONEEE")
  * 
  * def task5(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -10598,9 +10598,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__40 = PyTuple_Pack(18, __pyx_n_s_size, __pyx_n_s_sweeps, __pyx_n_s_p1, __pyx_n_s_p2, __pyx_n_s_p3, __pyx_n_s_t1, __pyx_n_s_precision, __pyx_n_s_N, __pyx_n_s_infected, __pyx_n_s_s, __pyx_n_s_i, __pyx_n_s_n, __pyx_n_s_times, __pyx_n_s_name_2, __pyx_n_s_pImmune, __pyx_n_s_infectionArray, __pyx_n_s_model, __pyx_n_s_infectedRate); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_task5, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_task5, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 278, __pyx_L1_error)
 
-  /* "test.pyx":322
+  /* "cythonCode.pyx":322
  *     #combined = np.array((pImmune,finalArray,errors))
  * 
  * def task7(int size,int sweeps):             # <<<<<<<<<<<<<<
@@ -10610,9 +10610,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__42 = PyTuple_Pack(18, __pyx_n_s_size, __pyx_n_s_sweeps, __pyx_n_s_p1, __pyx_n_s_p2, __pyx_n_s_p3, __pyx_n_s_t1, __pyx_n_s_precision, __pyx_n_s_N, __pyx_n_s_infected, __pyx_n_s_s, __pyx_n_s_i, __pyx_n_s_n, __pyx_n_s_times, __pyx_n_s_name_2, __pyx_n_s_pImmune, __pyx_n_s_infectionArray, __pyx_n_s_model, __pyx_n_s_infectedRate); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_task7, 322, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_task7, 322, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 322, __pyx_L1_error)
 
-  /* "test.pyx":379
+  /* "cythonCode.pyx":379
  * 
  * 
  * def pltContour():             # <<<<<<<<<<<<<<
@@ -10622,9 +10622,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__44 = PyTuple_Pack(7, __pyx_n_s_array, __pyx_n_s_p1s, __pyx_n_s_p3s, __pyx_n_s_infected, __pyx_n_s_variance, __pyx_n_s_CS, __pyx_n_s_cbar); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_pltContour, 379, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_pltContour, 379, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 379, __pyx_L1_error)
 
-  /* "test.pyx":422
+  /* "cythonCode.pyx":422
  *     plt.show()
  * 
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):             # <<<<<<<<<<<<<<
@@ -10634,7 +10634,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__46 = PyTuple_Pack(8, __pyx_n_s_size, __pyx_n_s_sweeps, __pyx_n_s_pS, __pyx_n_s_pI, __pyx_n_s_pR, __pyx_n_s_runAnim, __pyx_n_s_genData, __pyx_n_s_task5DO); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(8, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_main_2, 422, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(8, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonCode_pyx, __pyx_n_s_main_2, 422, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -10747,11 +10747,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC inittest(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC inittest(void)
+__Pyx_PyMODINIT_FUNC initcythonCode(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initcythonCode(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_test(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_test(void)
+__Pyx_PyMODINIT_FUNC PyInit_cythonCode(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_cythonCode(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -10818,7 +10818,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_test(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_cythonCode(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -10833,7 +10833,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_test(PyObject *__pyx_pyinit_module
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'test' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'cythonCode' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -10848,7 +10848,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_test(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_cythonCode(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -10887,7 +10887,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("test", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("cythonCode", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -10905,14 +10905,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_test) {
+  if (__pyx_module_is_main_cythonCode) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "test")) {
-      if (unlikely(PyDict_SetItemString(modules, "test", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "cythonCode")) {
+      if (unlikely(PyDict_SetItemString(modules, "cythonCode", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -10933,7 +10933,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "test.pyx":1
+  /* "cythonCode.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import matplotlib
  * import matplotlib.pyplot as plt
@@ -10943,7 +10943,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":2
+  /* "cythonCode.pyx":2
  * import numpy as np
  * import matplotlib             # <<<<<<<<<<<<<<
  * import matplotlib.pyplot as plt
@@ -10954,7 +10954,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_matplotlib, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":3
+  /* "cythonCode.pyx":3
  * import numpy as np
  * import matplotlib
  * import matplotlib.pyplot as plt             # <<<<<<<<<<<<<<
@@ -10972,7 +10972,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_plt, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":4
+  /* "cythonCode.pyx":4
  * import matplotlib
  * import matplotlib.pyplot as plt
  * import matplotlib.animation as animation             # <<<<<<<<<<<<<<
@@ -10990,7 +10990,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_animation, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":5
+  /* "cythonCode.pyx":5
  * import matplotlib.pyplot as plt
  * import matplotlib.animation as animation
  * from matplotlib import colors             # <<<<<<<<<<<<<<
@@ -11011,7 +11011,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":6
+  /* "cythonCode.pyx":6
  * import matplotlib.animation as animation
  * from matplotlib import colors
  * import matplotlib.patches as mpatches             # <<<<<<<<<<<<<<
@@ -11029,7 +11029,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_mpatches, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":7
+  /* "cythonCode.pyx":7
  * from matplotlib import colors
  * import matplotlib.patches as mpatches
  * from scipy.stats import sem             # <<<<<<<<<<<<<<
@@ -11050,7 +11050,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":10
+  /* "cythonCode.pyx":10
  * 
  * 
  * import time             # <<<<<<<<<<<<<<
@@ -11062,7 +11062,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":11
+  /* "cythonCode.pyx":11
  * 
  * import time
  * import random             # <<<<<<<<<<<<<<
@@ -11074,7 +11074,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":12
+  /* "cythonCode.pyx":12
  * import time
  * import random
  * import sys             # <<<<<<<<<<<<<<
@@ -11086,7 +11086,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":13
+  /* "cythonCode.pyx":13
  * import random
  * import sys
  * matplotlib.use('TKAgg')             # <<<<<<<<<<<<<<
@@ -11103,7 +11103,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":15
+  /* "cythonCode.pyx":15
  * matplotlib.use('TKAgg')
  * 
  * class sirs(object):             # <<<<<<<<<<<<<<
@@ -11112,10 +11112,10 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_tuple__19, __pyx_n_s_sirs, __pyx_n_s_sirs, (PyObject *) NULL, __pyx_n_s_test, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_tuple__19, __pyx_n_s_sirs, __pyx_n_s_sirs, (PyObject *) NULL, __pyx_n_s_cythonCode, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "test.pyx":16
+  /* "cythonCode.pyx":16
  * 
  * class sirs(object):
  *     def __init__(self,int size,double pS,double pI,double pR, isImmune = False,double immuneProbability=0):             # <<<<<<<<<<<<<<
@@ -11132,74 +11132,74 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_1__init__, 0, __pyx_n_s_sirs___init, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_1__init__, 0, __pyx_n_s_sirs___init, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":34
+  /* "cythonCode.pyx":34
  *             self.setRandom()
  * 
  *     def setRandom(self):             # <<<<<<<<<<<<<<
  *         cdef int counter
  *         cdef double r
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_3setRandom, 0, __pyx_n_s_sirs_setRandom, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_3setRandom, 0, __pyx_n_s_sirs_setRandom, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_setRandom, __pyx_t_3) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":50
+  /* "cythonCode.pyx":50
  *         self.infected=counter
  * 
  *     def setImmune(self,double immuneProbability):             # <<<<<<<<<<<<<<
  *         cdef double pRest, r
  *         cdef int infectedCounter,immuneCounter
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_5setImmune, 0, __pyx_n_s_sirs_setImmune, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_5setImmune, 0, __pyx_n_s_sirs_setImmune, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_setImmune, __pyx_t_3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":75
+  /* "cythonCode.pyx":75
  * 
  * 
  *     def nearestNeighboursInfected(self,int i,int j):             # <<<<<<<<<<<<<<
  *         #Here I check if the nearest neighbour is infected or not
  *         #top bot left and right
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_7nearestNeighboursInfected, 0, __pyx_n_s_sirs_nearestNeighboursInfected, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_7nearestNeighboursInfected, 0, __pyx_n_s_sirs_nearestNeighboursInfected, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_nearestNeighboursInfected, __pyx_t_3) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":90
+  /* "cythonCode.pyx":90
  *         return False
  * 
  *     def update(self):             # <<<<<<<<<<<<<<
  *         cdef int iTrial,jTrial,value, infectedCounter
  *         infectedCounter=self.infected
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_9update, 0, __pyx_n_s_sirs_update, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_9update, 0, __pyx_n_s_sirs_update, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_update, __pyx_t_3) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":125
+  /* "cythonCode.pyx":125
  * 
  * 
  *     def jacknifeError(self,data):             # <<<<<<<<<<<<<<
  *         N=self.size*self.size
  *        # resamples = jackknife_resampling(data)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_4test_4sirs_11jacknifeError, 0, __pyx_n_s_sirs_jacknifeError, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10cythonCode_4sirs_11jacknifeError, 0, __pyx_n_s_sirs_jacknifeError, NULL, __pyx_n_s_cythonCode, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_jacknifeError, __pyx_t_3) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":15
+  /* "cythonCode.pyx":15
  * matplotlib.use('TKAgg')
  * 
  * class sirs(object):             # <<<<<<<<<<<<<<
@@ -11213,110 +11213,110 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":149
+  /* "cythonCode.pyx":149
  *         return np.sqrt(result)
  * 
  * def animate(int size,int sweeps,double pS,double pI,double pR):             # <<<<<<<<<<<<<<
  *     '''
  *     pink = sus
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_1animate, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_1animate, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_animate, __pyx_t_2) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":178
+  /* "cythonCode.pyx":178
  * 
  * 
  * def task3(int size):             # <<<<<<<<<<<<<<
  *     cdef int N,counter, infected
  *     cdef double variance, averageInfected,p2
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_3task3, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_3task3, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_task3, __pyx_t_2) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":224
+  /* "cythonCode.pyx":224
  * 
  * 
  * def calculateVariance(data):             # <<<<<<<<<<<<<<
  *     meanSq = np.mean(np.square(data))
  *     squareMean = np.square(np.mean(data))
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_5calculateVariance, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_5calculateVariance, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_calculateVariance, __pyx_t_2) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":230
+  /* "cythonCode.pyx":230
  *     return (np.mean(np.square(data))-(np.square(np.mean(data))))
  * 
  * def task4(int size,int sweeps):             # <<<<<<<<<<<<<<
  *     '''
  *     so I plot x axis = p1s
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_7task4, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_7task4, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_task4, __pyx_t_2) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":278
+  /* "cythonCode.pyx":278
  *     print("DONEEE")
  * 
  * def task5(int size,int sweeps):             # <<<<<<<<<<<<<<
  *     '''
  *     1000-10,000
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_9task5, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_9task5, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_task5, __pyx_t_2) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":322
+  /* "cythonCode.pyx":322
  *     #combined = np.array((pImmune,finalArray,errors))
  * 
  * def task7(int size,int sweeps):             # <<<<<<<<<<<<<<
  *     '''
  *     1000-10,000
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_11task7, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_11task7, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_task7, __pyx_t_2) < 0) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":379
+  /* "cythonCode.pyx":379
  * 
  * 
  * def pltContour():             # <<<<<<<<<<<<<<
  *     array = np.loadtxt("data/task32.dat")
  *     p1s=array[:,0]
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_13pltContour, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_13pltContour, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pltContour, __pyx_t_2) < 0) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":422
+  /* "cythonCode.pyx":422
  *     plt.show()
  * 
  * def main(int size,int sweeps,double pS,double pI,double pR,runAnim=False,genData=False,task5DO=False):             # <<<<<<<<<<<<<<
  * 
  *     if(runAnim):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4test_15main, NULL, __pyx_n_s_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_10cythonCode_15main, NULL, __pyx_n_s_cythonCode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_2) < 0) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":1
+  /* "cythonCode.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import matplotlib
  * import matplotlib.pyplot as plt
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_2, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
@@ -11329,11 +11329,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_4);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init test", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init cythonCode", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init test");
+    PyErr_SetString(PyExc_ImportError, "init cythonCode");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
