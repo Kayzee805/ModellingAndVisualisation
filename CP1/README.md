@@ -1,6 +1,4 @@
-# Modelling and Visualisation in Physics: Check Points
-
-# Need to change below before changing privacy to public
+# Modelling and Visualisation in Physics: Check Point 1
 
 
 ## Initial run
