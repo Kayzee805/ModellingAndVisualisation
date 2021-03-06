@@ -144,6 +144,7 @@ class sirs(object):
                         self.lattice[iTrial,jTrial]=0
                         
                 else:
+                    #its most likely immune so ignore it
                     continue
 
 
@@ -152,60 +153,3 @@ class sirs(object):
 
 
         
-
-'''
-onnly 4 nearest neighbours. top,bot,left and right
-
-1. S-> I if, one of the nn is infected. after 1 update
-2.  I->R if, after x updates? ??
-3. R->S if, after y updates. 
-
-Parrallel Deterministics:
--------------------------
-All  agents are updated at the same time, similar to gol
-so cant have a cell change and affect near by cells
-
-Sequenctial deterministic version:
-----------------------------------
-Agents change turn wise turn, which means that changing one agent can change the 
-outcome of the next agent
-
-Randoms equenctial algorithm:
-------------------------------
-
-1. Pick a random cell in the lattice with uniform probability
-2. Rules:
-    a. S->I, with proability p1 if one nn is infected
-    b. I->R, with probability p2.
-    c. R->S, with probability p3
-
-What are the possible steady states/behaviours?
-
-
-System takes 4 args. e.g. main.py N p1 p2 p3
-
-1. Absorbing state:
-------------------
-    if all cells are S, I=0, nothing happens
-    <fraction of infected cells> = <I>/N. <I> = num of infected cells?
-
-2. Dynamic equilibrium:
------------------------
-Basically repeats?
-<I>/N != 0.  
-but constant over time/ will just fluctuate a tiny bit
-
-p1=p2=p3 does not hold
-
-
-3. Travelling waves of infection spreading:
-------------------------------------------
-
-similar to glider? because of oscillator.
-need n.n to spread infection
-<I>/N !=0 but not constant over time. 
-so waves. 
-
-
-
-'''

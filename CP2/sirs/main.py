@@ -12,7 +12,6 @@ import sys
 matplotlib.use('TKAgg')
 def animate(size,sweeps,pS,pI,pR):
     '''
-    pink = sus
     black= infected
     white = rec
     Animation for the sirs model for the given input.
@@ -27,9 +26,9 @@ def animate(size,sweeps,pS,pI,pR):
         model.update()
         plt.cla()
         im=plt.imshow(model.lattice,cmap=cMap,animated=True,vmin=-1,vmax=1)
-        plt.xlabel("X axis")
-        plt.ylabel("Y axis")
-        plt.title("Animation for SIRS model")
+        # plt.xlabel("X axis")
+        # plt.ylabel("Y axis")
+        # plt.title("Animation for SIRS model")
         plt.pause(0.0001)
         # if(model.infected==0):
         #     print(f"Infected = 0 at {i}")
@@ -446,7 +445,7 @@ def plotAll():
     plt.plot(immuneProbability,task5Infected,color='b')
     plt.errorbar(immuneProbability,task5Infected,yerr=task5Error,ecolor='r')
     plt.xlabel("Immune probability")
-    plt.ylabel("Average infected")
+    plt.ylabel("Infected Fraction")
     plt.title("Immune vs Infected for 50x50 p1=p2=p3=0.5")
     plt.savefig("figures/Task5_50x50.png")
     plt.show()
@@ -462,7 +461,7 @@ def plotAll():
     plt.plot(immuneProbability7,task7Infected,color='b')
     plt.errorbar(immuneProbability7,task7Infected,yerr=task7Error,ecolor='r')
     plt.xlabel("Immune probability")
-    plt.ylabel("Average infected")
+    plt.ylabel("Infected Fraction")
     plt.title("Immune vs Infected for 100x100 p1=0.8,p2=0.1,p3=0.02")
     plt.savefig("figures/Task5_100x100.png")
     plt.show()
