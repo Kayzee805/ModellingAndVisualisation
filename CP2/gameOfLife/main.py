@@ -153,9 +153,10 @@ def getVelocity(allArray):
     xfit,xin = np.polyfit(newT,newX,1)
     yfit,yin = np.polyfit(newT,newY,1)
 
-    #print(f"X velocity = {xfit}\nY velocity = {yfit}")
 
     vel = np.sqrt(xfit**2+yfit**2)
+    print(f"X velocity = {xfit}\nY velocity = {yfit}\nTotal Velocity= {vel}")
+
    # print(f"Total Velocity = {vel}")
     return [xfit,yfit,vel]
 
@@ -223,9 +224,10 @@ if __name__=="__main__":
         generateHistogram(size,sweeps,initialisation)
     elif(toDo==3):
         generateCom(size,sweeps,initialisation)
-        #centreOfMassData = np.loadtxt("data/centreOfMass.dat")
-       # getVelocity(centreOfMassData)
+
     elif(toDo==4):
         plotAll()
     else:
         print("Exiting as invalid input")
+    centreOfMassData = np.loadtxt("data/centreOfMass.dat")
+    getVelocity(centreOfMassData)

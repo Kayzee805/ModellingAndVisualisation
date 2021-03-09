@@ -99,20 +99,17 @@ class sirs(object):
         return False
 
 
-    def isImmune(self,pI):
-        '''
-        not being used rn
-        '''
-        counter=0
-        for i in range(self.size):
-            for j in range(self.size):
-                r = random.random()
-                if(r<=pI):
-                    self.lattice[i,j]=2
-                    counter+=1
-        self.immune=counter
-
     def update(self):
+        '''
+        Keeping a track of the number of infected before updating.
+        Then changing number of infected as that value changes.
+        If immune, just ignore and go to next
+        if susceptible, will check if it has an infected neighbour then the probability check
+        if it doesnt have a neighbour, it just ignores it
+
+        for infected and recovered, it just checks for the probability.
+        Number of infected people is updated in the end.
+        '''
        # counter=0
         infectedCounter =self.infected
         for i in range(self.size):
