@@ -2,7 +2,7 @@ import numpy as np
 from Poisson import poisson
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-
+import time
 #epsilon = 0.01 and 0.001
 
 def monopole(n,method,epsilon):
@@ -12,6 +12,7 @@ def monopole(n,method,epsilon):
 
     if(method=="gauss"):
         model.gaussSeidelUpdate()
+
     else:
         model.jacobiUpdate()
     potential = model.getPotential()
@@ -37,7 +38,14 @@ def wire(n,method,epsilon):
     plt.savefig(f"wire_{method}.png")
     plt.show()
     np.savetxt(f"wire_{method}.dat",potential)
+    model.getMagneticFiled()
 
+def SOR(n,epsilon,minW,maxW):
+
+    model = poisson(n,epsilon=epsilon,minW=minW,maxW=maxW)
+    model.setPointCharge()
+
+    model.overRelaxationUpdate_all()
 
 def plotPotential(method):
     potential =np.loadtxt(f"monopole_{method}.dat")
@@ -63,17 +71,23 @@ def plotPotentialWire(method):
     plt.savefig(f"wire_{method}.png")
     plt.show()
 
+def genSor(n,epsilon):
+    model = poisson(n,epsilon=epsilon)
+    model.generate_SOR()
 
 
 if __name__=='__main__':
     print("starting")
+    t1=time.time()
     n=50
-    method="jacobi"
+    method="gauss"
     epsilon=0.001
     monopole(n,method,epsilon)
     #wire(n,method,epsilon)
+    #SOR(50,epsilon,1,2)
     #plotPotential(method)
     #plotPotentialWire(method)
    # plotPotential()
    # plotPotentialWire()
-    print("finished")
+   # genSor(n,epsilon)
+    print(f"finished at {time.time()-t1}")

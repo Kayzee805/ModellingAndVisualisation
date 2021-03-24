@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 class poisson(object):
-    def __init__(self,n,method,epsilon=1,dx=1,sweeps=100000):
+    def __init__(self,n,method='gauss',epsilon=1,dx=1,sweeps=100000,minW=0,maxW=0):
         super().__init__()
         self.n=n
         self.epsilon = epsilon
@@ -14,6 +14,8 @@ class poisson(object):
         self.lattice=np.zeros((n,n,n))
         self.method=method
         self.nextLattice=np.zeros((n,n,n))
+        self.minW=minW
+        self.maxW=maxW
     
 
     def setBoundaries(self):
@@ -74,24 +76,6 @@ class poisson(object):
         
         print("done updating")
 
-        # while(convergence>=self.epsilon):
-        #     #allNeighbours = np.roll(self.lattice,1,axis=0)+
-        #     t1=time.time()
-        #     for i in range(1,self.n-1):
-        #         for j in range(1,self.n-1):
-        #             for k in range(1,self.n-1):
-        #                 #do update here
-        #                 nn = self.calculateNearestNeighbours(i,j,k)
-        #                 rho = self.rho[i,j,k]
-        #                 self.nextLattice[i,j,k] = (nn+rho)/6
-            
-        #     convergence = abs(np.sum(self.lattice)-np.sum(self.nextLattice))
-         
-        #     if(counter%1==0):
-        #          print(f"counter={counter}  convergence={convergence}  sumBefore={np.sum(self.lattice)}  sumAfter={np.sum(self.nextLattice)}")
-        #     self.lattice= self.nextLattice.copy()
-        #     counter+=1
-
     def gaussSeidelUpdate(self):
         #does update for one gauss?
         print()
@@ -99,6 +83,7 @@ class poisson(object):
         #do it in a while loop
         counter=0
         mid = int(self.n/2)
+        print("staritng gasuss seidel")
         while(convergence>=self.epsilon):
             t1=time.time()
             sumBefore = np.sum(self.lattice)
@@ -111,17 +96,109 @@ class poisson(object):
             sumAfter =np.sum(self.lattice)
             convergence=np.abs(sumAfter-sumBefore)
             counter+=1
-            if(counter%10==0):
-                print(f"Counter={counter}  convergence={convergence}  time={time.time()-t1}   mid={self.lattice[mid,mid,mid]}   midAfter={self.nextLattice[mid,mid,mid]} midAfter={self.rho[mid,mid,mid]}")
+            if(counter%1==0):
+                print(f"time = {time.time()-t1}s Counter={counter}  convergence={convergence}  time={time.time()-t1}   mid={self.lattice[mid,mid,mid]}   midAfter={self.nextLattice[mid,mid,mid]} midAfter={self.rho[mid,mid,mid]}")
 
 
-            #do break checks here?
-
-
-    def overRelaxationUpdate(self):
+    def overRelaxationUpdate(self,omega):
         #update for over relaxation
-        for s in range(self.sweeps):
-            print()
+        convergence = self.epsilon+1
+        counter=0
+
+        while(convergence>=self.epsilon):
+            sumBefore = np.sum(self.lattice)
+
+            for i in range(1,self.n-1):
+                for j in range(1,self.n-1):
+                    for k in range(1,self.n-1):
+                        #omega between 0 and 2
+                        #lattice[n+1] = (1-w)lattice[n] +w*lattice[n+1]
+                        before=self.lattice[i,j,k]
+                        nn = self.calculateNearestNeighbours(i,j,k)
+                        rho = self.rho[i,j,k]*self.dx**2
+                        after= (nn+rho)/6
+                        self.lattice[i,j,k] = (((1-omega)*before)+(omega*after))
+
+            sumAfter = np.sum(self.lattice)
+            convergence = np.abs(sumAfter-sumBefore)
+            if(counter%10==0):
+                print(f"counter={counter}  convergence={convergence} before={sumBefore}  after={sumAfter}")
+            counter+=1
+
+        print(f"DONEEEE convergence= {convergence}  epsilon={self.epsilon}")
+        return counter
+
+    def overRelaxationUpdate_all(self):
+        amount=11
+        w = np.linspace(self.minW,self.maxW,amount)
+        print(f"Omega = {w}")
+        stableSweep=[]
+        for i in range(amount):
+            print(f"Starting iteration={i}")
+            self.lattice=np.zeros((self.n,self.n,self.n))
+            sweeps = self.overRelaxationUpdate(w[i])
+            stableSweep.append(sweeps)
+            print(f"i={i} sweeps={sweeps}  w={w[i]}")
+        
+        np.savetxt("SOR.dat",np.array((w,stableSweep)))
+
+        plt.scatter(w,stableSweep,s=10,color='k')
+        plt.plot(w,stableSweep,color='b')
+        plt.title(f"SOR plot for Omega={self.minW}->{self.maxW}")
+        plt.xlabel("omega")
+        plt.ylabel("sweeps till stable")
+        plt.savefig("sor.png")
+        plt.show()
+
+    
+    def set2D_point(self):
+        self.lattice=np.zeros((self.n,self.n))
+        self.rho = np.zeros((self.n,self.n))
+        mid = int(self.n/2)
+        self.rho[mid,mid]=1
+    
+    def neighbours_2D(self,i,j):
+        n=self.n
+        return 1/4*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j+1)%n]+self.lattice[i,(j-1)%n]+self.rho[i,j])
+    def generate_SOR(self):
+        w= np.arange(1,2,0.01)
+        stableSweeps=[]
+        print(w)
+        self.n=100
+        for x in w:
+            self.set2D_point()
+            convergence=self.epsilon+1
+            counter=0
+            print(f"Starting for w={x}")
+            while convergence>=self.epsilon:
+                convergence=0
+                for i in range(1,self.n-1):
+                    for j in range(1,self.n-1):
+                        before = self.lattice[i,j]
+                        after = self.neighbours_2D(i,j)
+                        self.lattice[i,j] = (1-x)*before+x*after
+                        convergence+=abs(self.lattice[i,j]-before)
+
+                if(counter%1000==0):
+                    print(f"counter={counter} convergence={convergence}")
+                counter+=1
+            print(f"Finished w={x} in {counter}sweeps")
+            stableSweeps.append(counter)
+        
+
+        np.savetxt("SOR_DATA.dat",np.array((w,stableSweeps)))
+        plt.scatter(w,stableSweeps,s=10,color='k')
+        plt.plot(w,stableSweeps,color='b')
+        plt.title(f"SOR plot for Omega={self.minW}->{self.maxW}")
+        plt.xlabel("omega")
+        plt.ylabel("sweeps till stable")
+        plt.savefig("sor.png")
+        plt.show()
+                
+                
+
+
+
 
     def calculateNearestNeighbours(self,i,j,k):
         #find the 6 neighbours, so +- for all i,j,k
@@ -161,9 +238,10 @@ class poisson(object):
         #now normalise it?    
         xNorm = np.zeros((self.n,self.n))
         yNorm = np.zeros((self.n,self.n))
-        for i in range(self.n):
-            for j in range(self.n):
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
                 norm = np.sqrt((xGradient[i,j]**2)+(yGradient[i,j]**2))
+               # print(norm)
                 xNorm[i,j] =xGradient[i,j]/norm
                 yNorm[i,j]=yGradient[i,j]/norm
         
@@ -174,12 +252,12 @@ class poisson(object):
         plt.xlabel("x")
         plt.ylabel("y")
         plt.title("Electric field for one charge")
-        plt.savefig("eFiledForCharge.png")
+        plt.savefig(f"eFiledForCharge_{self.method}.png")
         plt.show()
 
     def normaliseArray(self,x,y):
-        for i in range(self.n):
-            for j in range(self.n):
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
                 norm = np.sqrt((x[i,j]**2)+(y[i,j]**2)) 
                 x[i,j]/=norm
                 y[i,j]/=norm   
@@ -187,7 +265,27 @@ class poisson(object):
                 
                 
     def getMagneticFiled(self):
-        print()
+        potential = self.getPotential()
+
+        bx= np.zeros((self.n,self.n))
+        by= np.zeros((self.n,self.n))
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                #now do the gradient thing here
+                bx[i,j] = (potential[i,(j+1)%self.n]-potential[i,(j-1)%self.n])/(2)
+                by[i,j] = -(potential[(i+1)%self.n,j]-potential[(i-1)%self.n,j])/(2)
+        
+        bxNorm,byNorm = self.normaliseArray(bx,by)
+
+        ranges = np.arange(0,self.n,1)
+
+        x,y = np.meshgrid(ranges,ranges)
+        plt.quiver(y,x,bxNorm,byNorm,linewidth=0.5)
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.title("magnetic field for line of charge")
+        plt.savefig(f"BFiledForWire_{self.method}.png")
+        plt.show()
 
 '''
 Needs phi or the normal derivative of the phi?
