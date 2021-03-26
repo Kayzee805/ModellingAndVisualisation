@@ -100,6 +100,12 @@ class poisson(object):
                 print(f"time = {time.time()-t1}s Counter={counter}  convergence={convergence}  time={time.time()-t1}   mid={self.lattice[mid,mid,mid]}   midAfter={self.nextLattice[mid,mid,mid]} midAfter={self.rho[mid,mid,mid]}")
 
 
+    def gaussSeidelUpdateV2(self):
+        #so generate all the +1??
+        convergene=self.epsilon+1
+        counter=0
+
+
     def overRelaxationUpdate(self,omega):
         #update for over relaxation
         convergence = self.epsilon+1
@@ -196,8 +202,6 @@ class poisson(object):
         plt.show()
                 
                 
-
-
 
 
     def calculateNearestNeighbours(self,i,j,k):
