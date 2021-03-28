@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 
 class poisson(object):
-    def __init__(self,n,epsilon=1,dx=1,minW=1,maxW=2):
+    def __init__(self,int n,double epsilon=1, int dx=1,double minW=1,double maxW=2):
         self.n=n
         self.epsilon=epsilon
         self.dx=dx
@@ -188,17 +188,19 @@ class poisson(object):
         plt.xlabel("w")
         plt.ylabel("sweeps")
         plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
-        plt.savefig(f"ShortMethod_ChckerSOR2_{self.n}.png")
+        plt.savefig(f"figures/SOR__{self.n}.png")
         plt.show()
         combined=np.array((w,stableSweeps))
-        np.savetxt(f"ShortMethod_CheckerSOR2_{self.n}.dat",np.transpose(combined),fmt='%.4f')
+        np.savetxt(f"data/SOR_{self.n}.dat",np.transpose(combined),fmt='%.4f')
         print(f"Minimum at {np.min(stableSweeps)}")
 
 
     def generate_SOR(self):
-        w=np.arange(1.9,1.99,0.01)
+        w=np.arange(1,1.99,0.01)
         stableSweeps=[]
-        n=self.n
+        cdef int n=self.n
+        cdef double x,t1,convergence,sumAfter,sumBefore
+        cdef int i,j,counter
         print(f"Generating normal 3 loops SOR")
         for x in w:
             t1=time.time()
@@ -220,50 +222,6 @@ class poisson(object):
                         #self.lattice[i,j]= (1-x)*old +x*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j-1)%n]+self.lattice[i,(j+1)%n]+self.rho[i,j])/4
                         convergence+=abs(self.lattice[i,j]-old)
                
-                if(counter%10==0):
-                    print(f"counter={counter} convergence={convergence}")
-                counter+=1
-
-            
-            print(f"Finsihed at counter={counter} at w={x} at time={time.time()-t1}s")
-            stableSweeps.append(counter)
-
-        plt.plot(w,stableSweeps)
-        plt.xlabel("w")
-        plt.ylabel("steps")
-        plt.title(f"SOR DATA FOR {self.n}")
-        plt.savefig("SOR_100NEW.png")
-        plt.show()
-      #  np.savetxt("NEW_SOR_100.DAT",np.array((w,stableSweeps)))
-        print(f"Minimum of {np.amin(stableSweeps)}")
-
-    def generate_SOR3D(self):
-        w=np.arange(1,1.99,0.01)
-        stableSweeps=[]
-        n=self.n
-        print(f"Generating normal 3 loops SOR independed roll")
-        for x in w:
-            t1=time.time()
-            mid=int(self.n/2)-1
-            self.lattice=np.zeros((n,n,n))
-            self.rho=np.zeros((self.n,self.n,self.n))
-            self.rho[mid,mid,mid]=1
-            convergence=self.epsilon+1
-            counter=0
-            print(f"STARTING W={x}")
-            sumBefore=0
-
-            while(convergence>=self.epsilon):
-                convergence=0
-                independentNeighbours = np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)+np.roll(self.lattice,-1,axis=2)
-                for i in range(1,self.n-1):
-                    for j in range(1,self.n-1):
-                        for k in range(1,self.n-1):
-                            old = self.lattice[i,j,k]
-                            self.lattice[i,j] = ((1-x)*self.lattice[i,j,k])+x*(self.dependentNeighbours(i,j,k)+independentNeighbours[i,j,k]+self.rho[i,j,k])/6
-                            #self.lattice[i,j]= (1-x)*old +x*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j-1)%n]+self.lattice[i,(j+1)%n]+self.rho[i,j])/4
-                            convergence+=abs(self.lattice[i,j,k]-old)
-               
                 if(counter%100==0):
                     print(f"counter={counter} convergence={convergence}")
                 counter+=1
@@ -273,12 +231,16 @@ class poisson(object):
             stableSweeps.append(counter)
 
         plt.plot(w,stableSweeps)
+        plt.scatter(w,stableSweeps,s=5,color='k')
         plt.xlabel("w")
-        plt.ylabel("steps")
-        plt.title(f"SOR DATA FOR {self.n}")
+        plt.ylabel("sweeps")
+        plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
+        plt.savefig(f"figures/SOR__{self.n}.png")
         plt.show()
-        np.savetxt(f"data/SOR_{self.n}.dat",np.array((w,stableSweeps)))
-        print(f"Minimum of {np.amin(stableSweeps)}")
+        combined=np.array((w,stableSweeps))
+        np.savetxt(f"data/SOR_{self.n}.dat",np.transpose(combined),fmt='%.4f')
+        print(f"Minimum at {np.min(stableSweeps)}")
+
 
     def distantCaculator(self,i,j,k):
         mid = int(self.n/2)
@@ -546,49 +508,9 @@ class poisson(object):
   
 
   
-
-
-'''
-Potential vs distance to the centre of teh point charge
-x axis= distance to centre
-y axis= potential
-For the point charge, as distance increase, the potential decreases. 
-
-if you take the log of x axis vs potential
-we should get a straight line
-can orgainise in 
-
-1. position x
-2. position y
-3. potenmtial
-4. electric field in 3D
-
-
-Potential vs centre 
-1.distance to the centre
-2. potential 
-3. electric field. 
-fit of log distance and log of electric field for x axis= 1 and 3
-should get slope of -1 and -1.8
-
-
-for 3d
-x,y,z, potential, ex, ey, ez
-
-plot x,y, potemtial. this is the plot with color bar
-
-versus R 
-distance to centre, potential and electricfield
-fit for x-axis = 0.5-1.5 for 3d  should get a = -1.05 and b =-2.53  for log potential
-fir for x axis = 0.5 1.5 for 3d should get -1.96 b = -.257 for log electric field
-
-should be close to 1.
-
-
-for the vector plot, get a smaller plot as well, a zoomed in plot
-
-
-for magnetic field
-x,y,potential,bx,by   and bz=0 so no need for normalise
-
-'''
+def sor(n,epsilon):
+    model = poisson(n,epsilon)
+    model.generate_SOR()
+    #model.generate_SOR3D()
+  #  model.generate_SOR_Point()
+  #  model.generate_SOR_Point3D()

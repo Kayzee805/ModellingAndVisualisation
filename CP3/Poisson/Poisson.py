@@ -69,10 +69,12 @@ class poisson(object):
 
             sumAfter = np.sum((self.nextLattice))
             convergence = np.abs(sumBefore-sumAfter)
-            if(counter%100==0):
+            if(counter%1==0):
                 print(f"counter={counter}  convergence={convergence}  sumBefore={sumBefore}  sumAfter={sumAfter} ")
             self.lattice = np.copy(self.nextLattice)
             counter+=1
+        
+        print(f"Finished jacobi at {convergence} at step={counter}")
         
         print("done updating")
 

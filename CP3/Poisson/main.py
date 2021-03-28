@@ -79,8 +79,8 @@ def genSor(n,epsilon):
 if __name__=='__main__':
     print("starting")
     t1=time.time()
-    n=50
-    method="gauss"
+    n=100
+    method="jacobi"
     epsilon=0.001
     monopole(n,method,epsilon)
     #wire(n,method,epsilon)

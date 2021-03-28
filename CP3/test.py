@@ -73,30 +73,61 @@ def myUpdate(x):
     return convergenceArray
     
 
-def checkerBoard(x):
+def checkerBoard(model):
     print("Starting checkerboard")
-    mask = np.indices((n,n,n)).sum(axis=0)%2
+    mask = np.indices((n,n,n)).sum(axis=0)%2  #creates the checkerboard 
     
-    convergence=epsilon+1
+    convergence=epsilon+1  #just to pass the first while loop condition
     counter=0
 
     while(convergence>=epsilon):
-        sumBefore = np.sum(x)
-        dummyWhite = np.copy(x)
-        dummyWhite[mask==1]=0
-        dummyWhite = (np.roll(dummyWhite,1,axis=0)+np.roll(dummyWhite,1,axis=1)+np.roll(dummyWhite,1,axis=2)+np.roll(dummyWhite,-1,axis=0)+np.roll(dummyWhite,-1,axis=1)+np.roll(dummyWhite,-1,axis=2)+rho)/6
-        setBoundaries3D(dummyWhite)
-        dummyBlack = np.copy(dummyWhite)
+        sumBefore = np.sum(model)
+        
+        #setting all the 'black' nodes to 0
+        model[mask==1]=0
+        #then solving for the 'black' nodes using the 'white' nodes
+        model = (np.roll(model,1,axis=0)+np.roll(model,1,axis=1)+np.roll(model,1,axis=2)+np.roll(model,-1,axis=0)+np.roll(model,-1,axis=1)+np.roll(model,-1,axis=2)+rho)/6
+        
+        #setting boundaries to 0
+        setBoundaries3D(model)
+
+        #making a deep copy of the model array, as we will need the values later
+        dummyBlack = np.copy(model)
+
+        #using the new set of 'black' nodes to solve for the 'white' nodes
         dummyBlack = (np.roll(dummyBlack,1,axis=0)+np.roll(dummyBlack,1,axis=1)+np.roll(dummyBlack,1,axis=2)+np.roll(dummyBlack,-1,axis=0)+np.roll(dummyBlack,-1,axis=1)+np.roll(dummyBlack,-1,axis=2)+rho)/6
+
+        #setting the boundaries again
         setBoundaries3D(dummyBlack)
 
-        x = np.add(dummyWhite,dummyBlack)
-        
-        #setBoundaries3D(x)
-        sumAfter = np.sum(x)
+        #concatenating the two updated models
+        model = np.add(model,dummyBlack)
+        sumAfter = np.sum(model)
+        #convergence checkD
         convergence =abs(sumAfter-sumBefore)
         counter+=1
         print(f"Counter={counter}  convergence={convergence} sumBefore={sumBefore} sumAfter={sumAfter} ")
+
+
+
+
+    # while(convergence>=epsilon):
+    #     sumBefore = np.sum(x)
+    #     dummyWhite = np.copy(x)
+    #     dummyWhite[mask==1]=0
+    #     dummyWhite = (np.roll(dummyWhite,1,axis=0)+np.roll(dummyWhite,1,axis=1)+np.roll(dummyWhite,1,axis=2)+np.roll(dummyWhite,-1,axis=0)+np.roll(dummyWhite,-1,axis=1)+np.roll(dummyWhite,-1,axis=2)+rho)/6
+    #     setBoundaries3D(dummyWhite)
+    #     dummyBlack = np.copy(dummyWhite)
+    #     dummyBlack = (np.roll(dummyBlack,1,axis=0)+np.roll(dummyBlack,1,axis=1)+np.roll(dummyBlack,1,axis=2)+np.roll(dummyBlack,-1,axis=0)+np.roll(dummyBlack,-1,axis=1)+np.roll(dummyBlack,-1,axis=2)+rho)/6
+    #     setBoundaries3D(dummyBlack)
+
+    #     x = np.add(dummyWhite,dummyBlack)
+        
+    #     #setBoundaries3D(x)
+    #     sumAfter = np.sum(x)
+    #     convergence =abs(sumAfter-sumBefore)
+    #     counter+=1
+    #     print(f"Counter={counter}  convergence={convergence} sumBefore={sumBefore} sumAfter={sumAfter} ")
 
     # while(convergence>=epsilon):
     #     sumBefore= np.sum(x)
@@ -123,9 +154,9 @@ def checkerBoard(x):
 
 
 t1=time.time()
-my = myUpdate(x)
+#my = myUpdate(x)
 #normal=normalGaussSeidel(x)
-#checkerBoard(x)
+checkerBoard(x)
 t2=time.time()
 print(f"Time takne for everything={t2-t1}s")
 
