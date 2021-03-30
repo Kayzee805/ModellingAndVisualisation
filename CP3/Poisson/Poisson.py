@@ -1,215 +1,436 @@
 import numpy as np 
 import time
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+
 class poisson(object):
-    def __init__(self,n,method='gauss',epsilon=1,dx=1,sweeps=100000,minW=0,maxW=0):
-        super().__init__()
+    def __init__(self,n,epsilon=1,dx=1,minW=1,maxW=2):
         self.n=n
-        self.epsilon = epsilon
+        self.epsilon=epsilon
         self.dx=dx
-        self.dt = (dx**2)/6
         self.rho = np.zeros((n,n,n))
-        self.sweeps=sweeps
         self.lattice=np.zeros((n,n,n))
-        self.method=method
         self.nextLattice=np.zeros((n,n,n))
         self.minW=minW
         self.maxW=maxW
+
     
 
-    def setBoundaries(self):
+    
+    def getPotential(self):
+        return self.lattice[:,:,int(self.n/2)]
+
+    def setBoundaries3D(self,Array):
         #set boundaries to 0?
-        self.lattice[0,:,:]= 0
-        self.lattice[:,0,:]= 0
-        self.lattice[:,:,0]= 0
-        self.lattice[-1,:,:]= 0
-        self.lattice[:,-1,:]= 0
-        self.lattice[:,:,-1]= 0
-
+        Array[0,:,:]= 0
+        Array[:,0,:]= 0
+        Array[:,:,0]= 0
+        Array[-1,:,:]= 0
+        Array[:,-1,:]= 0
+        Array[:,:,-1]= 0
     
-    def setPointCharge(self):
-        midPoint = int(self.n/2)
-        self.rho[midPoint,midPoint,midPoint]=1
-
-    def setChargedWire(self):
-        midPoint = int(self.n/2)
+    def setBoundaries2D(self,Array):
+        Array[0,:]=0
+        Array[-1,:]=0
+        Array[:,0]=0
+        Array[:,-1]=0 
+    
+    def setPointCharge2D(self):
+        mid=int(self.n/2)
+        self.rho= np.zeros((self.n,self.n))
+        self.rho[mid,mid]=1
+    
+    def setPointCharge3D(self):
+        mid=int(self.n/2)
+        self.rho = np.zeros((self.n,self.n,self.n))
+        self.rho[mid,mid,mid]=1
+    
+    def setChargedWire3D(self):
+        mid=int(self.n/2)
         for z in range(1,self.n-1):
-            self.rho[midPoint,midPoint,z]=1
-        
+            self.rho[mid,mid,z]=1
+    
+    def calculateNearestNeighbours3D(self,i,j,k):
+        #find the 6 neighbours, so +- for all i,j,k
+        n=self.n
+        return self.lattice[(i+1)%n,j,k]+self.lattice[(i-1)%n,j,k]+self.lattice[i,(j-1)%n,k]+self.lattice[i,(j+1)%n,k]+self.lattice[i,j,(k-1)%n]+self.lattice[i,j,(k+1)%n]
 
-    def setBoundariesForArray(self,array):
-        array[0,:,:]= 0
-        array[:,0,:]= 0
-        array[:,:,0]= 0
-        array[-1,:,:]= 0
-        array[:,-1,:]= 0
-        array[:,:,-1]= 0
+    def dependentNeighbours(self,i,j,k):
+        n=self.n
+        return self.lattice[(i-1)%n,j,k]+self.lattice[i,(j-1)%n,k]+self.lattice[i,j,(k-1)%n]
+
+
+    def dependentNeighbours2D(self,i,j,ARRAY):
+        n=self.n
+        return ARRAY[(i-1)%n,j]+ARRAY[i,(j-1)%n]
+
     def jacobiUpdate(self):
-        #does update over n sweeps
-
-        convergence=self.epsilon+1
+        print("Starting jacobi")
+        convergence = self.epsilon+1
         counter=0
-        print(f"Starting jacobi update for {self.method}")
-        mid = int(self.n/2)
-        print(f"At mid = {self.rho[mid,mid,mid]} sum ={np.sum(self.lattice)}")
-            
+        sumBefore = np.sum(self.lattice)
         while(convergence>=self.epsilon):
             t1=time.time()
-            self.setBoundaries()
-     
-            sumBefore = np.sum((self.lattice))
-
+            self.setBoundaries3D(self.lattice)
+            
             self.nextLattice= (self.rho+(
             np.roll(self.lattice,1,axis=0)+np.roll(self.lattice,-1,axis=0)
             +np.roll(self.lattice,1,axis=1)+np.roll(self.lattice,-1,axis=1)+
             np.roll(self.lattice,1,axis=2)+np.roll(self.lattice,-1,axis=2)))/6
 
-            self.setBoundariesForArray(self.nextLattice)
-
-            sumAfter = np.sum((self.nextLattice))
-            convergence = np.abs(sumBefore-sumAfter)
-            if(counter%1==0):
-                print(f"counter={counter}  convergence={convergence}  sumBefore={sumBefore}  sumAfter={sumAfter} ")
+            self.setBoundaries3D(self.nextLattice)
+            sumAfter=np.sum(self.nextLattice)
+            convergence = abs(sumAfter-sumBefore)
             self.lattice = np.copy(self.nextLattice)
+            sumBefore=sumAfter
             counter+=1
-        
-        print(f"Finished jacobi at {convergence} at step={counter}")
-        
-        print("done updating")
 
-    def gaussSeidelUpdate(self):
-        #does update for one gauss?
-        print()
-        convergence =self.epsilon+1
-        #do it in a while loop
-        counter=0
-        mid = int(self.n/2)
-        print("staritng gasuss seidel")
-        while(convergence>=self.epsilon):
-            t1=time.time()
-            sumBefore = np.sum(self.lattice)
-            for i in range(1,self.n-1):
-                for j in range(1,self.n-1):
-                    for k in range(1,self.n-1):
-                        nn = self.calculateNearestNeighbours(i,j,k)
-                        rho = self.rho[i,j,k]*self.dx**2
-                        self.lattice[i,j,k] = (nn+rho)/6
-            sumAfter =np.sum(self.lattice)
-            convergence=np.abs(sumAfter-sumBefore)
-            counter+=1
-            if(counter%1==0):
-                print(f"time = {time.time()-t1}s Counter={counter}  convergence={convergence}  time={time.time()-t1}   mid={self.lattice[mid,mid,mid]}   midAfter={self.nextLattice[mid,mid,mid]} midAfter={self.rho[mid,mid,mid]}")
+            if(counter%100==0):
+                print(f"Counter={counter} convergence={convergence} time={time.time()-t1}s")
 
+        print("finished jacobi")
 
-    def gaussSeidelUpdateV2(self):
-        #so generate all the +1??
-        convergene=self.epsilon+1
-        counter=0
-
-
-    def overRelaxationUpdate(self,omega):
-        #update for over relaxation
+    
+    def gaussSeidelUpdate_roll(self):
+        print("Starting gauss roll")
         convergence = self.epsilon+1
         counter=0
-
+        sumBefore = np.sum(self.lattice)
         while(convergence>=self.epsilon):
-            sumBefore = np.sum(self.lattice)
+            t1=time.time()
+            independentNeighbours = np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)+np.roll(self.lattice,-1,axis=2)
 
             for i in range(1,self.n-1):
                 for j in range(1,self.n-1):
                     for k in range(1,self.n-1):
-                        #omega between 0 and 2
-                        #lattice[n+1] = (1-w)lattice[n] +w*lattice[n+1]
-                        before=self.lattice[i,j,k]
-                        nn = self.calculateNearestNeighbours(i,j,k)
-                        rho = self.rho[i,j,k]*self.dx**2
-                        after= (nn+rho)/6
-                        self.lattice[i,j,k] = (((1-omega)*before)+(omega*after))
+                        self.lattice[i,j,k] = (independentNeighbours[i,j,k]+self.dependentNeighbours(i,j,k)+self.rho[i,j,k])/6
+            sumAfter=np.sum(self.lattice)
+            convergence = abs(sumAfter-sumBefore)
+            counter+=1
+            
+            if(counter%100==0):
+                print(f"Counter={counter} convergence={convergence} time={time.time()-t1}s sumBefore={sumBefore} sumAfter={sumAfter}")
+            sumBefore=sumAfter
+
+        print(f"Counter={counter} convergence={convergence} time={time.time()-t1}s")
+
+        print("Finished gauss roll")
+
+    def gaussSeidel_CheckerBoard(self):
+        print("STARTING CHECKER Board")
+        mask = np.indices((self.n,self.n,self.n)).sum(axis=0)%2
+        convergence=self.epsilon+1
+        counter=0
+        sumBefore = np.sum(self.lattice)
+        while(convergence>=self.epsilon):
+            t1=time.time()
+            self.lattice[mask==0]=0
+
+            self.lattice = (np.roll(self.lattice,1,axis=0)+np.roll(self.lattice,1,axis=1)+np.roll(self.lattice,1,axis=2)+np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)+np.roll(self.lattice,-1,axis=2)+self.rho)/6
+            self.setBoundaries3D(self.lattice)
+            self.lattice[mask==1]=0
+
+            self.nextLattice = (np.roll(self.lattice,1,axis=0)+np.roll(self.lattice,1,axis=1)+np.roll(self.lattice,1,axis=2)+np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)+np.roll(self.lattice,-1,axis=2)+self.rho)/6
+            self.setBoundaries3D(self.nextLattice)
+            self.lattice = np.add(self.lattice,self.nextLattice)
 
             sumAfter = np.sum(self.lattice)
-            convergence = np.abs(sumAfter-sumBefore)
-            if(counter%10==0):
-                print(f"counter={counter}  convergence={convergence} before={sumBefore}  after={sumAfter}")
+            convergence= abs(sumAfter-sumBefore)
             counter+=1
+            if(counter%100==0):
+                print(f"Counter={counter} convergence={convergence} time={time.time()-t1}s sumBefore={sumBefore} sumAfter={sumAfter}")
+            sumBefore = sumAfter
 
-        print(f"DONEEEE convergence= {convergence}  epsilon={self.epsilon}")
-        return counter
+        print(f"Counter={counter}  convergence={convergence}")
 
-    def overRelaxationUpdate_all(self):
-        amount=11
-        w = np.linspace(self.minW,self.maxW,amount)
-        print(f"Omega = {w}")
-        stableSweep=[]
-        for i in range(amount):
-            print(f"Starting iteration={i}")
-            self.lattice=np.zeros((self.n,self.n,self.n))
-            sweeps = self.overRelaxationUpdate(w[i])
-            stableSweep.append(sweeps)
-            print(f"i={i} sweeps={sweeps}  w={w[i]}")
-        
-        np.savetxt("SOR.dat",np.array((w,stableSweep)))
+        print("Finished CHECKER Board")
 
-        plt.scatter(w,stableSweep,s=10,color='k')
-        plt.plot(w,stableSweep,color='b')
-        plt.title(f"SOR plot for Omega={self.minW}->{self.maxW}")
-        plt.xlabel("omega")
-        plt.ylabel("sweeps till stable")
-        plt.savefig("sor.png")
-        plt.show()
-
-    
-    def set2D_point(self):
-        self.lattice=np.zeros((self.n,self.n))
-        self.rho = np.zeros((self.n,self.n))
-        mid = int(self.n/2)
-        self.rho[mid,mid]=1
-    
-    def neighbours_2D(self,i,j):
-        n=self.n
-        return 1/4*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j+1)%n]+self.lattice[i,(j-1)%n]+self.rho[i,j])
-    def generate_SOR(self):
-        w= np.arange(1,2,0.01)
+    def generate_SOR_Point(self):
+        w=np.arange(1,2,0.01)
         stableSweeps=[]
-        print(w)
-        self.n=100
+        mask = np.indices((self.n,self.n)).sum(axis=0)%2
+        print("starting sor point for checkerboard")
         for x in w:
-            self.set2D_point()
+            t1=time.time()
+            self.lattice=np.zeros((self.n,self.n))
+            self.setPointCharge2D()
+
+            convergence=self.epsilon+1
+            sumBefore=0
+            counter=0
+            print(f"STARTING point 3d sor for w={x}")
+
+            while(convergence>self.epsilon):
+    
+                original = np.copy(self.lattice)
+                self.lattice[mask==0]=0
+                self.lattice =(1-x)*original+x*((np.roll(self.lattice,1,axis=0)+np.roll(self.lattice,1,axis=1)+np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)+self.rho)/4)
+                self.setBoundaries2D(self.lattice)
+                self.lattice[mask==1]=0
+                self.nextLattice = np.copy(self.lattice)
+
+                self.nextLattice = (1-x)*(original)+x*((np.roll(self.nextLattice,1,axis=0)+np.roll(self.nextLattice,1,axis=1)+np.roll(self.nextLattice,-1,axis=0)+np.roll(self.nextLattice,-1,axis=1)+self.rho)/4)
+                self.setBoundaries2D(self.nextLattice)
+                self.nextLattice[mask==0]=0
+
+                self.lattice=np.add(self.lattice,self.nextLattice)
+                sumAfter=np.sum(self.lattice)
+                convergence=abs(sumAfter-sumBefore)
+
+                counter+=1
+                if(counter%100==0):
+                    print(f"Counter={counter} convergence={convergence} sumBefore={sumBefore}  sumAfter={sumAfter}  ")
+                sumBefore=sumAfter
+            stableSweeps.append(counter)
+            print(f"Finsihed at counter={counter} at w={x} at time={time.time()-t1}s")
+        
+        plt.plot(w,stableSweeps)
+        plt.scatter(w,stableSweeps,s=5,color='k')
+        plt.xlabel("w")
+        plt.ylabel("sweeps")
+        plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
+        plt.savefig(f"figures/SOR/SOR_Checkerboard_{self.n}.png")
+        plt.show()
+        combined=np.array((w,stableSweeps))
+        np.savetxt(f"data/SOR_CHECKERBOARD_{self.n}.dat",np.transpose(combined),fmt='%.8f')
+        print(f"Minimum at {np.min(stableSweeps)}")
+
+
+    def generate_SOR(self):
+        w=np.arange(1,2,0.01)
+        print(w)
+        stableSweeps=[]
+        n=self.n
+        print(f"Generating normal 3 loops SOR")
+        for x in w:
+            t1=time.time()
+            mid=int(self.n/2)-1
+            self.lattice=np.zeros((n,n))
+            self.rho=np.zeros((self.n,self.n))
+            self.rho[mid,mid]=1
             convergence=self.epsilon+1
             counter=0
-            print(f"Starting for w={x}")
-            while convergence>=self.epsilon:
+            print(f"STARTING W={x}")
+            sumBefore=0
+            while(convergence>self.epsilon):
                 convergence=0
+                independentNeighbours = np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,-1,axis=1)
                 for i in range(1,self.n-1):
                     for j in range(1,self.n-1):
-                        before = self.lattice[i,j]
-                        after = self.neighbours_2D(i,j)
-                        self.lattice[i,j] = (1-x)*before+x*after
-                        convergence+=abs(self.lattice[i,j]-before)
-
-                if(counter%1000==0):
+                        old = self.lattice[i,j]
+                        self.lattice[i,j] = ((1-x)*self.lattice[i,j])+x*(self.dependentNeighbours2D(i,j,self.lattice)+independentNeighbours[i,j]+self.rho[i,j])/4
+                        #self.lattice[i,j]= (1-x)*old +x*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j-1)%n]+self.lattice[i,(j+1)%n]+self.rho[i,j])/4
+                        convergence+=abs(self.lattice[i,j]-old)
+               
+                if(counter%10==0):
                     print(f"counter={counter} convergence={convergence}")
                 counter+=1
-            print(f"Finished w={x} in {counter}sweeps")
+
+            
+            print(f"Finsihed at counter={counter} at w={x} at time={time.time()-t1}s")
             stableSweeps.append(counter)
+
+        plt.plot(w,stableSweeps)
+        plt.xlabel("w")
+        plt.ylabel("steps")
+        plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
+        plt.savefig(f"SOR_{self.n}.png")
+        plt.show()
+        np.savetxt(f"SOR_{self.n}",np.array((w,stableSweeps)),fmt='%.8f')
+        print(f"Minimum of {np.amin(stableSweeps)}")
+
+  
+
+    def distantCaculator(self,i,j,k):
+        mid = int(self.n/2)
+        return np.sqrt((mid-i)**2+(mid-j)**2+(mid-k)**2)
+
+
+    def generateMagneticData(self):
+        #x,y, potential,bx,by
+        #distance, potential, magnetic field
+        x=[]
+        y=[]
+        potentialArray=[]
+        bx=[]
+        by=[]
+        mid= int(self.n/2)
+        distance=[]
+        normalisedMagnetic=[]
+        potential = self.getPotential()
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                if(i==mid and j==mid):
+                    continue 
+                potentialArray.append(potential[i,j])
+                x.append(i)
+                y.append(j)
+                currentBx= (potential[i,(j+1)%self.n]-potential[i,(j-1)%self.n])/2
+                currentBy = -(potential[(i+1)%self.n,j]-potential[(i-1)%self.n,j])/2
+                bx.append(currentBx)
+                by.append(currentBy)
+                normalisedMagnetic.append(np.sqrt((currentBx**2)+(currentBy**2)))
+                distance.append(np.sqrt((mid-i)**2+(mid-j)**2))
+
+        withPosition = np.array((x,y,potentialArray,bx,by))
+        withDistance = np.array((distance,potentialArray,normalisedMagnetic))
+        np.savetxt(f"data/potentialDataMagnetic_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/potentialDataVRMagnetic_{self.n}.dat",np.transpose(withDistance))
+
+        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
+        plt.title("Potential for charged wire")
+        plt.xlabel("log(distance)")
+        plt.ylabel("log(potential)")
+        plt.savefig(f"figures/magneticField/magneticFieldPotential_{self.n}")
+        plt.show()
+
+        plt.scatter(np.log2(distance),np.log2(normalisedMagnetic),s=3,marker='x')
+        plt.title("Magnetic field for charged wire")
+        plt.xlabel("log(distance)")
+        plt.ylabel("log(magnetic)")
+        plt.savefig(f"figures/magneticField/magneticFieldPotentialVR_{self.n}.png")
+        plt.show()
+
+        self.plot_MagneticField()
+
+
+    def generateElectricData(self):
+        #x,y,z, potential, ex, ey, ez
+        #distance to centre, potential and electricfield
+        x =[]
+        y=[]
+        z=[]
+        potentialArray=[]
+        ex=[]
+        ey=[]
+        ez=[]
+        potential = self.getPotential()
+        mid=int(self.n/2)
+        distance=[]
+        electricField = []
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                if(i==mid and j==mid):
+                    continue
+                potentialArray.append(potential[i,j])
+                x.append(i)
+                y.append(j)
+                z.append(mid)
+                currentEx = self.getEx(i,j,mid)
+                currentEy=self.getEy(i,j,mid)
+                currentEz=self.getEz(i,j,mid)
+                ex.append(currentEx)
+                ey.append(currentEy)
+                ez.append(currentEz)
+                distance.append(self.distantCaculator(i,j,mid))
+                electricField.append(np.sqrt(currentEx**2+currentEy**2+currentEz**2))
         
 
-        np.savetxt("SOR_DATA.dat",np.array((w,stableSweeps)))
-        plt.scatter(w,stableSweeps,s=10,color='k')
-        plt.plot(w,stableSweeps,color='b')
-        plt.title(f"SOR plot for Omega={self.minW}->{self.maxW}")
-        plt.xlabel("omega")
-        plt.ylabel("sweeps till stable")
-        plt.savefig("sor.png")
+        withPosition = np.array((x,y,z,potentialArray,ex,ey,ez))
+        withDistance = np.array((distance,potentialArray,electricField),dtype=float)
+        print(withPosition.shape)
+        print(withDistance.shape)
+        np.savetxt(f"data/potentialData_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
+       # np.savetxt(f"data/potemntialDataVR_LOG{self.n}.dat",np.log2(np.transpose(withdistance)))
+        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
+        plt.xlabel("distance")
+        plt.ylabel("potential")
+        plt.title("log(distance) vs log(potential)")
+        plt.savefig(f"figures/ElectricField/potentialVR_{self.n}.png")
         plt.show()
-                
-                
+        plt.scatter(np.log2(distance),np.log2(electricField),s=3,marker='x')
+        plt.xlabel("distance")
+        plt.ylabel("eField")
+        plt.title("log(distance) vs log(ElectricField)")
+        plt.savefig(f"figures/ElectricFieldelectricFieldVR_{self.n}.png")
+        plt.show()
+        self.plotElectricField()
+
+        distance=np.log2(distance)
+        potentialArray=np.log2(potentialArray)
+        electricField = np.log2(electricField)
+      
+        
+        newDistance = distance[(distance>0.5) & (distance<1.5)]
+        newPotential=potentialArray[(distance>0.5) & (distance<1.5)]
+        print(f"Using potential {newPotential[0]}")
+        xfit,xin = np.polyfit(newDistance,newPotential,1)
+        print(f"Potential Fit = xfit={xfit}  and xin={xin}")
+
+        newDistance = distance[(distance>0.5) & (distance<2)]
+        newElectric = electricField[(distance>0.5) & (distance<2)]
+        xfit,xin = np.polyfit(newDistance,newElectric,1)
+        print(f"ElectricField  Fit = xfit={xfit}  and xin={xin}")
 
 
-    def calculateNearestNeighbours(self,i,j,k):
-        #find the 6 neighbours, so +- for all i,j,k
-        n=self.n
-        return self.lattice[(i+1)%n,j,k]+self.lattice[(i-1)%n,j,k]+self.lattice[i,(j-1)%n,k]+self.lattice[i,(j+1)%n,k]+self.lattice[i,j,(k-1)%n]+self.lattice[i,j,(k+1)%n]
+
+        #take the fit of log(dsitance) and log(potential)
+    
+    def plotElectricField(self):
+        # allArray = np.loadtxt(f"data/potentialData_{self.n}.dat")
+        # ex = allArray[:,4]
+        # ey = allArray[:,5]
+        # ez = allArray[:,6]
+        # xx,yy = np.meshgrid(ex,ey)
+        # xGradient = np.zeros((self.n,self.n))
+        # yGradient = np.zeros((self.n,self.n))
+        # zGradient = np.zeros((self.n,self.n)) #because we now that ez is constant?
+        # for i in range(self.n):
+        #     for j in range(self.n):
+
+        xGradient = np.zeros((self.n,self.n))
+        yGradient = np.zeros((self.n,self.n))
+        zGradient = np.zeros((self.n,self.n))
+        mid =int(self.n/2)
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                xGradient[i,j] = self.getEx(i,j,mid)
+                yGradient[i,j] = self.getEy(i,j,mid)
+                zGradient[i,j] = self.getEz(i,j,mid)
+
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                norm = np.sqrt((xGradient[i,j]**2)+(yGradient[i,j]**2)+(zGradient[i,j]**2))
+                xGradient[i,j]= xGradient[i,j]/norm
+                yGradient[i,j]=yGradient[i,j]/norm
+        
+        ranges = np.arange(0,self.n,1)
+        x,y = np.meshgrid(ranges,ranges)
+        plt.quiver(y,x,xGradient,yGradient,linewidth=0.5)
+        plt.xlabel("X-axis")
+        plt.ylabel("Y-axis")
+        plt.title(f"Electric field for monopole n={self.n}")
+        plt.savefig(f"figures/ElectricField/ElectricFieldPointCharge_{self.n}.png")
+        plt.show()
+
+        if(self.n==100):
+            ranges=np.arange(40,60)
+            xGradient = np.zeros((20,20))
+            yGradient = np.zeros((20,20))
+            zGradient = np.zeros((20,20))
+            mid =int(self.n/2)
+            for i in range(20):
+                for j in range(20):
+                    xGradient[i,j] = self.getEx(i+40,j+40,mid)
+                    yGradient[i,j] = self.getEy(i+40,j+40,mid)
+                    zGradient[i,j] = self.getEz(i+40,j+40,mid)
+
+            for i in range(20):
+                for j in range(20):
+                    norm = np.sqrt((xGradient[i,j]**2)+(yGradient[i,j]**2)+(zGradient[i,j]**2))
+                    xGradient[i,j]= xGradient[i,j]/norm
+                    yGradient[i,j]=yGradient[i,j]/norm
+            x,y = np.meshgrid(ranges,ranges)
+            plt.quiver(y,x,xGradient,yGradient,linewidth=0.5)
+            plt.xlabel("X-axis")
+            plt.ylabel("Y-axis")
+            plt.title(f"Electric field for monopole n={self.n}")
+            plt.savefig(f"figures/ElectricField/ElectricFieldPointChargeZoomed_{self.n}.png")
+            plt.show()
+
+
+    def getPotential(self):
+        return self.lattice[:,:,int(self.n/2)]
 
     def getEx(self,i,j,k):
         gradient = self.lattice[(i+1)%self.n,j,k]- self.lattice[(i-1)%self.n,j,k]
@@ -222,126 +443,112 @@ class poisson(object):
     def getEz(self,i,j,k):
         gradient = self.lattice[i,j,(k+1)%self.n]- self.lattice[i,j,(k-1)%self.n]
         return -gradient/2
-
-    def getAllEfield(self):
-        n=self.n
-        gradient = -(np.roll(self.lattice,1,axis=0)+np.roll(self.lattice,-1,axis=0)+np.roll(self.lattice,1,axis=1)+np.roll(self.lattice,-1,axis=1)+np.roll(self.lattice,1,axis=2)+np.roll(self.lattice,-1,axis=2))/2
-
-
-    
-    def getPotential(self):
-        return self.lattice[:,:,int(self.n/2)]
-
-    def plotEField(self):
-        xGradient = np.zeros((self.n,self.n))
-        yGradient = np.zeros((self.n,self.n))
-        mid =int(self.n/2)
-        for i in range(self.n):
-            for j in range(self.n):
-                xGradient[i,j] = self.getEx(i,j,mid)
-                yGradient[i,j] = self.getEy(i,j,mid)
-
-        #now normalise it?    
-        xNorm = np.zeros((self.n,self.n))
-        yNorm = np.zeros((self.n,self.n))
-        for i in range(1,self.n-1):
-            for j in range(1,self.n-1):
-                norm = np.sqrt((xGradient[i,j]**2)+(yGradient[i,j]**2))
-               # print(norm)
-                xNorm[i,j] =xGradient[i,j]/norm
-                yNorm[i,j]=yGradient[i,j]/norm
+    def getElectricField(self,i,j,k):
+        gradient =-(self.lattice[i,j,(k+1)%self.n]- self.lattice[i,j,(k-1)%self.n]+self.lattice[i,(j+1)%self.n,k]- self.lattice[i,(j-1)%self.n,k]+self.lattice[(i+1)%self.n,j,k]- self.lattice[(i-1)%self.n,j,k])/2
+        return gradient
         
-        ranges = np.arange(0,self.n,1)
-
-        x,y = np.meshgrid(ranges,ranges)
-        plt.quiver(y,x,xNorm,yNorm,linewidth=0.5)
-        plt.xlabel("x")
-        plt.ylabel("y")
-        plt.title("Electric field for one charge")
-        plt.savefig(f"eFiledForCharge_{self.method}.png")
-        plt.show()
-
-    def normaliseArray(self,x,y):
-        for i in range(1,self.n-1):
-            for j in range(1,self.n-1):
-                norm = np.sqrt((x[i,j]**2)+(y[i,j]**2)) 
-                x[i,j]/=norm
-                y[i,j]/=norm   
-        return x,y
-                
-                
-    def getMagneticFiled(self):
+    
+    def plot_MagneticField(self):
+        #x,y,potential,bx,by
+        #distance, potential, magnetic field
         potential = self.getPotential()
-
-        bx= np.zeros((self.n,self.n))
+        bx = np.zeros((self.n,self.n))
         by= np.zeros((self.n,self.n))
+
+
         for i in range(1,self.n-1):
             for j in range(1,self.n-1):
-                #now do the gradient thing here
                 bx[i,j] = (potential[i,(j+1)%self.n]-potential[i,(j-1)%self.n])/(2)
                 by[i,j] = -(potential[(i+1)%self.n,j]-potential[(i-1)%self.n,j])/(2)
+        for i in range(1,self.n-1):
+            for j in range(1,self.n-1):
+                norm = np.sqrt((bx[i,j]**2)+(by[i,j]**2))
+                bx[i,j] /= norm
+                by[i,j] /=norm
         
-        bxNorm,byNorm = self.normaliseArray(bx,by)
-
+        
         ranges = np.arange(0,self.n,1)
 
         x,y = np.meshgrid(ranges,ranges)
-        plt.quiver(y,x,bxNorm,byNorm,linewidth=0.5)
-        plt.xlabel("x")
+        plt.quiver(y,x,bx,by,linewidth=0.5)
         plt.ylabel("y")
+        plt.xlabel("x")
         plt.title("magnetic field for line of charge")
-        plt.savefig(f"BFiledForWire_{self.method}.png")
+        plt.savefig(f"figures/magneticField/MagneticField_{self.n}.png")
         plt.show()
 
+
+        if(self.n==100):
+            bx = np.zeros((20,20))
+            by= np.zeros((20,20))
+
+
+            for i in range(20):
+                for j in range(20):
+                    bx[i,j] = (potential[i+40,(j+40+1)%self.n]-potential[i+40,(j+40-1)%self.n])/(2)
+                    by[i,j] = -(potential[(i+1+40)%self.n,j+40]-potential[(i+40-1)%self.n,j+40])/(2)
+
+            for i in range(20):
+                for j in range(20):
+                    norm = np.sqrt((bx[i,j]**2)+(by[i,j]**2))
+                    bx[i,j] /= norm
+                    by[i,j] /=norm
+
+            ranges = np.arange(40,60,1)
+
+            x,y = np.meshgrid(ranges,ranges)
+            plt.quiver(y,x,bx,by,linewidth=0.5)
+            plt.ylabel("y")
+            plt.xlabel("x")
+            plt.title("Magnetic field for line of charge")
+            plt.savefig(f"figures/MagneticFieldZoomed_{self.n}.png")
+            plt.show()
+  
+
+  
+
+
 '''
-Needs phi or the normal derivative of the phi?
+Potential vs distance to the centre of teh point charge
+x axis= distance to centre
+y axis= potential
+For the point charge, as distance increase, the potential decreases. 
 
-phi: Dirichet
-derivative: Neumann
+if you take the log of x axis vs potential
+we should get a straight line
+can orgainise in 
 
-
-To solve Delta sq. phi=-rho/e
-convert into a suitable initial value probelmn: so look at dphi/dt = lap ^2 phi + p/e. Initial value problem 
-can be solved through timestep? 
-
-when we get the steady state, dphi/dt = 0
-so solve the eq that we want. (the rhs) eq is solved in steady state
-
-Since rhs = 0, we can use the version with - or +.  +=well behaved. - = will blow up? so wont go to steady state
-
+1. position x
+2. position y
+3. potenmtial
+4. electric field in 3D
 
 
-Jacobi method = Time step the equation, with as large dt as possible. Larger the dt, quicker we get to the steady state
-jacobi has slow convergence. takes N^2 steps, each step will take N^d? for new potential in each lattice
-
-find error????
-
-
-Algorithms:
-
-    1. Gauss-seidel algorithm. 
-
-        which is the same except that the same array of values is used for the
-        previous estimate (on the rhs of the previous equation) and the next estimate (on the lhs). That is, the array is updated in-place, as opposed
-        to creating a new array with values based on the old one. You should
-        convince yourself that this algorithm converges to the same solution.
+Potential vs centre 
+1.distance to the centre
+2. potential 
+3. electric field. 
+fit of log distance and log of electric field for x axis= 1 and 3
+should get slope of -1 and -1.8
 
 
-Jacobian
+for 3d
+x,y,z, potential, ex, ey, ez
 
-need phiOld and phiNew, need to do np.copy 
+plot x,y, potemtial. this is the plot with color bar
 
-in gauss, only need one array
+versus R 
+distance to centre, potential and electricfield
+fit for x-axis = 0.5-1.5 for 3d  should get a = -1.05 and b =-2.53  for log potential
+fir for x axis = 0.5 1.5 for 3d should get -1.96 b = -.257 for log electric field
+
+should be close to 1.
 
 
+for the vector plot, get a smaller plot as well, a zoomed in plot
 
-    2. Successive over-relaxation (SOR)
 
-         LOOK AT ODE rather than pde
-         dx/dt = g
-         x(n+1)-x(n) dt g(x(n))
-        x(n+1) = f(x(n))
-        plotting this gives
-
+for magnetic field
+x,y,potential,bx,by   and bz=0 so no need for normalise
 
 '''
