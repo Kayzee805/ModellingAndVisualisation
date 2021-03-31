@@ -273,21 +273,21 @@ class poisson(object):
 
         withPosition = np.array((x,y,potentialArray,bx,by))
         withDistance = np.array((distance,potentialArray,normalisedMagnetic))
-        np.savetxt(f"data/potentialDataMagnetic_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/potentialDataVRMagnetic_{self.n}.dat",np.transpose(withDistance))
+        np.savetxt(f"data/magneticField/potentialData_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/magneticField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
 
-        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
+        plt.scatter(np.log(distance),(potentialArray),s=3,marker='x')
         plt.title("Potential for charged wire")
         plt.xlabel("log(distance)")
-        plt.ylabel("log(potential)")
-        plt.savefig(f"figures/magneticField/magneticFieldPotential_{self.n}")
+        plt.ylabel("potential")
+        plt.savefig(f"figures/magneticField/distanceVsPotentialWire_{self.n}.png")
         plt.show()
 
-        plt.scatter(np.log2(distance),np.log2(normalisedMagnetic),s=3,marker='x')
+        plt.scatter(np.log(distance),np.log(normalisedMagnetic),s=3,marker='x')
         plt.title("Magnetic field for charged wire")
         plt.xlabel("log(distance)")
         plt.ylabel("log(magnetic)")
-        plt.savefig(f"figures/magneticField/magneticFieldPotentialVR_{self.n}.png")
+        plt.savefig(f"figures/magneticField/distanceVsMagneticWire_{self.n}.png")
         plt.show()
 
         self.plot_MagneticField()
@@ -329,39 +329,22 @@ class poisson(object):
         withDistance = np.array((distance,potentialArray,electricField),dtype=float)
         print(withPosition.shape)
         print(withDistance.shape)
-        np.savetxt(f"data/potentialData_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
-       # np.savetxt(f"data/potemntialDataVR_LOG{self.n}.dat",np.log2(np.transpose(withdistance)))
-        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
-        plt.xlabel("distance")
+        np.savetxt(f"data/ElectricField/potentialData_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/ElectricField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
+       # np.savetxt(f"data/potemntialDataVR_LOG{self.n}.dat",np.log(np.transpose(withdistance)))
+        plt.scatter(np.log(distance),(potentialArray),s=3,marker='x')
+        plt.xlabel("log_distance")
         plt.ylabel("potential")
-        plt.title("log(distance) vs log(potential)")
-        plt.savefig(f"figures/ElectricField/potentialVR_{self.n}.png")
+        plt.title("log(distance) vs (potential)")
+        plt.savefig(f"figures/ElectricField/distanceVsPotential_{self.n}.png")
         plt.show()
-        plt.scatter(np.log2(distance),np.log2(electricField),s=3,marker='x')
+        plt.scatter(np.log(distance),np.log(electricField),s=3,marker='x')
         plt.xlabel("distance")
         plt.ylabel("eField")
         plt.title("log(distance) vs log(ElectricField)")
-        plt.savefig(f"figures/ElectricFieldelectricFieldVR_{self.n}.png")
+        plt.savefig(f"figures/ElectricField/distanceVsElectricField_{self.n}.png")
         plt.show()
         self.plotElectricField()
-
-        distance=np.log2(distance)
-        potentialArray=np.log2(potentialArray)
-        electricField = np.log2(electricField)
-      
-        
-        newDistance = distance[(distance>0.5) & (distance<1.5)]
-        newPotential=potentialArray[(distance>0.5) & (distance<1.5)]
-        print(f"Using potential {newPotential[0]}")
-        xfit,xin = np.polyfit(newDistance,newPotential,1)
-        print(f"Potential Fit = xfit={xfit}  and xin={xin}")
-
-        newDistance = distance[(distance>0.5) & (distance<2)]
-        newElectric = electricField[(distance>0.5) & (distance<2)]
-        xfit,xin = np.polyfit(newDistance,newElectric,1)
-        print(f"ElectricField  Fit = xfit={xfit}  and xin={xin}")
-
 
 
         #take the fit of log(dsitance) and log(potential)
@@ -400,7 +383,7 @@ class poisson(object):
         plt.xlabel("X-axis")
         plt.ylabel("Y-axis")
         plt.title(f"Electric field for monopole n={self.n}")
-        plt.savefig(f"figures/ElectricField/ElectricFieldPointCharge_{self.n}.png")
+        plt.savefig(f"figures/ElectricField/vectorElectricField_{self.n}.png")
         plt.show()
 
         if(self.n==100):
@@ -425,7 +408,7 @@ class poisson(object):
             plt.xlabel("X-axis")
             plt.ylabel("Y-axis")
             plt.title(f"Electric field for monopole n={self.n}")
-            plt.savefig(f"figures/ElectricField/ElectricFieldPointChargeZoomed_{self.n}.png")
+            plt.savefig(f"figures/ElectricField/vectorElectricField_zoomed_{self.n}.png")
             plt.show()
 
 
@@ -474,7 +457,7 @@ class poisson(object):
         plt.ylabel("y")
         plt.xlabel("x")
         plt.title("magnetic field for line of charge")
-        plt.savefig(f"figures/magneticField/MagneticField_{self.n}.png")
+        plt.savefig(f"figures/magneticField/vectorMagneticField_{self.n}.png")
         plt.show()
 
 
@@ -501,7 +484,7 @@ class poisson(object):
             plt.ylabel("y")
             plt.xlabel("x")
             plt.title("Magnetic field for line of charge")
-            plt.savefig(f"figures/MagneticFieldZoomed_{self.n}.png")
+            plt.savefig(f"figures/magneticField/vectorMagneticField_zoomed_{self.n}.png")
             plt.show()
   
 

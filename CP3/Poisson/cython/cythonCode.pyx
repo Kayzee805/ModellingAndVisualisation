@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 
 class poisson(object):
-    def __init__(self,int n,double epsilon=1, int dx=1,double minW=1,double maxW=2):
+    def __init__(self,n,epsilon=1,dx=1,minW=1,maxW=2):
         self.n=n
         self.epsilon=epsilon
         self.dx=dx
@@ -92,6 +92,8 @@ class poisson(object):
     
     def gaussSeidelUpdate_roll(self):
         print("Starting gauss roll")
+        cdef int counter,i,j,k
+        cdef double sumBefore,convergence,t1,sumAfter
         convergence = self.epsilon+1
         counter=0
         sumBefore = np.sum(self.lattice)
@@ -177,7 +179,7 @@ class poisson(object):
                 convergence=abs(sumAfter-sumBefore)
 
                 counter+=1
-                if(counter%1000==0):
+                if(counter%100==0):
                     print(f"Counter={counter} convergence={convergence} sumBefore={sumBefore}  sumAfter={sumAfter}  ")
                 sumBefore=sumAfter
             stableSweeps.append(counter)
@@ -188,19 +190,18 @@ class poisson(object):
         plt.xlabel("w")
         plt.ylabel("sweeps")
         plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
-        plt.savefig(f"figures/SOR__{self.n}.png")
+        plt.savefig(f"figures/SOR/SOR_Checkerboard_{self.n}.png")
         plt.show()
         combined=np.array((w,stableSweeps))
-        np.savetxt(f"data/SOR_{self.n}.dat",np.transpose(combined),fmt='%.4f')
+        np.savetxt(f"data/SOR_CHECKERBOARD_{self.n}.dat",np.transpose(combined),fmt='%.8f')
         print(f"Minimum at {np.min(stableSweeps)}")
 
 
     def generate_SOR(self):
-        w=np.arange(1,1.99,0.01)
+        w=np.arange(1,2,0.01)
+        print(w)
         stableSweeps=[]
-        cdef int n=self.n
-        cdef double x,t1,convergence,sumAfter,sumBefore
-        cdef int i,j,counter
+        n=self.n
         print(f"Generating normal 3 loops SOR")
         for x in w:
             t1=time.time()
@@ -222,7 +223,7 @@ class poisson(object):
                         #self.lattice[i,j]= (1-x)*old +x*(self.lattice[(i+1)%n,j]+self.lattice[(i-1)%n,j]+self.lattice[i,(j-1)%n]+self.lattice[i,(j+1)%n]+self.rho[i,j])/4
                         convergence+=abs(self.lattice[i,j]-old)
                
-                if(counter%100==0):
+                if(counter%10==0):
                     print(f"counter={counter} convergence={convergence}")
                 counter+=1
 
@@ -231,16 +232,15 @@ class poisson(object):
             stableSweeps.append(counter)
 
         plt.plot(w,stableSweeps)
-        plt.scatter(w,stableSweeps,s=5,color='k')
         plt.xlabel("w")
-        plt.ylabel("sweeps")
+        plt.ylabel("steps")
         plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
-        plt.savefig(f"figures/SOR__{self.n}.png")
+        plt.savefig(f"SOR_{self.n}.png")
         plt.show()
-        combined=np.array((w,stableSweeps))
-        np.savetxt(f"data/SOR_{self.n}.dat",np.transpose(combined),fmt='%.4f')
-        print(f"Minimum at {np.min(stableSweeps)}")
+        np.savetxt(f"SOR_{self.n}",np.array((w,stableSweeps)),fmt='%.8f')
+        print(f"Minimum of {np.amin(stableSweeps)}")
 
+  
 
     def distantCaculator(self,i,j,k):
         mid = int(self.n/2)
@@ -275,21 +275,21 @@ class poisson(object):
 
         withPosition = np.array((x,y,potentialArray,bx,by))
         withDistance = np.array((distance,potentialArray,normalisedMagnetic))
-        np.savetxt(f"data/potentialDataMagnetic_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/potentialDataVRMagnetic_{self.n}.dat",np.transpose(withDistance))
+        np.savetxt(f"data/magneticField/potentialData_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/magneticField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
 
-        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
+        plt.scatter(np.log(distance),(potentialArray),s=3,marker='x')
         plt.title("Potential for charged wire")
         plt.xlabel("log(distance)")
-        plt.ylabel("log(potential)")
-        plt.savefig(f"figures/magneticFieldPotential_{self.n}")
+        plt.ylabel("potential")
+        plt.savefig(f"figures/magneticField/distanceVsPotentialWire_{self.n}.png")
         plt.show()
 
-        plt.scatter(np.log2(distance),np.log2(normalisedMagnetic),s=3,marker='x')
+        plt.scatter(np.log(distance),np.log(normalisedMagnetic),s=3,marker='x')
         plt.title("Magnetic field for charged wire")
         plt.xlabel("log(distance)")
         plt.ylabel("log(magnetic)")
-        plt.savefig(f"figures/magneticFieldPotentialVR_{self.n}.png")
+        plt.savefig(f"figures/magneticField/distanceVsMagneticWire_{self.n}.png")
         plt.show()
 
         self.plot_MagneticField()
@@ -331,39 +331,22 @@ class poisson(object):
         withDistance = np.array((distance,potentialArray,electricField),dtype=float)
         print(withPosition.shape)
         print(withDistance.shape)
-        np.savetxt(f"data/potentialData_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
-       # np.savetxt(f"data/potemntialDataVR_LOG{self.n}.dat",np.log2(np.transpose(withdistance)))
-        plt.scatter(np.log2(distance),np.log2(potentialArray),s=3,marker='x')
-        plt.xlabel("distance")
+        np.savetxt(f"data/ElectricField/potentialData_{self.n}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/ElectricField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
+       # np.savetxt(f"data/potemntialDataVR_LOG{self.n}.dat",np.log(np.transpose(withdistance)))
+        plt.scatter(np.log(distance),(potentialArray),s=3,marker='x')
+        plt.xlabel("log_distance")
         plt.ylabel("potential")
-        plt.title("log(distance) vs log(potential)")
-        plt.savefig(f"figures/potentialVR_{self.n}.png")
+        plt.title("log(distance) vs (potential)")
+        plt.savefig(f"figures/ElectricField/distanceVsPotential_{self.n}.png")
         plt.show()
-        plt.scatter(np.log2(distance),np.log2(electricField),s=3,marker='x')
+        plt.scatter(np.log(distance),np.log(electricField),s=3,marker='x')
         plt.xlabel("distance")
         plt.ylabel("eField")
         plt.title("log(distance) vs log(ElectricField)")
-        plt.savefig(f"figures/electricFieldVR_{self.n}.png")
+        plt.savefig(f"figures/ElectricField/distanceVsElectricField_{self.n}.png")
         plt.show()
         self.plotElectricField()
-
-        distance=np.log2(distance)
-        potentialArray=np.log2(potentialArray)
-        electricField = np.log2(electricField)
-      
-        
-        newDistance = distance[(distance>0.5) & (distance<1.5)]
-        newPotential=potentialArray[(distance>0.5) & (distance<1.5)]
-        print(f"Using potential {newPotential[0]}")
-        xfit,xin = np.polyfit(newDistance,newPotential,1)
-        print(f"Potential Fit = xfit={xfit}  and xin={xin}")
-
-        newDistance = distance[(distance>0.5) & (distance<2)]
-        newElectric = electricField[(distance>0.5) & (distance<2)]
-        xfit,xin = np.polyfit(newDistance,newElectric,1)
-        print(f"ElectricField  Fit = xfit={xfit}  and xin={xin}")
-
 
 
         #take the fit of log(dsitance) and log(potential)
@@ -402,7 +385,7 @@ class poisson(object):
         plt.xlabel("X-axis")
         plt.ylabel("Y-axis")
         plt.title(f"Electric field for monopole n={self.n}")
-        plt.savefig(f"figures/ElectricFieldPointCharge_{self.n}.png")
+        plt.savefig(f"figures/ElectricField/vectorElectricField_{self.n}.png")
         plt.show()
 
         if(self.n==100):
@@ -427,7 +410,7 @@ class poisson(object):
             plt.xlabel("X-axis")
             plt.ylabel("Y-axis")
             plt.title(f"Electric field for monopole n={self.n}")
-            plt.savefig(f"figures/ElectricFieldPointChargeZoomed_{self.n}.png")
+            plt.savefig(f"figures/ElectricField/vectorElectricField_zoomed_{self.n}.png")
             plt.show()
 
 
@@ -476,7 +459,7 @@ class poisson(object):
         plt.ylabel("y")
         plt.xlabel("x")
         plt.title("magnetic field for line of charge")
-        plt.savefig(f"figures/MagneticField_{self.n}.png")
+        plt.savefig(f"figures/magneticField/vectorMagneticField_{self.n}.png")
         plt.show()
 
 
@@ -503,14 +486,51 @@ class poisson(object):
             plt.ylabel("y")
             plt.xlabel("x")
             plt.title("Magnetic field for line of charge")
-            plt.savefig(f"figures/MagneticFieldZoomed_{self.n}.png")
+            plt.savefig(f"figures/magneticField/vectorMagneticField_zoomed_{self.n}.png")
             plt.show()
   
 
   
-def sor(n,epsilon):
+def runMagnetic(int n,method,double epsilon):
     model = poisson(n,epsilon)
-    model.generate_SOR()
-    #model.generate_SOR3D()
-  #  model.generate_SOR_Point()
-  #  model.generate_SOR_Point3D()
+    model.setChargedWire3D()
+    model.setBoundaries3D(model.lattice)
+    if(method=="gauss"):
+        print("starting gauss")
+       # model.gaussSeidel_CheckerBoard()
+        model.gaussSeidelUpdate_roll()
+       # model.gaussSeidelUpdateOriginal()
+        model.generateMagneticData()
+
+    else:
+        model.jacobiUpdate()
+        model.generateMagneticData()
+
+    potential = model.getPotential()
+    im=plt.imshow(potential,cmap="magma")
+    plt.colorbar(im)
+  # // plt.savefig(f"monopole_{method}.png")
+    plt.title(f"Potential plot for charged wire size={n}")
+    plt.savefig(f"figures/magneticField/potentialChargedWire_{n}.png")
+    plt.show()
+
+def electricField(n,method,epsilon):
+    model = poisson(n,epsilon)
+    model.setPointCharge3D()
+    model.setBoundaries3D(model.lattice)
+    if(method=="gauss"):
+        #model.gaussSeidel_CheckerBoard()
+        model.gaussSeidelUpdate_roll()
+        model.generateElectricData()
+    else:
+        model.jacobiUpdate()
+        model.generateElectricData()
+
+    potential = model.getPotential()
+    im=plt.imshow(potential)
+    plt.colorbar(im)
+    plt.title(f"Potential plot for monopole size={n}")
+    plt.savefig(f"figures/ElectricField/monopole_{n}.png")
+    plt.show()
+# np.savetxt(f"monopole_{method}.dat",potential)
+    #model.plotEField()
