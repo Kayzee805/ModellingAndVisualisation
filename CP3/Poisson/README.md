@@ -47,6 +47,8 @@ The column order for all potentialDataVr_....dat files under "data/electricField
 *Distance,Potential,ElectricField*
 Where distance is the distance to the monopole and ElectricField is the normalised electricField at each point in the lattice.
 
+---
+
 ### Magnetic field (charged wire)
 The column order for all potentialData_...dat files under "data/magneticField" directory has the form:
 *X,Y,Potential,Bx,By*. 
@@ -56,8 +58,11 @@ The column order for all potentialDataVr_....dat files under "data/magneticField
 *Distance,Potential,MagneticField*
 Where distance is the distance to the monopole and MagneticField is the normalised electricField at each point in the lattice.
 
+---
 
 ### SOR (2D cut of charged wire)
 The coloumn order for all SOR_....dat files under "data/SOR" directory has the form:
 *omega, convergenceStep*
 Where omega ranges from 1->2 and convergenceStep is the number of steps/updates required for the system to converge.
+
+---
