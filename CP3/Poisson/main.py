@@ -2,61 +2,107 @@ from Poisson import poisson
 import numpy as np
 import matplotlib.pyplot as plt
 import time
-
-def monopole(n,method,epsilon):
+import sys
+def monopole(n,method,epsilon,checkerBoard=True):
+    '''
+    Calls the update method to the model and calls the method to
+    plot and save data for a monopole charge in 3D.
+    Parameters:
+    -----------
+    n:      Type Integer
+            size of the model
+    method: String
+            either jacobi update or gauss-seidel update, if invalid jacobi is used
+    epsilon:Type float
+            precision for model to converge
+    '''
     model = poisson(n,epsilon)
     model.setPointCharge3D()
     model.setBoundaries3D(model.lattice)
+
+    #carry out updates for a point charge in 3D, monopole charge
     if(method=="gauss"):
-        model.gaussSeidel_CheckerBoard()
-        #model.gaussSeidelUpdate_roll()
-        model.generateElectricData()
+        if(checkerBoard):
+            model.gaussSeidel_CheckerBoard()
+        else:
+            model.gaussSeidelUpdate_roll()
+    
     else:
         model.jacobiUpdate()
-        model.generateElectricData()
 
+    #generate and calculate the required data files
+    model.generateElectricData()
+
+    #plot the potential of the monopole
     potential = model.getPotential()
     im=plt.imshow(potential)
     plt.colorbar(im)
     plt.title(f"Potential plot for monopole size={n}")
     plt.savefig(f"figures/ElectricField/size{n}/monopole_{n}.png")
     plt.show()
-# np.savetxt(f"monopole_{method}.dat",potential)
-    #model.plotEField()
 
-def chargedWire(n,method,epsilon):
+def chargedWire(n,method,epsilon,checkerBoard=True):
+    '''
+    Calls the update method to the model and calls the method to
+    plot and save data for a charged wire aligned in the z axis. 
+    Parameters:
+    -----------
+    n:      Type Integer
+            size of the model
+    method: String
+            either jacobi update or gauss-seidel update, if invalid jacobi is used
+    epsilon:Type float
+            precision for model to converge
+    '''
     model=poisson(n,epsilon)
     model.setChargedWire3D()
     model.setBoundaries3D(model.lattice)
+
+    #update the model using specified methods
     if(method=="gauss"):
-        print("starting gauss")
-       # model.gaussSeidel_CheckerBoard()
-        model.gaussSeidelUpdate_roll()
-       # model.gaussSeidelUpdateOriginal()
-        model.generateMagneticData()
+        if(checkerBoard):
+            model.gaussSeidel_CheckerBoard()
+        else:
+            model.gaussSeidelUpdate_roll()
 
     else:
         model.jacobiUpdate()
-        model.generateMagneticData()
+    
+    #generate the required data files
+    model.generateMagneticData()
 
+    #plot the potential of cut of charged wire
     potential = model.getPotential()
     im=plt.imshow(potential,cmap="magma")
     plt.colorbar(im)
-  # // plt.savefig(f"monopole_{method}.png")
     plt.title(f"Potential plot for charged wire size={n}")
     plt.savefig(f"figures/magneticField/size{n}/potentialChargedWire_{n}.png")
     plt.show()
 
-def sor(n,epsilon):
+def sor(n,epsilon,checkerBoard=True):
+    '''
+    Calls the update method to the model and calls the method to
+    plot and save data for a cut of charged wire algined in z axis.
+    Parameters:
+    -----------
+    n:      Type Integer
+            size of the model
+    epsilon:Type float
+            precision for model to converge
+    '''
     model = poisson(n,epsilon)
-    model.generate_SOR()
-    #model.generate_SOR3D()
-    #model.generate_SOR_Point()
-  #  model.generate_SOR_Point3D()
-
+    #update the model for the sepcified method.
+    if(checkerBoard):
+        model.generate_SOR_CheckerBoard()
+    else:
+        model.generate_SOR()
 
 
 def getElectricFit(n,plotGraphs):
+    '''
+    Plots and calculates the fit of potential and electric field against distance
+    for a monopole charge
+    '''
     if(n==50):
         distanceMax = 1.7
         distanceMin = 0.7
@@ -81,7 +127,7 @@ def getElectricFit(n,plotGraphs):
     newPotential = potential[(distance>distanceMin) &(distance<distanceMax)]
     xfit,xin = np.polyfit(newDistance,newPotential,1)
 
-    print(f"monopole potential Fit = {xfit} for n={n}")
+    print(f"\nmonopole potential Fit = {xfit} for n={n}")
     if(plotGraphs):
         plt.scatter(distance,(potential),s=5)
         plt.plot(distance,xfit*distance+xin,color='r',linewidth=0.4)
@@ -95,7 +141,7 @@ def getElectricFit(n,plotGraphs):
     newDistance = distance[(distance>distanceMin) &(distance<distanceMax)]
     newField = field[(distance>distanceMin) &(distance<distanceMax)]
     xfit,xin = np.polyfit(newDistance,newField,1)
-    print(f"electric fit = {xfit} for n={n}")
+    print(f"\nelectric fit = {xfit} for n={n}")
     if(plotGraphs):
         plt.scatter(distance,(field),s=5)
         plt.plot(distance,xfit*distance+xin,color='r',linewidth=0.4)
@@ -106,6 +152,10 @@ def getElectricFit(n,plotGraphs):
         plt.show()
 
 def getMagnetic(n,plotGraphs):
+    '''
+    Plots and calculates the fit of potential and magnetic field against distance
+    for a cut of charged wire algined in the z axis.
+    '''
     if(n==50):
         distanceMax = 1.7
         distanceMin = 0.7
@@ -125,15 +175,13 @@ def getMagnetic(n,plotGraphs):
     distance = distance[(copyDistance>0)]
     potential = potential[(copyDistance>0)]
     field = field[(copyDistance>0)]
-    for x in distance:
-        if(x==0):
-            print("TESTINGSGDSGF")
+
     #distance vs potential
     newDistance = distance[(distance>distanceMin) &(distance<distanceMax) &(distance>0)]
     newPotential = potential[(distance>distanceMin) &(distance<distanceMax) & (distance>0)]
     xfit,xin = np.polyfit(newDistance,newPotential,1)
 
-    print(f"Charged wire potential Fit = {xfit} for n={n}")
+    print(f"\nCharged wire potential Fit = {xfit} for n={n}")
     if(plotGraphs):
         plt.scatter(distance,(potential),s=5)
         plt.plot(distance,xfit*distance+xin,color='r',linewidth=0.4)
@@ -147,7 +195,7 @@ def getMagnetic(n,plotGraphs):
     newField = field[(distance>magneticMin) &(distance<magneticMax)]
     xfit,xin = np.polyfit(newDistance,newField,1)
 
-    print(f"magnetic field Fit = {xfit} for n={n}")
+    print(f"\nmagnetic field Fit = {xfit} for n={n}\n")
 
     if(plotGraphs):
         plt.scatter(distance,(field),s=5)
@@ -158,37 +206,44 @@ def getMagnetic(n,plotGraphs):
         plt.savefig(f"figures/magneticField/size{n}/distanceVsMagneticWire_{n}.png")
         plt.show()
 
-
-
-
-
-
-
 def main():
-    n =100
-    epsilon=0.001
-    method="gauss"
-   # monopole(n,method,epsilon)
-  #  chargedWire(n,method,epsilon)
-   # sor(n,epsilon)
-   # getFit(n)
-    plotGraphs=True
-    getElectricFit(n,plotGraphs)
-    getMagnetic(n,plotGraphs)
+    if(len(sys.argv)!=3):
+        print("usage python main.py N epsilon")
+        exit(0)
+    size = int(sys.argv[1])
+    epsilon = float(sys.argv[2])
+
+    task = int(input(("Input 0:to generate data\nInput 1: to plot exisiting data\nDefault: 1\nInput: ")))
+
+    #default value of checkerboard is true, so will use checkerboard method
+    checkerBoard=True
+    if(task==0):
+        taskNumber = int(input("Input 0: generate monopole data\n1: generate charged wire data\n2: generate SOR data\nDefault=0\nInput: "))
+        method = int(input("Input 0 to use jacobi method\nInput 1 to use Gauss-seidel method\nDefault=1\nInput: "))
+        if(method==1):
+            useMethod = "gauss"
+        else:
+            useBoard="jacobi"
+        
+        
+        if(taskNumber==1):
+            chargedWire(size,method,epsilon,checkerBoard)
+        elif(taskNumber==2):
+            sor(size,epsilon,checkerBoard)
+        else:
+            monopole(size,useMethod,epsilon,checkerBoard)
+    
+    else:
+        plotGraphs=False
+        getElectricFit(size,plotGraphs)
+        getMagnetic(size,plotGraphs)
+
+
+
 t1=time.time()
 main()
 t2=time.time()
 print(f"Time taken ={t2-t1}")
 
--2.025924129840355
 
 
-'''
-electric field
-50x50= potential = [0.5,2.4]
-100x100 potential = [0.7.1.2]
-
-50x50 field = [1.5,2.5]
-100x100 field=[1.5,2.5]
-
-'''
