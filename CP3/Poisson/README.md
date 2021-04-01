@@ -39,29 +39,29 @@ Plot the graphs and calculate the fits for the potential and electric field agai
 ## Data file columns
 
 ### Electric field (the monopole)
-The column order for all potentialData_...dat files under "data/electricField" directory has the form:
+The column order for all **"potentialData_...dat"** files under "data/electricField" directory has the form:
 *X,Y,Z,Potential,Ex,Ey,Ez*. 
 Where X,Y,Z are the coordinates in the lattice and Ex,Ey,Ez are the electric field in the respective direction.
 
-The column order for all potentialDataVr_....dat files under "data/electricField" directory has the form:
+The column order for all **"potentialDataVr_....dat"** files under "data/electricField" directory has the form:
 *Distance,Potential,ElectricField*
 Where distance is the distance to the monopole and ElectricField is the normalised electricField at each point in the lattice.
 
 ---
 
 ### Magnetic field (charged wire)
-The column order for all potentialData_...dat files under "data/magneticField" directory has the form:
+The column order for all **"potentialData_...dat"** files under "data/magneticField" directory has the form:
 *X,Y,Potential,Bx,By*. 
 Where X,Y are the coordinates in the lattice and Bx,By are the magnetic field in the respective direction.
 
-The column order for all potentialDataVr_....dat files under "data/magneticField" directory has the form:
+The column order for all **"potentialDataVr_....dat"** files under "data/magneticField" directory has the form:
 *Distance,Potential,MagneticField*
 Where distance is the distance to the monopole and MagneticField is the normalised electricField at each point in the lattice.
 
 ---
 
 ### SOR (2D cut of charged wire)
-The coloumn order for all SOR_....dat files under "data/SOR" directory has the form:
+The coloumn order for all SOR_....dat files under **"data/SOR"** directory has the form:
 *omega, convergenceStep*
 Where omega ranges from 1->2 and convergenceStep is the number of steps/updates required for the system to converge.
 
