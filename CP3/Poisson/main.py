@@ -216,7 +216,7 @@ def main():
     task = int(input(("Input 0:to generate data\nInput 1: to plot exisiting data\nDefault: 1\nInput: ")))
 
     #default value of checkerboard is true, so will use checkerboard method
-    checkerBoard=True
+    checkerBoard=False
     if(task==0):
         taskNumber = int(input("Input 0: generate monopole data\n1: generate charged wire data\n2: generate SOR data\nDefault=0\nInput: "))
         method = int(input("Input 0 to use jacobi method\nInput 1 to use Gauss-seidel method\nDefault=1\nInput: "))

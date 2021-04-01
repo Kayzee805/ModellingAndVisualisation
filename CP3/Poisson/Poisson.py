@@ -341,10 +341,10 @@ class poisson(object):
         plt.xlabel("w")
         plt.ylabel("sweeps")
         plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
-        plt.savefig(f"figures/SOR/SOR_Checkerboard_{self.n}.png")
+        plt.savefig(f"figures/SOR/SOR_Checkerboard_{self.n}_{self.epsilon}.png")
         plt.show()
         combined=np.array((w,stableSweeps))
-        np.savetxt(f"data/SOR_CHECKERBOARD_{self.n}.dat",np.transpose(combined),fmt='%.8f')
+        np.savetxt(f"data/SOR_CHECKERBOARD_{self.n}_{self.epsilon}.dat",np.transpose(combined),fmt='%.8f')
         print(f"Minimum at {np.min(stableSweeps)}")
 
 
@@ -400,9 +400,9 @@ class poisson(object):
         plt.xlabel("w")
         plt.ylabel("steps")
         plt.title(f"Steps required to stabilise for different omega values. SOR_{self.n}")
-        plt.savefig(f"SOR_{self.n}.png")
+        plt.savefig(f"figures/SOR/SOR_{self.n}_{self.epsilon}.png")
         plt.show()
-        np.savetxt(f"SOR_{self.n}",np.array((w,stableSweeps)),fmt='%.8f')
+        np.savetxt(f"data/SOR/SOR_{self.n}_{self.epsilon}",np.transpose(np.array((w,stableSweeps))),fmt='%.8f')
         print(f"Minimum of {np.amin(stableSweeps)}")
 
   
