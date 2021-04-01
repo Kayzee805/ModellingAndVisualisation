@@ -38,7 +38,7 @@ def monopole(n,method,epsilon,checkerBoard=True):
     im=plt.imshow(potential)
     plt.colorbar(im)
     plt.title(f"Potential plot for monopole size={n}")
-    plt.savefig(f"figures/ElectricField/size{n}/monopole_{n}.png")
+    plt.savefig(f"figures/ElectricField/size{n}/monopole_{n}_{epsilon}.png")
     plt.show()
 
 def chargedWire(n,method,epsilon,checkerBoard=True):
@@ -76,7 +76,7 @@ def chargedWire(n,method,epsilon,checkerBoard=True):
     im=plt.imshow(potential,cmap="magma")
     plt.colorbar(im)
     plt.title(f"Potential plot for charged wire size={n}")
-    plt.savefig(f"figures/magneticField/size{n}/potentialChargedWire_{n}.png")
+    plt.savefig(f"figures/magneticField/size{n}/potentialChargedWire_{n}_{epsilon}.png")
     plt.show()
 
 def sor(n,epsilon,checkerBoard=True):
@@ -98,7 +98,7 @@ def sor(n,epsilon,checkerBoard=True):
         model.generate_SOR()
 
 
-def getElectricFit(n,plotGraphs):
+def getElectricFit(n,plotGraphs,epsilon):
     '''
     Plots and calculates the fit of potential and electric field against distance
     for a monopole charge
@@ -113,7 +113,7 @@ def getElectricFit(n,plotGraphs):
         distanceMin = 0.7
         electricMax = 2.5
         electricMin=1.5
-    array = np.loadtxt(f"data/electricField/potentialDataVR_{n}.dat")
+    array = np.loadtxt(f"data/electricField/potentialDataVR_{n}_{epsilon}.dat")
     distance = np.log(array[:,0])
     potential =np.log(array[:,1])
     field = np.log(array[:,2])
@@ -134,7 +134,7 @@ def getElectricFit(n,plotGraphs):
         plt.xlabel("log_(distance)")
         plt.ylabel("log_(potential)")
         plt.title(f"Log plot of distance v potential for monopole n={n}")
-        plt.savefig(f"figures/electricField/size{n}/distanceVsPotential_{n}.png")
+        plt.savefig(f"figures/electricField/size{n}/distanceVsPotential_{n}_{epsilon}.png")
         plt.show()
 
     #electricFit
@@ -148,10 +148,10 @@ def getElectricFit(n,plotGraphs):
         plt.xlabel("log_(distance)")
         plt.ylabel("log_(electricField)")
         plt.title(f"Log plot of distance v electricField for monopole n={n}")
-        plt.savefig(f"figures/electricField/size{n}/distanceVsElectricField_{n}.png")
+        plt.savefig(f"figures/electricField/size{n}/distanceVsElectricField_{n}_{epsilon}.png")
         plt.show()
 
-def getMagnetic(n,plotGraphs):
+def getMagnetic(n,plotGraphs,epsilon):
     '''
     Plots and calculates the fit of potential and magnetic field against distance
     for a cut of charged wire algined in the z axis.
@@ -163,10 +163,10 @@ def getMagnetic(n,plotGraphs):
         magneticMin=1.5
     else:
         distanceMax = 1.7
-        distanceMin = 0.7
-        magneticMax = 2.4
+        distanceMin = 0.5
+        magneticMax = 2.3
         magneticMin=1.5
-    array = np.loadtxt(f"data/magneticField/potentialDataVR_{n}.dat")
+    array = np.loadtxt(f"data/magneticField/potentialDataVR_{n}_{epsilon}.dat")
     distance = np.log(array[:,0])
     potential =(array[:,1])
     field = np.log(array[:,2])
@@ -188,7 +188,7 @@ def getMagnetic(n,plotGraphs):
         plt.xlabel("log_(distance)")
         plt.ylabel("Potential")
         plt.title(f"Log linear plot of distance v potential for chargedWire n={n}")
-        plt.savefig(f"figures/magneticField/size{n}/distanceVsPotentialWire_{n}.png")
+        plt.savefig(f"figures/magneticField/size{n}/distanceVsPotentialWire_{n}_{epsilon}.png")
         plt.show()
     #distance vs field
     newDistance = distance[(distance>magneticMin) &(distance<magneticMax)]
@@ -203,7 +203,7 @@ def getMagnetic(n,plotGraphs):
         plt.xlabel("log_(distance)")
         plt.ylabel("log_(magneticField)")
         plt.title(f"Log plot of distance v magneticField for chargedWire n={n}")
-        plt.savefig(f"figures/magneticField/size{n}/distanceVsMagneticWire_{n}.png")
+        plt.savefig(f"figures/magneticField/size{n}/distanceVsMagneticWire_{n}_{epsilon}.png")
         plt.show()
 
 def main():
@@ -216,18 +216,18 @@ def main():
     task = int(input(("Input 0:to generate data\nInput 1: to plot exisiting data\nDefault: 1\nInput: ")))
 
     #default value of checkerboard is true, so will use checkerboard method
-    checkerBoard=False
+    checkerBoard=True
     if(task==0):
         taskNumber = int(input("Input 0: generate monopole data\n1: generate charged wire data\n2: generate SOR data\nDefault=0\nInput: "))
         method = int(input("Input 0 to use jacobi method\nInput 1 to use Gauss-seidel method\nDefault=1\nInput: "))
         if(method==1):
             useMethod = "gauss"
         else:
-            useBoard="jacobi"
+            useMethod="jacobi"
         
-        
+        print(f"using method = {useMethod}")
         if(taskNumber==1):
-            chargedWire(size,method,epsilon,checkerBoard)
+            chargedWire(size,useMethod,epsilon,checkerBoard)
         elif(taskNumber==2):
             sor(size,epsilon,checkerBoard)
         else:
@@ -235,8 +235,8 @@ def main():
     
     else:
         plotGraphs=False
-        getElectricFit(size,plotGraphs)
-        getMagnetic(size,plotGraphs)
+        getElectricFit(size,plotGraphs,epsilon)
+        getMagnetic(size,plotGraphs,epsilon)
 
 
 

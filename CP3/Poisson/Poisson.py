@@ -480,8 +480,8 @@ class poisson(object):
         withDistance = np.array((distance,potentialArray,electricField),dtype=float)
         print(withPosition.shape)
         print(withDistance.shape)
-        np.savetxt(f"data/ElectricField/potentialData_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/ElectricField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
+        np.savetxt(f"data/ElectricField/size{self.n}/potentialData_{self.n}_{self.epsilon}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/ElectricField/size{self.n}/potentialDataVR_{self.n}_{self.epsilon}.dat",np.transpose(withDistance))
 
         self.plotElectricField()
 
@@ -518,7 +518,7 @@ class poisson(object):
         plt.xlabel("X-axis")
         plt.ylabel("Y-axis")
         plt.title(f"Electric field for monopole n={self.n}")
-        plt.savefig(f"figures/ElectricField/vectorElectricField_{self.n}.png")
+        plt.savefig(f"figures/ElectricField/size{self.n}/vectorElectricField_{self.n}_{self.epsilon}.png")
         plt.show()
 
 
@@ -545,7 +545,7 @@ class poisson(object):
             plt.xlabel("X-axis")
             plt.ylabel("Y-axis")
             plt.title(f"Electric field for monopole n={self.n}")
-            plt.savefig(f"figures/ElectricField/vectorElectricField_zoomed_{self.n}.png")
+            plt.savefig(f"figures/ElectricField/size{self.n}/vectorElectricField_zoomed_{self.n}_{self.epsilon}.png")
             plt.show()
 
     def generateMagneticData(self):
@@ -583,8 +583,8 @@ class poisson(object):
         #store it in a data file
         withPosition = np.array((x,y,potentialArray,bx,by))
         withDistance = np.array((distance,potentialArray,normalisedMagnetic))
-        np.savetxt(f"data/magneticField/potentialData_{self.n}.dat",np.transpose(withPosition))
-        np.savetxt(f"data/magneticField/potentialDataVR_{self.n}.dat",np.transpose(withDistance))
+        np.savetxt(f"data/magneticField/size{self.n}/potentialData_{self.n}_{self.epsilon}.dat",np.transpose(withPosition))
+        np.savetxt(f"data/magneticField/size{self.n}/potentialDataVR_{self.n}_{self.epsilon}.dat",np.transpose(withDistance))
 
         #call teh method to plot vector magnetic field.
         self.plot_MagneticField()
@@ -620,7 +620,7 @@ class poisson(object):
         plt.ylabel("y")
         plt.xlabel("x")
         plt.title("magnetic field for line of charge")
-        plt.savefig(f"figures/magneticField/vectorMagneticField_{self.n}.png")
+        plt.savefig(f"figures/magneticField/size{self.n}/vectorMagneticField_{self.n}_{self.epsilon}.png")
         plt.show()
 
         #if the size of the mode is 100, we also plot a zoomed in version of the vector field
@@ -647,6 +647,6 @@ class poisson(object):
             plt.ylabel("y")
             plt.xlabel("x")
             plt.title("Magnetic field for line of charge")
-            plt.savefig(f"figures/magneticField/vectorMagneticField_zoomed_{self.n}.png")
+            plt.savefig(f"figures/magneticField/size{self.n}/vectorMagneticField_zoomed_{self.n}_{self.epsilon}.png")
             plt.show()
   
