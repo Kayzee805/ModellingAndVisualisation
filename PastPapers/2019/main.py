@@ -23,7 +23,7 @@ class Model(object):
         self.F = F
  
     def initialiseLattice(self,greater,less):
-        temporaryArray = np.zeros((self.n,self.n))
+        temporaryArray = np.zeros((self.n,self.n),dtype=np.float64)
         noiseArray=np.random.uniform(-self.noise,self.noise,(self.n,self.n))
         for i in range(self.n):
             for j in range(self.n):
@@ -42,11 +42,11 @@ class Model(object):
     def update(self):
         #left,right,up,down - 4 then multiply att by dt
 
-        grad = np.roll(self.U,1,axis=0)+np.roll(self.U,-1,axis=0)+np.roll(self.U,1,axis=1)+np.roll(self.U,-1,axis=1)-4*self.U
+        grad = (np.roll(self.U,1,axis=0)+np.roll(self.U,-1,axis=0)+np.roll(self.U,1,axis=1)+np.roll(self.U,-1,axis=1)-4*self.U)/(self.dx**2)
         
         newU= (self.dt)*((self.D1*grad)-(self.U*(np.square(self.V)))+(self.F*(1-self.U)))
 
-        gradV =np.roll(self.V,1,axis=0)+np.roll(self.V,-1,axis=0)+np.roll(self.V,1,axis=1)+np.roll(self.V,-1,axis=1)-(4*self.V)
+        gradV =(np.roll(self.V,1,axis=0)+np.roll(self.V,-1,axis=0)+np.roll(self.V,1,axis=1)+np.roll(self.V,-1,axis=1)-(4*self.V))/(self.dx**2)
 
         newV = (self.dt)*((self.D2*gradV)+(self.U*(np.square(self.V)))-((self.F+self.k)*self.V))
         self.U+=newU
@@ -69,51 +69,31 @@ def animate(n,D1,D2,R,F,dt):
     convergence = 1
     error =0.0001
     before = np.sum(model.U)
-    i = 0
-    while convergence>error:
+    steps = np.linspace(1,50000,50000)
+    for i in tqdm(steps):
         model.update()
         if i%100==0:
             plt.clf()
-            im=plt.imshow(model.V,animated=True,cmap=colour)
+            im=plt.imshow(model.U,animated=True,cmap=colour)
             plt.colorbar(im)
             plt.draw()
             plt.pause(0.0001)
-            print(f"coutner={i} and convergence = {convergence}")
-        
-        i+=1
-        after = np.sum(model.U)
-        convergence=abs(after-before)
-        before=after
-
+   
     plt.show()
 
     
 def taskB(n,d1,d2,r,f,dt):
-    model = Model(n,d1,d2,r,f,dt)
+    model = Model(n=n,D1=d1,D2=d2,R=r,F=f,dt=dt)
     colour='magma'
-    sweeps=100000
+    sweeps=50000
     steps = np.linspace(1,sweeps,sweeps)
     
     convergence = 1
     error = 0.001
 
     counter=0
-    while convergence>=error:
-        before = np.sum(model.U)
+    for i in tqdm(steps):
         model.update()
-        after=np.sum(model.U)
-        convergence = abs(after-before)
-        counter+=1
-
-        if(counter%100==0):
-            print(f"Counter={counter}  and convergence = {convergence}")
-    
-    print(counter,convergence)
-
-    # for i in tqdm(steps):
-    #     model.update()
-
-    
     plt.figure()
     im = plt.imshow(model.U,cmap=colour)
     plt.colorbar(im)
@@ -145,32 +125,33 @@ def taskC(n,d1,d2,r,dt):
     allF = np.arange(0.02,0.055,0.005)
     allVariance = []
     sweeps=100000
-    counter=0
     N=n*n
-    dt=0.0001
-    for i in range(len(allF)):
+    dt=0.01
+    colour='magma'
+    counter=0
+    steps = np.linspace(1,sweeps,sweeps)
+    for i in tqdm(allF):
         model=Model(n,d1,d2,r,allF[counter],dt)
-        convergence = 1
-        tolerance = 0.001
-        before = np.sum(model.U)
-        counter2=0
-        arrayConvergence=[]
-        for j in range(50000):
-            model.update()
-            after = np.sum(model.U)
-            convergence=abs(after-before)
-            before=after
-            counter2+=1
-            if(counter2%10000==0):
-                print(f"Counter={counter2} convergence={convergence}")
 
+        
+        arrayConvergence=[]
+        for j in tqdm(steps):
+            model.update()
             arrayConvergence.append(calculateVariance(model.U))
+     
+        plt.figure()
+        im = plt.imshow(model.U,cmap=colour)
+        plt.colorbar(im)
+        plt.title(f"Snap shot of U at time ={sweeps} for F={round(allF[counter],3)}")
+        plt.savefig(f"figures/taskC/taskC_{round(allF[counter],3)}.png")
+        plt.show(block=False)
+        plt.pause(3)
+        plt.close()
         # for j in range(sweeps):
         #     model.update()
         
         allVariance.append(np.mean(arrayConvergence))
         counter+=1
-
     plt.plot(allF,allVariance)
     plt.title("Variance over F")
     plt.xlabel("F")
@@ -187,31 +168,17 @@ def taskD(F,variancePlot = False):
     k=0.05
     d1=0.2
     d2=0.1
-    dt=0.0001
+    dt=0.01
     
     model = Model(n,d1,d2,R=20,F=F,dt=dt,dx=dx,k=k)
     sweeps=100000
     steps = []
     variance = []
-    error = 0.001
-    convergence = 1
-    before = np.sum(model.U)
-    counter=0
-    while convergence>error:
+    steps = np.linspace(0,sweeps-1,sweeps)
+    for i in tqdm(steps):
         model.update()
-        after=np.sum(model.U)
-        convergence=abs(after-before)
-        before=after
         variance.append(calculateVariance(model.U))
-        steps.append(counter)
-        if(counter%1000==0):
-            print(f"Counter={counter} convergence={convergence}")
-        
-        counter+=1
 
-    # for i in tqdm(steps):
-    #     model.update()
-    #     variance.append(calculateVariance(model.U))
     
     if(variancePlot):
         plt.plot(steps,variance)
@@ -244,57 +211,54 @@ def taskE():
     k=0.05
     d1=0.2
     d2=0.1
-    dt=0.05
+    dt=0.01
     R=20
-    allF = np.arange(0.005,0.03,0.005)
+    allF = np.arange(0.005,0.035,0.005)
 
-    allVariance = []    
-
+    counter=0
+    sweeps=100000
+    variance = np.zeros((len(allF),5))
+    steps = np.linspace(1,sweeps-1,sweeps)
+    errors = []
+    average=[]
     
-    for i in range(len(allF)):
-        model = Model(n=n,D1=d1,D2=d2,R=R,F=allF[i],dt=dt,dx=dx,k=k)
-        error = 1
-        convergence = 10
-        before= np.sum(model.U)
-        variance = []
-        print(allF[i])
+    for z in range(5):
         counter=0
-        for j in range(50000):
-            model.update()
-            variance.append(calculateVariance(model.U))
-            after = np.sum(model.U)
-            convergence= abs(after-before)
-            after=before
-            if(counter%10000==0):
-                print(f"allF={allF[i]}  Counter={counter} convergence={convergence}")
-            counter+=1
-        allVariance.append(calculateVariance(model.U))
-    
+        for i in tqdm(allF):
+            model=Model(n=n,D1=d1,D2=d2,R=R,F=allF[counter],dt=dt,dx=dx,k=k)
 
-    plt.scatter(allF,allVariance,s=5,color='r')
-    plt.plot(allF,allVariance)
+            for j in tqdm(steps):
+                model.update()
+            
+            variance[counter,z]=calculateVariance(model.U)
+            counter+=1
+
+    for i in range(len(allF)):
+        errors.append(sem(variance[i]))
+        average.append(np.mean(variance[i]))
+
+    plt.scatter(allF,average,s=20,marker='+',color='k')
+    plt.plot(allF,average,color='b')
+    plt.errorbar(allF,average,yerr=errors,ecolor='r')
     plt.xlabel("F")
-    plt.ylabel("Variance")
-    plt.title("Variance vs F plot for task e")
+    plt.ylabel("variance")
+    plt.title("variance vs F with standard errors")
     plt.savefig("figures/taskE.png")
     plt.show()
-
-
-    
-   
+    np.savetxt(f"data/taskE.dat",np.transpose(np.array((allF,average,errors))))
 
 def main():
     n=100
     R=20
     D1=0.2
     D2=0.1
-    F=0.005
-    dt=0.03
-  #  animate(n,D1,D2,R,F,dt)
-   # taskB(n,D1,D2,R,F,dt)
-    taskC(n,D1,D2,R,dt)
-   # taskD(0.03,variancePlot=True)
-   # taskE()
+    F=0.049
+    dt=0.1
+ #   animate(n,D1,D2,R,F,dt)
+  #  taskB(n,D1,D2,R,F,dt)
+    #taskC(n,D1,D2,R,dt)
+    #taskD(0.01,variancePlot=True)
+    taskE()
 main()
 
 
