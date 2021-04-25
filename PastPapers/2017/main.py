@@ -164,11 +164,11 @@ class Model(object):
         return False
 def taskD():
     p1=1
-    allP2= np.arange(0.5,1.05,0.05)
+    allP2= np.arange(0.5,1.1,0.1)
     pr = 1e-5
     n=50
     N=n*n
-    sweeps=20000
+    sweeps=100000
     averageTime = []
     steps = np.linspace(0,sweeps-1,sweeps)
     iCounter=0
