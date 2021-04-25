@@ -131,6 +131,69 @@ class Model(object):
                     self.blueCounter-=1
 
 
+    def updateModified(self,pr):
+
+        for i in range(self.n):
+            for j in range(self.n):
+                iOne = r.randint(0,self.n-1)                   
+                jOne = r.randint(0,self.n-1)
+                
+                randomNumber = r.random()
+                if(randomNumber>pr):
+                    self.updateNeighbour(iOne,jOne)
+                else:
+                    self.randomChange(iOne,jOne)
+    
+    def randomChange(self,iOne,jOne):
+        rand = r.random()
+        if(rand<(1/3)):
+            self.lattice[iOne,jOne]=-1
+        elif(rand<(2/3)):
+            self.lattice[iOne,jOne]=0
+        else:
+            self.lattice[iOne,jOne]=1
+
+    def isMixed(self):
+        N=self.n**2
+        red = self.redCounter/N
+        blue = self.blueCounter/N 
+        green = self.greenCounter/N
+
+        if(red>0.2 and blue>0.2 and green>0.2):
+            return True
+        return False
+def taskD():
+    p1=1
+    allP2= np.arange(0.5,1.05,0.05)
+    pr = 1e-5
+    n=50
+    N=n*n
+    sweeps=20000
+    averageTime = []
+    steps = np.linspace(0,sweeps-1,sweeps)
+    iCounter=0
+    for i in tqdm(allP2):
+        model = Model(n,p1,allP2[iCounter])
+
+        counter=0
+        for j in tqdm(steps):
+            model.update()
+            if(model.isMixed):
+                counter+=1
+        averageTime.append(counter/sweeps)
+        iCounter+=1
+    
+
+    plt.plot(allP2,averageTime)
+    plt.xlabel("P2")
+    plt.ylabel("Average time at mixed state")
+    plt.savefig("figures/taskD.png")
+    plt.show()
+    np.savetxt("data/taskD.dat",np.transpose(np.array((allP2,averageTime))),fmt='%.4f')
+
+
+
+
 
 def animate():
     n=50
@@ -246,7 +309,8 @@ def taskC():
 def main():
    # animate()
    #taskB()
-    taskC()
+   # taskC()
+   taskD()
 
 t1=time.time()
 main()
