@@ -66,10 +66,8 @@ def animate(n,noise,dt,dx=1,rho=0.5,sigma=10,k=0.01):
         if i%100==0:
             plt.clf()
             im=plt.imshow(model.lattice,animated=True,cmap=colour)
-            c=plt.colorbar(im)
+            plt.colorbar(im)
             plt.draw()
-            c.update_normal(im)
-            clear_output(wait=True)
             plt.pause(0.0001)
             print(i)
     
@@ -158,8 +156,8 @@ def main():
     noise=0.1
     rho = 0.5
     dt=0.1
- #  animate(n,noise,dt)
+    animate(n,noise,dt)
  #   generateData3(n,noise,dt)
-    generateData4(n,noise,dt)
+  #  generateData4(n,noise,dt)
    # generateData6(n,noise,dt,v0=0.5)
 main()
