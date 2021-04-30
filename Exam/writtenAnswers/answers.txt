@@ -1,0 +1,20 @@
+Written solutions for the exam.
+# Honestly had no idea what to write. 
+
+
+Task C.
+Results for task C shows for phi0=0.5 and chi=0.3, that the average phi does not vary as much however, for phi0=0 and chi=0.3, the average phi as a function of time
+fluctuates after 20,000 sweeps and the fluctuation dips/rises only increases with time. Where as for the average m graphs, for phi0=0 we see a sudden drop at the start and it does not
+change with time and for phi0=0.5, we see a sharp increase and it slowly reaches a constant state after 50,000 sweeps
+
+
+Task D
+From the various patterns of phi and m for varying alpha, we see that the new extra term is added to slow down the reaction process. This is found out after comparing the plots
+from task B with plots in task D for the same values of phi0 and chi. 
+
+
+Task 
+Results for task E shows that the variance of m is relatively high for alpha = 0=0.0005 and 0.0025. At these values of alpha
+we see that the average m spikes up for every point of alpha. However, we see that after alpha  = 0.0025, so when the variance 
+has a huge drop, that the average m does not fluctuate as often and is relatively slower compared to before. 
+
