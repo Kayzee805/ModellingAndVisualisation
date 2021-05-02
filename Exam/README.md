@@ -1,7 +1,7 @@
-# Modelling and Visualisation in Physics: Check Point 3: cahnHilliard
+# Modelling and Visualisation in Physics: 
 
 ## Initial run
-Run the file using the following command from the 'CP3/cahnHilliard/' directory:
+Run the file using the following command from the 'Exam/' directory:
 ```
 python main.py N phi0 chi dt
 ```
